@@ -1,4 +1,4 @@
-docs.swanlinux.net
+www.swanlinux.net
 ==================
 
-所有文档仓库
+主站资源
