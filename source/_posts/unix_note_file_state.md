@@ -170,7 +170,178 @@ setgrent函数打开组文件并反绕它，getrent函数从组文件中读下�
 	
 	// 返回值：若成功则返回附加组ID数，若出错则返回 -1
 	
-	#include <grp.h>
-	#include <>
+	#include <grp.h> // on linux and solaris
+	#include <unistd.h> // on freebsd and macos
+
+	int setgroups(int ngroups, const gid_t grouplist[]);
+
+	int intgroups(const char *username, git_t basegid);
 ```
 
+作为一个特例，如若 gidsetsize 为 0, 则函数只返回附加组 ID数， 而对数组 grouplist 则不作修改.
+
+setgroups 可由超级用户调用以便调用进程设置附加组 ID表，grouplist 是组 ID 数组，而 ngroups 指定了数组中的元素个数， ngroups 的值不能大于 NGROUPS_MAX.
+
+initgroups 函数调用 setgroups ，initgroups 读取整个组文件，然后对 username 确定组的成员关系，然后调用 setgroups ，以便为该用户初始化附加组 ID 表.
+
+### 登陆账户记录
+
+大多数 UNIX 系统都提供下列两个数据文件：utmp 文件，它记录当前登录进系统的各个用； wtmp 文件，它跟踪各个登录和注销事件.
+
+```
+	struct utmp {
+		char ut_line[8]; // tty line: "ttyd0",'ttyp0'...
+		char ut_name[8]; // login name
+		long ut_time;	 // seconds since epoch
+	}
+```
+
+登录时， login 程序填写此类型结构，然后将其写入到 utmp 文件中，同时也将其填写到 wtmp 文件中。注销时，init进程将 utmp 文件中相应的记录檫除，并将一个新记录添写到 wtmp文件中，在 wtmp 文件的注销记录中，将 ut_name 字段清 0, 在系统重启时，以及更改系统时间和日期的前后，都在 wtmp 文件中添写特殊的记录项。
+
+### 系统标识
+
+uname 函数，它返回与当前主机和操作系统有关的信息
+
+```
+	#include <sys/utsname.h>
+	int uname(struct utsname *name);
+
+	// 返回值: 若成功返回非负值，若出错则返回 -1
+```
+
+通过该函数的参数向其传递一个 utsname 结构的地址，然后该函数填写此结构.
+
+```
+	struct utsname {
+		char sysname[]; // 操作系统的名称
+		char nodename[]; // 节点名称
+		char release[]; // 当前系统的 release 版本
+		char version[]; // 当前版本
+		char machine[]; // 硬件平台	
+	}
+```
+
+BSD 派生的系统提供了 gethostname 函数，它只返回主机名，该名字通常就是 TPC/IP 网络上主机的名字.
+
+```
+	#include <unistd.h>
+
+	int gethostname(char *name, int namelen);
+
+	// 返回值：若成功则返回 0，若出错则返回 -1
+
+```
+
+现在 gethostname 函数已经定义为 POSIX.1 的一部分，它指定最大主机名长度是 HOST_NAME_MAX.
+
+### 时间和日期例程
+
+Unix 在时间日期方面和其他操作系统的区别是：
+
+- 以国际标准时间而非本地时间计时；
+- 可以自动进行转换，例如夏时制；
+- 将时间和日期作为一个量值保存
+
+time 函数返回时间和日期
+
+```
+	#include <time.h>
+	time_t time(time_t *calptr)
+
+	// 返回值：若成功则返回时间值，若出错则返回 -1
+```
+
+时间总是作为函数返回，如果参数不为空，则时间值也存放在由 calptr 指向的单元内。
+
+与 time 函数相比，gettimeofday提供了更高的分辨率
+
+```
+	#include <sys/time.h>
+	int gettimeofday(struct timeval *restrict tp, void *restrict tzp);
+
+	// 返回值，总是返回 0
+```
+
+该函数作为XSI 扩展定义在 Single UNIX Specification 中， tzp的唯一合法值是 NULL, 其他值则将产生不确定的结果。
+
+gettimeofday 函数返回的 timeval 结构如下:
+
+```
+	struct timeval {
+		time_t tv_sec; // 秒
+		long tv_usec; // 微秒	
+	}
+```
+
+![各个时间函数之间的关系][unix_note_001_001]
+
+两个函数 localtime 和 gmtime 将日历时间转化成以年、月、日、时、分、秒、周日表示的时间， tm 结构如下:
+
+```
+	struct tm {
+		int tm_sec;
+		int tm_min;
+		int tm_hour;
+		int tm_mday;
+		int tm_mon;
+		int tm_year;
+		int tm_wday;
+		int tm_yday;
+		int tm_isdst;
+	}
+```
+
+秒可以超过 59 的理由是可以表示闰秒，如果夏时制生效，则夏时制标志值为正，如果为非夏时制时间，则该标志值为 0；如果此信息不可用，则其值为负。
+
+```
+	#include <time.h>
+	struct tm *gmtime(const time_t *calptr);
+	struct tm *localtime(const time_t *calptr);
+
+	// 两个函数返回值：指向 tm 结构的指针
+```
+
+localtime 和 gmtime 之间的区别是：localtime 将日历时间转换成本地时间，而 gmtime 则将日历时间转换成国际标准时间的年、月、日、分、秒、周日。
+
+函数 mktime 以本地时间的年、月、日等作为参数，将其转换为 time_t 值
+
+```
+	#include <time.h>
+	
+	time_t mktime(struct tm *tmptr);
+
+	// 返回值：若成功则返回日历时间，若出错则返回 -1
+```
+
+asctime 和 ctime 函数产生 26 字节的字符串如：
+
+> Tue Feb 10 18:27:38 2014\n\0
+
+```
+	#include <time.h>
+
+	char *asctime(const struct tm *tmptr);
+
+	char *ctime(const time_t *calptr);
+
+	// 两个函数返回值：指向以 null 结尾的字符串的指针
+```
+
+asctime 的参数是指向年、月、日等字符串的指针，而 ctime 的参数则是指向日历时间的指针。
+
+最后一个时间函数 strftime:
+
+```
+	#include <time.h>
+	size_t strftime(char *restrict buf, size_t maxsize,
+					const char *restrict format,
+					const struct tm *restrict tmptr);
+	// 返回值：若有空间返回存入数组的字符串，否则返回 0
+```
+
+最后一个参数是要格式化的时间值，有一个指向 tm 结构的指针指定，格式化结果存放在一个长度为 maxsize 个字符的 buf 数组中，如果 buf 长度足以存放格式化结果及一个 null 终止符，则该函数返回在 buf 中存放的字符数，否则该函数返回 0.
+
+对于常量 TZ 会影响 localtime, mktime, ctime 和strftime 四个函数,如果定义了则其值代替系统默认值，否则使用国际标准时间 UTC.
+
+(完)
+[unix_note_001_001]:/image/unix_note/unix_note_001_001.png
