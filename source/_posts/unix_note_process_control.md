@@ -187,66 +187,66 @@ vfork 和 fork 之间的另一个区别是：vfork 保证子进程先运行，�
 演示不同的 exit:
 
 ```
-#include "../apue.h"
-#include <sys/wait.h>
-    
-void pr_exit(int status);
+	#include "../apue.h"
+	#include <sys/wait.h>
+		
+	void pr_exit(int status);
 
-int main(void) 
-{       
-    pid_t pid;
-    int status;
-    
-    if ((pid = fork()) < 0) {
-        err_sys("fork error.");
-    } else if (pid == 0) {
-        exit(7);
-    }
+	int main(void) 
+	{       
+		pid_t pid;
+		int status;
+		
+		if ((pid = fork()) < 0) {
+			err_sys("fork error.");
+		} else if (pid == 0) {
+			exit(7);
+		}
 
-    if (wait(&status) != pid) {
-        err_sys("wait error.");
-    } 
-    pr_exit(status);
-    
-    if ((pid = fork()) < 0) {
-        err_sys("fork error.");
-    } else if (pid == 0) {
-        abort();
-    }
+		if (wait(&status) != pid) {
+			err_sys("wait error.");
+		} 
+		pr_exit(status);
+		
+		if ((pid = fork()) < 0) {
+			err_sys("fork error.");
+		} else if (pid == 0) {
+			abort();
+		}
 
-    if (wait(&status) != pid) {
-        err_sys("wait error.");
-    } 
-    pr_exit(status);
+		if (wait(&status) != pid) {
+			err_sys("wait error.");
+		} 
+		pr_exit(status);
 
-    if ((pid = fork()) < 0) {
-        err_sys("fork error.");
-    } else if (pid == 0) {
-        status /= 0;
-    }
+		if ((pid = fork()) < 0) {
+			err_sys("fork error.");
+		} else if (pid == 0) {
+			status /= 0;
+		}
 
-    if (wait(&status) != pid) {
-        err_sys("wait error.");
-    }
-    pr_exit(status);
-}
+		if (wait(&status) != pid) {
+			err_sys("wait error.");
+		}
+		pr_exit(status);
+	}
 
-void pr_exit(int status)
-{
-    if (WIFEXITED(status)) {
-        printf("normal termination, exit status = %d\n", WEXIT  STATUS(status));
-    } else if (WIFSIGNALED(status)) {
-        printf("abnormal termination, signal number = %d%s\n",   WTERMSIG(status),
-        #ifdef WCOREDUMP
-            WCOREDUMP(status) ? "(core file generated)" : ""
-        #else
-            ""
-        #endif
-        );
-    } else if (WIFSTOPPED(status)) {
-        printf("child stopped, signal number = %d\n", WSTOPSIG  (status));
-    }
-}
+	void pr_exit(int status)
+	{
+		if (WIFEXITED(status)) {
+			printf("normal termination, exit status = %d\n", WEXIT  STATUS(status));
+		} else if (WIFSIGNALED(status)) {
+			printf("abnormal termination, signal number = %d%s\n",   WTERMSIG(status),
+			#ifdef WCOREDUMP
+				WCOREDUMP(status) ? "(core file generated)" : ""
+			#else
+				""
+			#endif
+			);
+		} else if (WIFSTOPPED(status)) {
+			printf("child stopped, signal number = %d\n", WSTOPSIG  (status));
+		}
+	}
 ```
 
 运行结果：
@@ -278,5 +278,34 @@ waitpid 函数提供了 wait 函数没有提供的三个功能：
 - waitpid 提供了一个 wait 的非阻塞版本，有时用户希望取得一个子进程的状态，但不想阻塞。
 - waitpid 支持作业控制。
 
+### wait3 和 wait4 函数
+
+wait3 和 wait4 比 wait、waitpid 所提供的功能多一个功能，这与附加参数 ruage 有关，该参数要求内核返回由终止进程及其所有子进程使用的资源汇总。
+
+```
+	#include <sys/types.h>
+	#include <sys/wait.h>
+	#include <sys/time.h>
+	#include <sys/resource.h>
+
+	pid_t wait3(int *statloc, int options, struct rusage *rusage);
+	pid_t wait4(pid_t pid, int *statloc, int options, struct rusage *rusage);
+```
+
+资源统计信息包括用户CPU时间总量、系统CPU时间总量、页面错误次数、接收到信号的次数等。
+
+### 竞争条件
+
+如果一个进程希望等待一个子进程终止，则它必须调用一种 wait 函数，。如果一个进程要等待其父进程终止，则可使用下列形式的循环：
+
+```
+	while(getppid() != 1) {
+		sleep(1);	
+	}
+```
+
+这种形式的循环的问题是它浪费了CPU时间，因为调用者每个1s 都被唤醒，然后进程条件测试。
+
+为了避免竞争条件和轮询，在多个进程之间需要有某种形式的信号发送和接收的方法。在UNIX中可以使用信号机制，也可以使用各种形式的进程间通讯。
 
 
