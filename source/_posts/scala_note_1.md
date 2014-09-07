@@ -1,4 +1,4 @@
-title: 《快学scala》第一章
+title: 《快学scala》第一章 基础
 date: 2014-09-05 13:13:16
 tags: scala
 categories: 《快学scala》练习
