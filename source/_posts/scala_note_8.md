@@ -256,9 +256,21 @@ object Test extends App
 
 \9. 在 8.10 节的Creature 类中， 将 val range 替换成一个 def ， 如果你在Ant子类中也用 def的话有什么效果？如果在子类中使用 val又会有什么效果？ 为什么？
 
-\10. 文件 scala/collection/immutable/Stack.scala 包含如下定义：
+```
+class Creature {
+  def range  = 10
 
-class Stack[A] protected (protected val elems : List[A])
+  val env : Array[Int] = new Array[Int](range)
+}
 
-请解释 protected 关键字的含义。(提示：回顾我们在第5章关于私有构造器的讨论)
+class Ant extends Creature
+{
+  override def range = 2
+} 
 
+object Test extends App
+{
+  val test = new Ant();
+  println(test.env.length);
+} 
+```
