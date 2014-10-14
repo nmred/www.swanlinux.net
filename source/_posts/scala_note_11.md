@@ -6,7 +6,29 @@ categories: 《快学scala》练习
 
 \1. 根据优先级规则， 3 + 4 -> 5 和 3 -> 4 + 5 是如何被求值的？
 
+```
+在REPL中执行即可得到结果。都是从左至右执行
+```
+
 \2. BigInt 类有一个pow方法，但没有用操作符字符，Scala类库的设计者为什么没有选用\*\*（像Fortran那样）或者^(像Pascal那样)作为乘方操作符呢？
+
+```
+Scala中的操作符就是方法，其优先级是根据首字母来判断的，优先级如下
+
+最高优先级:除以下字符外的操作符字符
+ * / % 
+ + - 
+ : 
+ = ! 
+ < > 
+ & 
+ ˆ 
+ | 
+ 非操作符
+ 最低优先级:赋值操作符
+
+ 一般乘方的操作符是优于乘法操作的，如果使用**作为乘方的话，那么其优先级则与*相同，而如果使用^的话，则优先级低于*操作。优先级都是有问题的。故没有使用这两种操作符
+```
 
 \3. 实现Fraction类，支持 + - * / 操作，支持约分, 例如将 15 / -6 变成 -5 / 2。除以最大公约数，像这样：
 
@@ -193,7 +215,73 @@ object TableTest extends App {
 (__|__)   -----
 ```
 
+```
+import scala.collection.mutable.ArrayBuffer
+
+class ASCIIArt(str: String) {
+  val artMap : ArrayBuffer[String] = new ArrayBuffer[String]()
+  if (str != null && !str.trim.eq("")) {
+    str.split("[\r\n]+").foreach((line: String) => {
+      val tmp = new ArrayBuffer[String]();
+      artMap += line
+    })
+  }
+
+  def this() {
+    this("")
+  }
+
+  def +(other: ASCIIArt) : ASCIIArt = {
+    val art = new ASCIIArt()
+    val length = if (this.artMap.length >= other.artMap.length) this.artMap.length else other.artMap.length
+    for (i <- 0 until length) {
+      val thisCur : String = if (this.artMap.isDefinedAt(i)) this.artMap(i) else "" 
+      val otherCur : String = if (this.artMap.isDefinedAt(i)) other.artMap(i) else ""  
+      art.artMap += thisCur + otherCur
+    } 
+
+    art
+  }
+
+  def *(other: ASCIIArt) : ASCIIArt = {
+    val art = new ASCIIArt()
+    art.artMap ++= this.artMap
+    art.artMap ++= other.artMap
+    art
+  }    
+       
+  override def toString = {
+    artMap.mkString("\n") 
+  }    
+} 
+
+object ASCIIArt {
+  def apply(str: String) = new ASCIIArt(str)
+} 
+
+object ASCIIArtTest extends App {
+  val a1 = ASCIIArt(""" /\_/\
+                      |( ' ' )
+                      |(  -  )
+                      | | | | 
+                      |(__|__)
+                      |""".stripMargin)
+  val a2 = ASCIIArt("""    -----
+                      |  / Hello \
+                      | <  Scala |
+                      |  \ Coder /
+                      |    -----
+                      |""".stripMargin)
+  println(a1 + a2)
+  println(a1 * a2)
+}
+```
+
 \7. 实现一个BigSequence 类，将64个bit的序列包在一个Long值中。提供apply和update操作来获取和设置某个位置具体的bit
+
+```
+// todo
+```
 
 
 \8. 提供一个Matrix类---你可以选择需要的是一个2x2的矩阵，任意大小的正方形矩阵，或是mxn的矩阵。支持+和\*操作。\*操作应同样适用于单值，例如 mat \* 2. 单个元素可以通过 mat(row,col)得到
