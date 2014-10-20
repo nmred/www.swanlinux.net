@@ -62,7 +62,7 @@ object produceTest extends App {
 }
 ```
 
-\5. 编写函数 largest(fun:(Int) => Int, inputs: Seq[Int]), 输出在给定输入序列中给定函数的最大值。举例来说，largest(x =\> 10 * x - x * x, 1 to 10) 应该返回 25，不得使用循环和递归。
+\5. 编写函数 largest(fun:(Int) => Int, inputs: Seq[Int]), 输出在给定输入序列中给定函数的最大值。举例来说，largest(x =\> 10 \* x - x \* x, 1 to 10) 应该返回 25，不得使用循环和递归。
 
 ```
 object largestTest extends App {
@@ -108,7 +108,7 @@ object largestTest extends App {
     pairs.map(_ + _)
 ```
 
-函数 \_ + \_ 接收两个 Int 作为参数，而不是(Int, Int)对偶。编写函数 adjustToPair, 该函数接受一个类型为(Int, Int) => Int, 并返回一个等效的、可以以对偶作为参数的函数。举例来说就是： adjustToPair(\_ * \_)((6, 7))应得到42.
+函数 \_ + \_ 接收两个 Int 作为参数，而不是(Int, Int)对偶。编写函数 adjustToPair, 该函数接受一个类型为(Int, Int) => Int, 并返回一个等效的、可以以对偶作为参数的函数。举例来说就是： adjustToPair(\_ \* \_)((6, 7))应得到42.
 
 然后用这个函数通过map计算出各个对偶的元素之和
 
