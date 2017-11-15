@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.0 -->
+    <script>
+        window.materialVersion = "1.5.0"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Title -->
+    
+    <title>
+        
+            标准 IO 库 | 
+        
+        Iodsp
+    </title>
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Nmred">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",file io">
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Iodsp">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icon -->
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://www.swanlinux.net">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="标准 IO 库 | Iodsp">
+    <meta property="og:image" content="http://www.swanlinux.net/img/favicon.png" />
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="file io"> 
+
+    
+        <meta property="article:published_time" content="Tue May 14 2013 18:13:16 GMT+0800" />
+        <meta property="article:modified_time" content="Wed Nov 15 2017 14:07:13 GMT+0800" />
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="标准 IO 库 | Iodsp">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="http://www.swanlinux.net/img/favicon.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://www.swanlinux.net" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://www.swanlinux.net/2013/05/14/unix_note_stanard_file_io/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://www.swanlinux.net/2013/05/14/unix_note_stanard_file_io/index.html",
+    "headline": "标准 IO 库",
+    "datePublished": "Tue May 14 2013 18:13:16 GMT+0800",
+    "dateModified": "Wed Nov 15 2017 14:07:13 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Nmred",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Everything in order to facilitate"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Iodsp",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",file io",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                标准 IO 库
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Nmred</strong>
+        <span>5月 14, 2013</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC2ElEQVR42u3aUY6cMBAE0Ln/pZMDrJZUuSED5vE1Qgzj55VS6W5//rzy+mBjY2NjY2NjY2Pfkv2Jr5/PJ3fy539+Pr6TrxkbGxv7Dex//NN/SFr7bn4n2Zrj38XGxsZ+D/s4co6X1cZPEk75G6JvYWNjY2PHsfTbdrRFRbJZ2NjY2NjfCrAJAxsbGxt70lQqBqtlpCVDha/10rCxsbFvz24HvXf4/IX5NjY2NvYt2fNrrfyYjIcX14mNjY29Kfuso41XXGtHeRYPX2JjY2M/nF18OS4J8mZQvob217GxsbHfyW6XlQdhHkXJk/XIGRsbG3tTdtsqyn+mDblkI5I/zGg8gI2Njf1Adl5ytK2ctQOUeYOpfQYbGxt7V/Z8oDs5QJk0sPJnLplvY2NjYz+EnbeHzrrfDiEmIwpsbGzsvdnt8LVdylo0tvEZjSuwsbGxt2a3r7hitFAAzu2lYWNjYz+cnbSHJsEzb2C1n+umEjY2NvbD2e3hy7ZZv9YSmsRhndvY2NjYW7B/W0S+EUkorm10W4RgY2Njv5M9OS6z1u6ZFBtrDS9sbGzsXdltdK3FXtKuamFtIwwbGxv7DeykiTMpQvJ3JoHXDoOxsbGxd2WvLf04bNaiqI2o9mgRNjY29q7sPMDWlp6XInmR0x7Tx8bGxt6bPf8vfht7a+D5EX9sbGzsvdlJIylv7ucLyouNdnRx2pEdbGxs7Iewk5HtJ77WtmNS5ETRi42Njf0CdrsR+fh2UsxMRsLY2NjYb2C3Vxt4bczk21cHJDY2Nvam7LbAWBvEtm/LR9FFCYSNjY29NXseWmvD12TA3AZYPd/GxsbG3og9iZlkC65oJxXlDTY2NjZ23AZqWz9t6XI8hD5tvo2NjY29KTuPnLy8Ob7Txh42Njb2m9n5EufbsYZsBxvY2NjY72FfMejNt+yshtQt5tvY2NjY/539ngsbGxsbGxsbGxv7NtdfKADFB1J/5BMAAAAASUVORK5CYII=">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/file-io/">file io</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=标准 IO 库&url=http://www.swanlinux.net/2013/05/14/unix_note_stanard_file_io/index.html&pic=http://www.swanlinux.net/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=标准 IO 库&url=http://www.swanlinux.net/2013/05/14/unix_note_stanard_file_io/index.html&via=Nmred" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://www.swanlinux.net/2013/05/14/unix_note_stanard_file_io/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://www.swanlinux.net/2013/05/14/unix_note_stanard_file_io/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>###流和 FILE 对象</p>
+<p>标准I/O文件流可用于单字节或多字节字符集，流的定向决定了所读、写的字符是单字节还是多字节的。当一个流最初被创建时，它并没有定向。如若在一个未定向的流上使用一个多字节的I/O函数，则将该流的定向设置为宽定向的，如若在未定向的流上使用一个单字节的I/O函数，则将该流的定向设置为字节定向的。只有两个函数可以改变流的定向。freopen函数清除一个流的定向；fwide函数设置流的定向。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;wchar.h&gt;</span><br><span class="line"></span><br><span class="line">int fwide(FILE *fp, int mode);</span><br><span class="line"></span><br><span class="line">// 返回值：若流是宽定向的则返回正值，若流是字节定向的则返回负值，或者若流是未定向的则返回0</span><br></pre></td></tr></table></figure>
+<p>根据mode参数的不同值，fwide函数执行不同的工作：</p>
+<ul>
+<li>如若mode参数值为负，fwide将试图使指定的流是字节定向的。</li>
+<li>如若mode参数值为正，fwide将试图使指定的流是宽定向的。</li>
+<li>如若mode参数值为0，fwide将不试图设置流的定向，但返回标识该流定向的值。</li>
+</ul>
+<p>###标准输入、标准输出和标准出错</p>
+<p>对一个进程预定义了三个流，并且这三个流可以自动地被进程使用，它们是：标准输入、标准输出和标准出错。这些流引用的文件是文件IO描述符 STDIN_FILENO 、STDOUT_FILENO和STDERR_FILENO所引用的文件相同。这三个标准I/O流通过预定义文件指针stdin、stdout和stderr加以引用，这三个文件指针同样定义在头文件<stdio.h>中.</stdio.h></p>
+<p>###缓冲</p>
+<p>标准I/O提供了三种类型的缓冲：</p>
+<ul>
+<li><strong>全缓冲</strong></li>
+</ul>
+<p>这种情况下，在填满标准IO缓冲区后才进行实际IO操作，对于驻留在磁盘上的文件通常是有标准IO库实施全缓冲的。</p>
+<p>术语冲洗说名标准IO缓冲区的写操作，缓冲区可由标准IO例程自动冲洗，或者可以调用幻数fflush冲洗一个流。值得引起注意的是在UNIX环境中，flush有两种意思。在标准IO库方面，flush意味着将缓冲区中的内容写到磁盘上。在终端驱动程序方面，flush表示丢弃已存储在缓冲期区中的数据。</p>
+<ul>
+<li><strong>行缓冲</strong></li>
+</ul>
+<p>在这种情况下，当输入和输出遇到换行符是，标准IO库执行操作。这允许我们一次输出一个字符，但只有写了一行之后才进行实际IO操作，当流涉及一个终端时，通常使用行缓冲.</p>
+<ul>
+<li><strong>不带缓冲</strong></li>
+</ul>
+<p>标准IO库不对字符进行缓存存储，标准出错流stderr通常是不带缓冲的，这就使得出错信息可以尽快显示出来，而不管它们是否含有一个换行符。</p>
+<p>很多系统默认使用下来类型的缓冲：</p>
+<ul>
+<li>标准出错是不带缓冲的。</li>
+<li>如若是涉及终端设备的其他流，则它们是行缓冲的；否则是全缓冲的。</li>
+</ul>
+<p>可以调用下列两个函数中的一个更改缓冲类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">void setbuf(FILE *restrict fp, char *restrict buf);</span><br><span class="line">int setvbuf(FILE *restrict fp, char *restrict buf, int mode, size_t size);</span><br><span class="line"></span><br><span class="line">// 返回值：若成功则返回0， 若出错则返回非0值</span><br></pre></td></tr></table></figure>
+<p>可以使用setbuf 函数打开或关闭缓冲机制，为了带缓冲进行I/O，参数buf必须指向一个长度为 BUFSIZ 的缓冲区。通常在此之后该流就是全缓冲的，但是如果该流与一个终端设备相关，那么某些系统也可将其设置为行缓冲的，为了关闭缓冲，将buf设置为NULL；</p>
+<p>使用setvbuf,我们可以精确地指定所需的缓冲类型，这是用mode参数实现的：</p>
+<ul>
+<li>_IOFBF 全缓冲</li>
+<li>_IOLBF 行缓冲</li>
+<li>_IONBF 不缓冲</li>
+</ul>
+<p>如果指定一个不带缓冲的流，则忽略buf和size参数，如果指定全缓冲或行缓冲，则buf和size可选择地指定一个缓冲区及其长度。如果该流是带缓冲的，而buf是NULL，则标准I/O库将自动地为该流分配适合长度的缓冲区。适当长度指的是有常量BUFSIZ 所指定的值。</p>
+<p>任何时候都可以强制冲洗一个流：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#inclue &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int fflush(FILE *fp);</span><br><span class="line"></span><br><span class="line">// 返回值: 若成功则返回0，若出错则返回EOF</span><br></pre></td></tr></table></figure>
+<p>此函数使该流所有未写的数据都被传送至内核，作为一个特例，如若 fp 是NULL，则此函数将导致所有输出流被冲洗。</p>
+<p>###打开流</p>
+<p>下列三个函数打开一个标准I/O流：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">FILE *fopen(const char *restrict pathname, const char *restrict type);</span><br><span class="line"></span><br><span class="line">FILE *freopen(const char *restrict pathname, const char *restrict type, FILE *restrict fp);</span><br><span class="line"></span><br><span class="line">FILE *fdopen(int filedes, const char *type);</span><br><span class="line"></span><br><span class="line">// 三个函数的返回值：若成功则返回文件指针，若出错则返回NULL</span><br></pre></td></tr></table></figure>
+<p>三个函数的区别：</p>
+<ul>
+<li>fopen打开一个指定的文件.</li>
+</ul>
+<ul>
+<li>freopen在一个指定的流上打开一个指定的文件，如若该流已经打开，则先关闭该流，若该流已经定向，则 freopen清除该定向，此函数一般用于将一个指定的文件打开为一个预定义的流：标准输入、标准输出或标准出错.</li>
+</ul>
+<ul>
+<li>fdopen 获取一个现有的文件描述符，并使一个标准的I/O流与该描述符相结合.</li>
+</ul>
+<p>调用 fclose() 关闭一个打开的流：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int fclose(FILE *fp);</span><br><span class="line"></span><br><span class="line">// 返回值：若成功则返回0， 若出错则返回 EOF</span><br></pre></td></tr></table></figure>
+<p>###读和写流</p>
+<p>一旦打开了流，则可在三种不同类型的非格式化I/O中进行选择，对其进行读、写操作：</p>
+<p>(1) 每次一个字符的I/O，一次读或写一个字符，如果流是带缓冲的，则标准I/O函数会处理所有的缓冲。</p>
+<p>(2) 每次一行的I/O，如果想要一次读或写一行，则使用fgets和fputs，每行都以一个换行符终止，当调用fgets时，应说明处理的最大行长。</p>
+<p>(3) 直接I/O，<br>fread和fwrite函数支持这种类型的I/O，每次I/O操作读或写某种数量的对象，而每个对象具有指定的长度，这两个函数常用于从二进制文件中每次读写一个结构。</p>
+<p>###输入函数</p>
+<p>以下三个函数可用于一次读一个字符：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int getc(FILE *fp);</span><br><span class="line">int fgetc(FILE *fp);</span><br><span class="line">int getchar(void);</span><br><span class="line"></span><br><span class="line">// 三个函数的返回值：若成功则返回一下个字符，若已到达文件结尾或出错则返回EOF</span><br></pre></td></tr></table></figure>
+<p>函数getchar等价于getc(stdin) , 前两个函数的分别是getc可被实现为宏，而fgetc则不能实现为宏，这意味着：</p>
+<p>(1) getc的参数不应当是具有副作用的表达式。</p>
+<p>(2) 因为 fgetc一定是一个函数，所以可以得到其地址，这就允许将fgetc的地址作为一个参数传送给另一个函数。</p>
+<p>(3) 调用fgetc所需要的时间可能大于调用getc,因为调用函数通常所需要的时间大于调用宏。</p>
+<p>注意，不管是出错还是到达文件尾端这三个函数返回同样的值，为了区分这两种不同的情况，必须调用ferror或feof</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int ferror(FILE *fp);</span><br><span class="line"></span><br><span class="line">int feof(FILE *fp);</span><br><span class="line"></span><br><span class="line">// 两个函数返回值：若条件为真则返回非0值，否则返回0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void clearerr(FILE *fp);</span><br></pre></td></tr></table></figure>
+<p>调用 clearerr() 则清除这两个标志</p>
+<p>从流中读取数据以后，可以调用ungetc()将字符再压送回流中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int ungetc(int c, FILE *fp);</span><br><span class="line"></span><br><span class="line">// 返回值：若成功则返回c, 若出错则返回EOF</span><br></pre></td></tr></table></figure>
+<p>压送回到流中的字符以后又可从流中读出，但读出字符的顺序与压送回的顺序相反。虽然ISO C 允许实现支持任何次数大的回送，但是它要求实现提供一次只送回一个字符，我们不能期望一次能送回多个字符。</p>
+<p>###输出函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int putc(int c, FILE *fp);</span><br><span class="line"></span><br><span class="line">int fputc(int c, FILE *fp);</span><br><span class="line"></span><br><span class="line">int putchar(int c);</span><br><span class="line"></span><br><span class="line">// 三个函数返回值：若成功则返回C, 若出错则返回EOF</span><br></pre></td></tr></table></figure>
+<p>###每次一行I/O</p>
+<p>下面两个函数提供每次输入一行的功能：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">char *fgets(char *restrict buf, int n, FILE *restrict fp);</span><br><span class="line"></span><br><span class="line">char *gets(char *buf);</span><br><span class="line"></span><br><span class="line">// 两个函数返回值：若成功则返回buf, 若已到达文件结尾或出错则返回NULL</span><br></pre></td></tr></table></figure>
+<p>这两个函数都指定了缓冲区的地址，读入的行将送入其中。gets从标准输入读，而fgets则从指定的流读。</p>
+<p>对于fgets,必须指定缓冲区的长度n ， 此函数一直读到一下个换行符为止，但是不超过n - 1 个字符，读入的字符被送入缓冲区。该缓冲区以null字符结尾。</p>
+<p>fputs 和 puts 提供每次输出一行的功能：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int fputs(const char *restrict str, FILE *restrict fp);</span><br><span class="line"></span><br><span class="line">int puts(const char *str);</span><br><span class="line"></span><br><span class="line">// 两个函数返回值：若成功则返回非负值，若出错则返回EOF</span><br></pre></td></tr></table></figure>
+<p>如果总是使用 fgets和fputs,那么就会熟知在每行终止处我们必须自己处理换行符.</p>
+<p>用 getc 和 putc 将标准输入复制到标准输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;../apue.h&quot;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	int c;</span><br><span class="line">	while((c = getc(stdin)) != EOF) &#123;</span><br><span class="line">		if (putc(c, stdout) == EOF) &#123;</span><br><span class="line">			err_sys(&quot;output error&quot;);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if (ferror(stdin)) &#123;</span><br><span class="line">		err_sys(&quot;input error&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	exit(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用 fgets 和 fputs 将标准输入复制到标准输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;../apue.h&quot;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	char buf[MAXLINE];</span><br><span class="line"></span><br><span class="line">	while(fgets(buf, MAXLINE, stdin) != NULL) &#123;</span><br><span class="line">		if (fputs(buf, stdout) == EOF) &#123;</span><br><span class="line">			err_sys(&quot;output error&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if (ferror(stdin)) &#123;</span><br><span class="line">		err_sys(&quot;input error&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	exit(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###二进制I/O</p>
+<p>下列两个函数以执行二进制I/O操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">size_t fread(void *restrict ptr, size_t size, size_t nobj, FILE *restrict fp);</span><br><span class="line"></span><br><span class="line">size_t fwrite(void *restrict ptr, size_t size, size_t nobj, FILE *restrict fp);</span><br><span class="line"></span><br><span class="line">// 两个函数的返回值：读或写的对象数</span><br></pre></td></tr></table></figure>
+<p>这些函数有两种常见的用法：</p>
+<p>(1) 读或写一个二进制数组. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 将一个浮点数组的第2~5个元素写至一个文件上：</span><br><span class="line"></span><br><span class="line">float data[10];</span><br><span class="line"></span><br><span class="line">if(fwrite(&amp;data[2], sizeof(float), 4, fp) != 4) &#123;</span><br><span class="line">	err_sys(&quot;fwrite error&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(2) 读或写一个结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">struct &#123;</span><br><span class="line">	short count;</span><br><span class="line">	long total;</span><br><span class="line">	char name[NAMESIZE];</span><br><span class="line">&#125; item;</span><br><span class="line"></span><br><span class="line">if (fwrite(&amp;item, sizeof(item), 1, fp) != 1) &#123;</span><br><span class="line">	err_sys(&quot;fwrite error&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###定位流</p>
+<p>有三种方法定位标准I/O流：</p>
+<p>(1) ftell 和 fseek 函数， 但是它们都假定文件的位置可以存放在一个长整型中。</p>
+<p>(2) ftello 和 fseeko 函数，可以使文件偏移量不必一定使用长整型，它们使用off_t数据类型代替了长整型.</p>
+<p>(3) fgetpos 和 fsetpos 函数，它们使用一个抽象数据类型 fpos_t 记录文件的位置，这种数据类型可以定义为记录一个文件位置所需的长度.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">long ftell(FILE *fp);</span><br><span class="line"></span><br><span class="line">// 返回值：若成功则返回当前文件位置指示，若出错则返回 -1L</span><br><span class="line"></span><br><span class="line">int fseek(FILE *fp, long offset, int whence);</span><br><span class="line"></span><br><span class="line">// 返回值：若成功则返回0，若出错则返回非0值；</span><br><span class="line"></span><br><span class="line">void rewind(FILE *fp);</span><br></pre></td></tr></table></figure>
+<p>除了offset 类型是off_t 而非long以外，ftello 函数与 ftell相同， fseeko 函数与 fseek相同。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">off_t ftello(FILE *fp);</span><br><span class="line"></span><br><span class="line">// 返回值：若成功则返回当前文件位置指示，若出错则返回 -1</span><br><span class="line"></span><br><span class="line">int fseeko(FILE *fp, off_t offset, int whence);</span><br><span class="line"></span><br><span class="line">// 返回值：若成功则返回0，若出错则返回非0值</span><br></pre></td></tr></table></figure>
+<p>fgetpos 和 fsetpos 这两个函数是 C 标准引进的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int fgetpos(FILE *restrict fp, fpos_t *restrict pos);</span><br><span class="line"></span><br><span class="line">int fsetpos(FILE *fp, const fpos_t *pos);</span><br><span class="line"></span><br><span class="line">// 两个函数返回值：若成功则返回0，若出错则返回非0值</span><br></pre></td></tr></table></figure>
+<p>###格式化I/O</p>
+<p>###格式化输出</p>
+<p>执行格式化输出处理的是4个printf 函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int printf(const char *restrict format, ...);</span><br><span class="line"></span><br><span class="line">int fprintf(FILE *restrict fp, const char *restrict format, ...);</span><br><span class="line"></span><br><span class="line">// 两个函数返回值：若成功则返回输出字符数，若输出出错则返回负值</span><br><span class="line"></span><br><span class="line">int sprintf(char *restrict buf, const char *restrict format, ...);</span><br><span class="line"></span><br><span class="line">int snprintf(char *restrict buf, size_t n, const char *restrict format, ...);</span><br><span class="line"></span><br><span class="line">// 两个函数返回值：若成功则返回存入数组的字符数，若编码出错则返回负值</span><br></pre></td></tr></table></figure>
+<p>printf 将格式化数据写到标准输出，fprintf写至指定的流，sprintf将格式化的字符送入数组buf中。sprintf在该数组的尾端自动加一个null字节，但该字节不包括在返回值中。注意，sprintf 函数可能会造成由 buf 指向的缓冲区溢出，调用者有责任确保该缓冲区足够大。为了解决这中缓冲区溢出问题，引入了snprintf函数，在还函数中，缓冲区长度是以个显示参数，超过缓冲区的尾端写的任何字符都会被丢弃。</p>
+<p>下列4种printf族的变体类型类似于上面的4种，但是可变参数表(…)代换成 arg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdarg.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int vprintf(const char *restrict format, va_list arg);</span><br><span class="line"></span><br><span class="line">int vfprintf(FILE *restrict fp, const char *restrict format, va_list arg);</span><br><span class="line"></span><br><span class="line">// 两个函数返回值：若成功则返回输出字符数，若输出出错则返回负值</span><br><span class="line"></span><br><span class="line">int vsprintf(char *restrict buf, const char *restrict format, va_list arg);</span><br><span class="line"></span><br><span class="line">int vsnprintf(char *restrict buf, size_t n, const char *restrict format, va_list arg);</span><br><span class="line"></span><br><span class="line">// 两个函数的返回值：若成功则返回存入数组的字符数，若编码出错则返回负值</span><br></pre></td></tr></table></figure>
+<p>###格式化输入</p>
+<p>执行格式化输入处理的三个 scanf 函数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int scanf(const char *restrict format, ...);</span><br><span class="line"></span><br><span class="line">int fscanf(FILE *restrict fp, const char *restrict format, ...);</span><br><span class="line"></span><br><span class="line">int sscanf(const char *restrict buf, const char *restrict format, ...);</span><br><span class="line"></span><br><span class="line">// 三个函数返回值：指定的输入项数，若输入出错或在任意变换前已到达文件结尾则返回EOF</span><br></pre></td></tr></table></figure>
+<p>scanf族用于分析输入字符串，并将字符序列转化成指定类型的变量，格式之后的各参数包含了变量的地址，以用转化结果初始化这些变量。</p>
+<p>与printf族一样，scanf族也支持函数使用由<stdarg.h>说明的可变参数表</stdarg.h></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdarg.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int vscanf(const char *restrict format, va_list arg);</span><br><span class="line"></span><br><span class="line">int vfscanf(FILE * restrict fp, const char *restrict format, va_list arg);</span><br><span class="line"></span><br><span class="line">int vsscanf(const char *restrict buf, const char *restrict format, va_list arg);</span><br><span class="line"></span><br><span class="line">// 三个函数返回值：指定的输入项数，若输入出错或在任一变化前已到达文件结尾则返回EOF</span><br></pre></td></tr></table></figure>
+<p>###实现细节</p>
+<p>每个标准I/O流都有一个与其相关联的文件描述符，可以对一个流调用 fileno 函数以获得其描述符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int fileno(FILE *fp);</span><br><span class="line"></span><br><span class="line">// 返回值：与该流相关联的文件描述符</span><br></pre></td></tr></table></figure>
+<p>如果要调用dup或fcntl等函数，则需要此函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;../apue.h&quot;</span><br><span class="line"></span><br><span class="line">void pr_stdio(const char *, FILE *);</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	FILE *fp;</span><br><span class="line"></span><br><span class="line">	fputs(&quot;enter any character\n&quot;, stdout);</span><br><span class="line">	if (getchar() == EOF) &#123;</span><br><span class="line">		err_sys(&quot;get char error&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	fputs(&quot;one line to standard error\n&quot;, stderr);</span><br><span class="line"></span><br><span class="line">	pr_stdio(&quot;stdin&quot;, stdin);</span><br><span class="line">	pr_stdio(&quot;stdout&quot;, stdout);</span><br><span class="line">	pr_stdio(&quot;stderr&quot;, stderr);</span><br><span class="line"></span><br><span class="line">	if ((fp = fopen(&quot;/etc/passwd&quot;, &quot;r&quot;)) == NULL) &#123;</span><br><span class="line">		err_sys(&quot;fopen error&quot;);                                                        </span><br><span class="line">	&#125;                                                                                  </span><br><span class="line"></span><br><span class="line">	if (getc(fp) == EOF) &#123;                                                             </span><br><span class="line">		err_sys(&quot;getc error&quot;);                                                         </span><br><span class="line">	&#125;                </span><br><span class="line"></span><br><span class="line">	pr_stdio(&quot;/etc/passwd&quot;, fp);</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void pr_stdio(const char *name, FILE *fp)</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;stream = %s&quot;, name);</span><br><span class="line"></span><br><span class="line">	if (fp-&gt;_IO_file_flags &amp; _IO_UNBUFFERED) &#123;</span><br><span class="line">		printf(&quot;unbuffered&quot;);</span><br><span class="line">	&#125; else if (fp-&gt;_IO_file_flags &amp; _IO_LINE_BUF) &#123;</span><br><span class="line">		printf(&quot;line buffered&quot;);</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		printf(&quot;full buffered&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	printf(&quot;, buffer size = %d\n&quot;, fp-&gt;_IO_buf_end - fp-&gt;_IO_buf_base);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###临时文件</p>
+<p>标准 I/O 库提供了两个函数以帮助创建临时文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">char *tmpnam(char *ptr);</span><br><span class="line"></span><br><span class="line">// 指向唯一路劲名的指针</span><br><span class="line"></span><br><span class="line">FILE *tmpfile(void);</span><br><span class="line"></span><br><span class="line">// 返回值：若成功则返回文件指针，若出错则返回NULL</span><br></pre></td></tr></table></figure>
+<p>tmpnam 函数产生一个与现有文件名不同的一个有效路劲名字符串，每次调用它时，它都产生一个不同的路劲名，最多调用次数是 TMP_MAX, TMP_MAX 定义在 <stdio.h> 中。</stdio.h></p>
+<p>若 ptr 是NULL，则所产生的路劲名存放在一个静态区中，指向该静态区的指针作为函数值返回。下一次再调用 tmpnam 时，会重写该静态区（这意味着，如果调用此函数多次，而且想保存路劲名，则我们应当保存该路劲名的副本，而不是指针的副本）。如若ptr不是NULL，则认为它指向长度至少是L_tmpnam个字符的数组。所产生的路劲名存放在该数组中，ptr也作为函数值返回。</p>
+<p>tmpfile 创建一个临时二进制文件，在关闭该文件或程序结束时将自动删除这种文件。注意，UNIX 对二进制文件不作特殊区分。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;../apue.h&quot;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	char name[L_tmpnam], line[MAXLINE];</span><br><span class="line">	FILE *fp;</span><br><span class="line"></span><br><span class="line">	printf(&quot;%s\n&quot;, tmpnam(NULL));</span><br><span class="line"></span><br><span class="line">	tmpnam(name);</span><br><span class="line">	printf(&quot;%s\n&quot;, name);</span><br><span class="line"></span><br><span class="line">	if ((fp = tmpfile()) == NULL) &#123;</span><br><span class="line">		err_sys(&quot;tmpfile error&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	fputs(&quot;one line of output\n&quot;, fp);</span><br><span class="line">	rewind(fp);</span><br><span class="line">	if (fgets(line, sizeof(line), fp) == NULL) &#123;</span><br><span class="line">		err_sys(&quot;fgets error&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	fputs(line, stdout);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Single UNIX Specification 为处理临时文件定义了另外两个函数，它们是XSI的扩展部分，其中一个是 tempnam 函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">char *tempnam(const char *directory, const char *prefix);</span><br><span class="line"></span><br><span class="line">// 返回值：指向唯一路劲名的指针</span><br></pre></td></tr></table></figure>
+<p>tempnam 是 tmpnam的一个变体，它允许调用者为所产生的路径名指定目录和前缀。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;../apue.h&quot;                                                                   </span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[])                                                       </span><br><span class="line">&#123;                                                                                      </span><br><span class="line">	if (argc != 3) &#123;                                                                   </span><br><span class="line">		err_quit(&quot;usage: a.out &lt;directory&gt; &lt;prefix&gt;&quot;);                                 </span><br><span class="line">	&#125;                                                                                  </span><br><span class="line"></span><br><span class="line">	printf(&quot;%s\n&quot;, tempnam(argv[1][0] != &apos; &apos; ? argv[1] : NULL, (argv[2][0] != &apos; &apos; ? argv[2] : NULL)));</span><br><span class="line"></span><br><span class="line">	return 0;                                                                          </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>XSI定义的第二个函数是 mkstemp ，它类似于 tmpfile ,但是该函数返回的不是文件指针，而是临时的文件的打开文件描述符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int mkstemp(char *template);</span><br><span class="line"></span><br><span class="line">// 返回值：若成功则返回文件描述符，若出错则返回 -1</span><br></pre></td></tr></table></figure>
+<p>它所返回的文件描述符可用于读、写该文件。临时文件的名字是用 template 字符串参数选择的。与tempfile不同的是，mkstemp 创建的临时文件不会自动的被删除。如若想删除需要调用unlink.</p>
+<p>使用tmpnam 和 tempnam的不足之处是，它返回唯一的路劲名和应用程序用该路劲名创建文件之间有一个时间窗口，在该时间窗口期间，另一个进程可能创建一个同名文件，tempfile 和mkstemp 函数则不会产生此种问题。</p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2013/05/14/c_extern/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2013/05/14/unix_note_public.c/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Nmred's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        nmred_2008@126.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2015/05/">五月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/10/">十月 2014<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/09/">九月 2014<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/04/">四月 2014<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/03/">三月 2014<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/02/">二月 2014<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/09/">九月 2013<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/05/">五月 2013<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/02/">二月 2013<span class="sidebar_archives-count">20</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/C-语言/">C 语言<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Hadoop/">Hadoop<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/linux/">linux<span class="sidebar_archives-count">21</span></a></li><li><a class="sidebar_archives-link" href="/categories/php/">php<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/《C-Primer-Plus-第6版-》练习/">《C++ Primer Plus(第6版)》练习<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/《unix-高级编程》-Note/">《unix 高级编程》-Note<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/《快学scala》练习/">《快学scala》练习<span class="sidebar_archives-count">16</span></a></li><li><a class="sidebar_archives-link" href="/categories/虚拟技术/">虚拟技术<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://weibo.com/nmred" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/nmred" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;2013&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Iodsp
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

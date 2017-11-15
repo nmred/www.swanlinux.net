@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.0 -->
+    <script>
+        window.materialVersion = "1.5.0"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Title -->
+    
+    <title>
+        
+            文件和目录 | 
+        
+        Iodsp
+    </title>
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Nmred">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",directory">
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Iodsp">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icon -->
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://www.swanlinux.net">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="文件和目录 | Iodsp">
+    <meta property="og:image" content="http://www.swanlinux.net/img/favicon.png" />
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="directory"> 
+
+    
+        <meta property="article:published_time" content="Tue May 14 2013 18:13:16 GMT+0800" />
+        <meta property="article:modified_time" content="Wed Nov 15 2017 14:07:13 GMT+0800" />
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="文件和目录 | Iodsp">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="http://www.swanlinux.net/img/favicon.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://www.swanlinux.net" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://www.swanlinux.net/2013/05/14/unix_note_file_directory/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://www.swanlinux.net/2013/05/14/unix_note_file_directory/index.html",
+    "headline": "文件和目录",
+    "datePublished": "Tue May 14 2013 18:13:16 GMT+0800",
+    "dateModified": "Wed Nov 15 2017 14:07:13 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Nmred",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Everything in order to facilitate"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Iodsp",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",directory",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                文件和目录
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Nmred</strong>
+        <span>5月 14, 2013</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC3klEQVR42u3aW1LrQAwFwOx/09wFhDhHkrkETfuLqjw8bao46PH4OvJ6YGNjY2NjY2NjY38k+xFfz5969fPz+5/f+eru198/OjM2Njb2avabP/2Xh0gA13e5/tT1Q0nOjI2NjX0OO79NNdiSBz25S3RmbGxsbOwgrpJDT0IIGxsbG3vOvi4zqoVH79uwsbGxsedBcn2gHNMrXX6hl4aNjY398ex8aPo5P//X+TY2Njb2B7PnV6/9lAdbHlpvzomNjY29lF0Nj16bKXm116jKHxA2Njb2OezJ2k1e5FRJyWi52UvDxsbG/uPsvGwoB0Zx6NtrJCWvYmNjY5/D7kVFb9A7R45KEWxsbOxF7Or6Y7Vc6UVOMmYYBRg2Njb2Onbe1smbOPmnqm2s6ndiY2Nj72b/3Fi3Ok7Ih7jXaz3Y2NjYJ7OTMKsOWXvrmHmJUohSbGxs7NXspH2THGtShETlxGANCBsbG3sruxoSc3ZSTkwi9mVwYmNjYy9l522jfBybfP98ofOG3MbGxsZewe6tWibvnywD9YbKhaYSNjY29iL2vOSoFhjVx5F8KhJhY2NjL2XfVU7c1X7Ki6KqAhsbG3sr+64ASxpG+ZpmbzWnvHyJjY2NvYg9uU2On7SWess92NjY2Cew86FpuYlTHOgmxUa1aYWNjY19AntyxDxaqks/Pdibb8DGxsZeyp607PPyIy9yqus4hQeHjY2NvZTdG8r22kb5q8mV/9qwsbGxd7OT9k3e3M8Lm2rsJecZ5TY2Njb2n2VXr+oqz6QUuat1hY2Njb2bXf3XP2/HV/H56Lc5YMDGxsZezc6PMomQfKD7I8UMNjY29gHsPDBGS5DFEUKvqfTNfbGxsbGxY0C1DVRdIeoFJzY2NjZ2EjZ5sFUbRjcEGzY2NvYB7LuGtdUm/jWvGnjlAMPGxsZewa4uXCbhVG0hVYfNeYGEjY2NvZt9zoWNjY2NjY2NjY39Mdc/E7ev8nUZChEAAAAASUVORK5CYII=">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/directory/">directory</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=文件和目录&url=http://www.swanlinux.net/2013/05/14/unix_note_file_directory/index.html&pic=http://www.swanlinux.net/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=文件和目录&url=http://www.swanlinux.net/2013/05/14/unix_note_file_directory/index.html&via=Nmred" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://www.swanlinux.net/2013/05/14/unix_note_file_directory/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://www.swanlinux.net/2013/05/14/unix_note_file_directory/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>###stat、fstat 和 lstat 函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;sys/stat.h&gt;</span><br><span class="line">int stat(const char *restrict pathname, struct stat *restrict buf);</span><br><span class="line">int fstat(int filedes, struct stat *buf);</span><br><span class="line">int lstat(const char *restrict pathname, struct stat *restrict buf);</span><br><span class="line">// 三个函数的返回值：若成功返回0，若出错返回 -1</span><br></pre></td></tr></table></figure>
+<p>一旦给出了pathname，stat函数就返回与此命令文件有关的信息结构。fstat函数获取已在描述符fieldes上打开文件的有关信息。lstat函数类似于stat,但是当命名的文件是一个符号链接时，lstat返回该符号链接的有关信息,而不是由该符号链接引用文件的信息。</p>
+<p>第二个参数buf是指针，指向一个stat 的结构体：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">struct stat &#123;</span><br><span class="line">	mode_t    st_mode;</span><br><span class="line">	ino_t     st_ino;</span><br><span class="line">	dev_t     st_dev;</span><br><span class="line">	dev_t     st_rdev;</span><br><span class="line">	nlink_t   st_nlink;</span><br><span class="line">	uid_t     st_uid;</span><br><span class="line">	gid_t     st_gid;</span><br><span class="line">	off_t     st_size;</span><br><span class="line">	time_t    st_atime;</span><br><span class="line">	time_t    st_mtime;</span><br><span class="line">	time_t    st_ctime;	</span><br><span class="line">	blksize_t st_blksize;</span><br><span class="line">	blkcnt_t  st_blksize</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###文件类型</p>
+<ul>
+<li>普通文件：是最常用的文件类型，这种文件包含了某种形式的数据.</li>
+<li>目录文件：这种文件包含了其他文件的名字以及指向与这些文件有关信息的指针。对一个目录文件具有读权限的任意进程可以读该目录的内容，但是只有内核可以直接写目录文件。</li>
+<li>块特殊文件：这种文件类型提供对设备（例如磁盘）带缓存的访问，每次访问以固定长度为单位进行。</li>
+<li>字符特殊文件：这种文件类型提供了对设备不带缓存的访问，每次访问的长度可变。</li>
+<li>FIFO: 这种类型文件用于进程间通信，有时也称命名管道.</li>
+<li>套接字：这种文件类型用于进程间的网络通信，套接字也可用于在一台宿主机上进程间的非网络通信.</li>
+<li>符号链接：这种文件类型指向了另一个文件。</li>
+</ul>
+<p>文件类型可以有以下宏来确定：</p>
+<ul>
+<li>S_ISREG()  普通文件</li>
+<li>S_ISDIR()  目录文件</li>
+<li>S_ISCHR()  字符特殊文件</li>
+<li>S_ISBLK()  块特殊文件</li>
+<li>S_ISFIFO() 管道或FIFO</li>
+<li>S_ISLNK()  符号链接</li>
+<li>S_ISSOCK() 套接字</li>
+</ul>
+<p>POSIX.1允许实现将进程间通信（IPC）对象表示为文件，以下宏可以确定类型，它们的参数并非st_mode,而是指向stat结构的指针:</p>
+<ul>
+<li>S_TYPEISMQ()   消息队列</li>
+<li>S_TYPEISSEM()  信号量</li>
+<li>S_TYPEISSHM()  共享存储对象</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;../apue.h&quot;</span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">	int i;</span><br><span class="line">	struct stat buf;</span><br><span class="line">	char *ptr;</span><br><span class="line"></span><br><span class="line">	for(i = 1; i &lt; argc; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;%s: &quot;, argv[i]);</span><br><span class="line">		if (lstat(argv[i], &amp;buf) &lt; 0) &#123;</span><br><span class="line">			err_ret(&quot;lstat error&quot;);</span><br><span class="line">			continue;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		if (S_ISREG(buf.st_mode)) &#123;</span><br><span class="line">			ptr = &quot;regular&quot;;</span><br><span class="line">		&#125; else if (S_ISDIR(buf.st_mode)) &#123;</span><br><span class="line">			ptr = &quot;directory&quot;;</span><br><span class="line">		&#125; else if (S_ISCHR(buf.st_mode)) &#123;</span><br><span class="line">			ptr = &quot;character special&quot;;</span><br><span class="line">		&#125; else if (S_ISBLK(buf.st_mode)) &#123;</span><br><span class="line">			ptr = &quot;block special&quot;;</span><br><span class="line">		&#125; else if (S_ISFIFO(buf.st_mode)) &#123;</span><br><span class="line">			ptr = &quot;fifo&quot;;</span><br><span class="line">		&#125; else if (S_ISLNK(buf.st_mode)) &#123;</span><br><span class="line">			ptr = &quot;symbolic link&quot;;</span><br><span class="line">		&#125; else if (S_ISSOCK(buf.st_mode)) &#123;</span><br><span class="line">			ptr = &quot;socket&quot;;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			ptr = &quot;** unknown mode **&quot;;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		printf(&quot;%s \n&quot;, ptr);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	exit(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###设置用户ID和设置组ID</p>
+<ul>
+<li>实际用户ID和实际组ID标识我们究竟是谁。</li>
+<li>有效用户 ID，有效组ID已经附加组ID决定了我们的文件访问权限.</li>
+<li>保存的设置用户ID和保存呢的设置组ID在执行一个程序时包含了有效用户ID和有效组ID的副本。</li>
+</ul>
+<p>###文件权限位</p>
+<ul>
+<li>S_IRUSR 用户-读</li>
+<li>S_IWUSR 用户-写</li>
+<li>S_IXUSR 用户-执行</li>
+</ul>
+<ul>
+<li>S_IRGRP 组-读</li>
+<li>S_IWGRP 组-写</li>
+<li>S_IXGRP 组-执行</li>
+</ul>
+<ul>
+<li>S_IROTH 其他-读</li>
+<li>S_IWOTH 其他-写</li>
+<li>S_IXOTH 其他-执行</li>
+</ul>
+<p>###access 函数</p>
+<p>当用open函数打开一个文件时，内核以进程的有效用户ID和有效组ID为基础执行其访问权限测试。有时，进程也希望按其实际用户ID和实际组ID来测试其访问能力，例如当一个进程使用设置用户ID或设置组ID特征作为另一个用户运行时，就可能会有这种需要，access函数是按实际用户ID和实际组ID进行访问权限测试。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">int access(const char *pathname, int mode);</span><br><span class="line"></span><br><span class="line">// 返回值：若成功则返回0，若出错则返回-1</span><br></pre></td></tr></table></figure>
+<p>其中，mode是以下的常量按位或：</p>
+<ul>
+<li>R_OK 测试读权限</li>
+<li>W_OK 测试写权限</li>
+<li>X_OK 测试执行权限</li>
+<li>F_OK 测试文件是否存在</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;../apue.h&quot;</span><br><span class="line">#include &lt;fcntl.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">	if (argc != 2) &#123;</span><br><span class="line">		err_quit(&quot;usage:a.out &lt;pathname&gt;&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if (access(argv[1], R_OK) &lt; 0) &#123;</span><br><span class="line">		err_ret(&quot;access error for %s&quot;, argv[1]);</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		printf(&quot;read access OK\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if (open(argv[1], O_RDONLY) &lt; 0) &#123;</span><br><span class="line">		err_ret(&quot;open error for %s&quot;, argv[1]);</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		printf(&quot;open for reading OK \n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	exit(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###umask函数</p>
+<p>umask 函数为进程设置文件模式创建屏蔽字，并返回以前的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;sys/stat.h&gt;</span><br><span class="line">mode_t umask(mode_t cmask);</span><br><span class="line">// 返回以前的文件模式创建的屏蔽字</span><br><span class="line"></span><br><span class="line">#include &quot;../apue.h&quot;</span><br><span class="line">#include &lt;fcntl.h&gt;</span><br><span class="line"></span><br><span class="line">#define RWRWRW (S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP|S_IROTH|S_IWOTH)</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	umask(0);</span><br><span class="line">	if (creat(&quot;foo&quot;, RWRWRW) &lt; 0) &#123;</span><br><span class="line">		err_sys(&quot;create error for foo&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	umask(S_IRGRP|S_IWGRP|S_IROTH|S_IWOTH);</span><br><span class="line"></span><br><span class="line">	if (creat(&quot;bar&quot;, RWRWRW) &lt; 0) &#123;</span><br><span class="line">		err_sys(&quot;create error for bar&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	exit(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-rw------- 1 root root    0 May 25 00:42 bar</span><br><span class="line">-rw-rw-rw- 1 root root    0 May 25 00:42 foo</span><br></pre></td></tr></table></figure>
+<p>###chmod 和 fchmod 函数</p>
+<p>这两个函数使我们可以更改现有文件的访问权限：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;sys/stat.h&gt;</span><br><span class="line">int chmod(const char *pathname, mode_t mode);</span><br><span class="line">int fchmod(int filedes, mode_t mode);</span><br><span class="line"></span><br><span class="line">// 这两个函数返回值：若成功返回 0，出错返回 -1</span><br></pre></td></tr></table></figure>
+<p>参数mode 是由以下常量按位或运算构成：</p>
+<ul>
+<li>S_ISUID 执行时设置用户ID</li>
+<li>S_ISGID 执行时设置组ID</li>
+<li>S_ISVTX 保存正文(粘着位)</li>
+</ul>
+<ul>
+<li>S_IRWXU 用户（所有者）读、写和执行</li>
+<li>S_IRUSR 用户-读</li>
+<li>S_IWUSR 用户-写</li>
+<li>S_IXUSR 用户-执行</li>
+</ul>
+<ul>
+<li>S_IRWXG 组读、写和执行</li>
+<li>S_IRGRP 组-读</li>
+<li>S_IWGRP 组-写</li>
+<li>S_IXGRP 组-执行</li>
+</ul>
+<ul>
+<li>S_IRWXO 其他读、写和执行</li>
+<li>S_IROTH 其他-读</li>
+<li>S_IWOTH 其他-写</li>
+<li>S_IXOTH 其他-执行</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;../apue.h&quot;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	struct stat statbuf;</span><br><span class="line"></span><br><span class="line">	if (stat(&quot;foo&quot;, &amp;statbuf) &lt; 0) &#123;</span><br><span class="line">		err_sys(&quot;stat error for foo&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if (chmod(&quot;foo&quot;, (statbuf.st_mode &amp; ~S_IXGRP) | S_ISGID) &lt; 0) &#123;</span><br><span class="line">		err_sys(&quot;chmod error for foo&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if (chmod(&quot;bar&quot;, S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH) &lt; 0) &#123;</span><br><span class="line">		err_sys(&quot;chmod error for bar&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	exit(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r-- 1 root root    0 May 25 00:42 bar</span><br><span class="line">-rw-rwSrw- 1 root root    0 May 25 00:42 foo</span><br></pre></td></tr></table></figure>
+<p>###chown, fchown, 和 lchown 函数</p>
+<p>下面几个chown函数可用于更改文件的用户ID和组ID：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">int chown(const char *pathname,uid_t owner, gid_t group);</span><br><span class="line">int fchown(int filedes, uid_t owner, gid_t group);</span><br><span class="line">int lchown(const char *pathname, uid_t owner, gid_t group);</span><br><span class="line">// 三个函数的返回值：成功返回0， 若出错则返回-1</span><br></pre></td></tr></table></figure>
+<p>除了所引用的文件是符号链接以外，这个三个函数的操作相似。在符号连接下的情况下，lchown更改符号链接本身的所有者，而不是该符号链接所指的文件。</p>
+<p>如果两个参数owner或group中的任意一个是 -1，则对应的ID不变。</p>
+<p>如果这些函数由非超级用户进程调用，则在成功返回时，该文件设置用户ID位和设置组位都会被清除。</p>
+<p>###文件长度</p>
+<p>stat 结构成员 st_size 表示以字节为单位的文件长度。此字段对普通文件、目录文件和符号链接有意义。</p>
+<ul>
+<li>对于普通文件，其文件长度可以是0，在读这种文件时，将得到文件结束指示.</li>
+<li>对于目录，文件长度通常是一个数的倍数.</li>
+<li>对于符号链接，文件长度是文件名中的实际字节数。</li>
+</ul>
+<p>大多数UNIX系统提供字段st_blksize和st_blocks，其中，第一个对文件I/O较合适的块长度，第二个是所分配的实际512字节块数量。</p>
+<p>###文件截短</p>
+<p>有时我们需要在文件尾端处截取一些数据以缩短文件，将一个文件清空为0是一个特例，在打开文件时使用O_TRUNC标志可以做到这一点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">int truncate(const char *pathname, off_t length);</span><br><span class="line">int ftruncate(int filedes, off_t length);</span><br><span class="line"></span><br><span class="line">// 两个函数的返回值：若成功则返回0，如果出错返回-1</span><br></pre></td></tr></table></figure>
+<p>###link、unlink、remove和rename函数</p>
+<p>任何一个文件可以多个目录项指向其i节点。创建一个指向现有文件的链接的方法就是使用link函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">int link(const char *existingpath, const char *newpath);</span><br><span class="line">// 返回值：若成功则返回0，若出错则返回 -1</span><br></pre></td></tr></table></figure>
+<p>此函数创建一个新目录项newpath, 它引用现有的文件existingpath, 如若newpath已经存在，则返回出错。只创建newpath中的最后一个分量，路劲中的其他部分应当已经存在。</p>
+<p>为了删除一个现有的目录项，可以调用unlink函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">int unlink(const char *pathname);</span><br><span class="line">// 返回值：若成功则返回0，若出错则返回-1</span><br></pre></td></tr></table></figure>
+<p>此函数删除目录项，并将由pathname所引用文件的链接计数减1.如果还有指向该文件的其他链接，则仍可通过其他链接访问文件的数据。如果出错，则不对该文件做任何更改。</p>
+<p>只有当链接计数达到0时，该文件的内容才可被删除。另一个条件也会阻止删除文件的内容—只要有进程打开了该文件，其内容也不能删除。关闭一个文件时，内核首先检查打开该文件的进程数。如果该数达到0，然后内核检查其链接数，如果这个数也是0，那么就删除该文件的内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;../apue.h&quot;</span><br><span class="line">#include &lt;fcntl.h&gt;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	if (open(&quot;tempfile&quot;, O_RDWR) &lt; 0) &#123;</span><br><span class="line">		err_sys(&quot;open error&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if (unlink(&quot;tempfile&quot;) &lt; 0) &#123;</span><br><span class="line">		err_sys(&quot;unlink error&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	printf(&quot;file unlinked\n&quot;);</span><br><span class="line">	sleep(15);</span><br><span class="line">	printf(&quot;done\n&quot;);</span><br><span class="line">	exit(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用remove函数解除对一个文件或目录的链接。对于文件，remove的功能与unlink相同，对于目录，remove的功能与rmdir相同.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int remove(const char *pathname);</span><br><span class="line">// 返回值：若成功则返回0，若出错则返回-1</span><br></pre></td></tr></table></figure>
+<p>文件或目录用rename函数更名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int rename(const char *oldname, const char *newname);</span><br><span class="line">// 返回值：若成功则返回0，若出错则返回 -1</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果oldname指的是一个文件而不是目录，那么为该文件或符号链接就更名。在这种情况下，如果newname已存在，则它不能引用一个目录，如果newname已存在，而且不是一个目录，则先将该目录想删除然后将oldname更名为newname。</li>
+<li>如若oldname指的是一个目录，那么为该目录更名，如果newname已存在，则它必须引用一个目录，而且该目录应当是空目录。如果newname存在，则现将其删除，然后将oldname更名为newname.</li>
+<li>如若oldname或newname引用符号链接，则处理的是符号链接本身，而不是它所引用的文件.</li>
+<li>作为一个特例，如果oldname和newname引用同一个文件，则函数不做任何更改而成功返回.</li>
+</ul>
+<p>###symlink 和 readlink 函数</p>
+<p>symlink函数创建一个符号链接函数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">int symlink(const char *actualpath, const char *sympath);</span><br><span class="line">// 返回值：若成功则返回0，若出错则返回 -1</span><br></pre></td></tr></table></figure>
+<p>该函数创建了一个指向actualpath的新目录项sympath,在创建此符号链接时，并不要求actualpath已经存在，并且，actualpath和sympath并不需要位于同一个文件系统。</p>
+<p>因为open函数跟随符号链接，所以需要有一种方法打开该链接本身，并读该链接中的名字.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">ssize_t readlink(const char *restrict pathname, char *restrict buf, size_t bufsize);</span><br><span class="line">// 返回值：若成功则返回读到的字节数，若出错则返回-1</span><br></pre></td></tr></table></figure>
+<p>此函数组合了open,read和close的所有操作。如果此函数成功执行，则它返回读入buf的字节数，在buf中返回的符号链接的内容不以null字符终止。</p>
+<p>###文件时间</p>
+<ul>
+<li>st_atime 文件数据的最后访问时间，read (ls -lu)</li>
+<li>st_mtime 文件数据的最后修改时间，write (ls 默认)</li>
+<li>st_ctime i节点状态的最后修改时间 chmod,chwon (ls -lc)</li>
+</ul>
+<p>注意修改时间(st_mtime) 和更改状态时间(st_ctime)之间的区别，修改时间文件内容最后一次被修改的时间，更改状态时间是该文件的i 节点最后一次被修改的时间。注意，文件并不保存对一个i节点的最后一次访问时间，所以access和stat函数并不更改这三个时间。</p>
+<p>###utime函数</p>
+<p>一个文件的访问和修改时间可以用utime函数更改。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;utime.h&gt;</span><br><span class="line"></span><br><span class="line">int utime(const char *pathname, const struct utimbuf *times);</span><br><span class="line"></span><br><span class="line">// 返回值：若成功则返回0， 若出错则返回 -1</span><br><span class="line"></span><br><span class="line">数据结构：</span><br><span class="line">struct utimbuf &#123;</span><br><span class="line">	time_t actime; // access time</span><br><span class="line">	time_t modtime; // modify time	</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>此函数的操作以及执行它所要求的特权取决于times参数是否是NULL:</p>
+<ul>
+<li>如果times 是一个空指针，则访问时间和修改时间两者都设置为当前时间。</li>
+<li>如果times 是非空指针，则访问时间和修改时间被设置为times所指向结构中的值。</li>
+</ul>
+<p>注意，我们不能对更改状态时间st_ctime指定一个值，当调用utime函数时，此字段自动更新.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;../apue.h&quot;</span><br><span class="line">#include &lt;fcntl.h&gt;</span><br><span class="line">#include &lt;utime.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">	int i, fd;</span><br><span class="line">	struct stat statbuf;</span><br><span class="line">	struct utimbuf timebuf;</span><br><span class="line"></span><br><span class="line">	for (i = 1; i &lt; argc; i++) &#123;</span><br><span class="line">		if (stat(argv[i], &amp;statbuf) &lt; 0) &#123;</span><br><span class="line">			err_ret(&quot;%s : stat error&quot;, argv[i]);</span><br><span class="line">			continue;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		if ((fd = open(argv[i], O_RDWR | O_TRUNC)) &lt; 0) &#123;</span><br><span class="line">			err_ret(&quot;%s : open error&quot;, argv[i]);</span><br><span class="line">			continue;</span><br><span class="line">		&#125;</span><br><span class="line">		close(fd);</span><br><span class="line"></span><br><span class="line">		timebuf.actime = statbuf.st_atime;</span><br><span class="line">		timebuf.modtime = statbuf.st_mtime;</span><br><span class="line"></span><br><span class="line">		if (utime(argv[i], &amp;timebuf) &lt; 0) &#123;</span><br><span class="line">			err_ret(&quot;%s : utime error&quot;, argv[i]);</span><br><span class="line">			continue;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	exit(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###mkdir 和 rmdir 函数</p>
+<p>用 mkdir 函数创建目录，用 rmdir 函数删除目录:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;sys/stat.h&gt;</span><br><span class="line"></span><br><span class="line">int mkdir(const char *pathname, mode_t mode);</span><br><span class="line"></span><br><span class="line">// 返回值：若成功则返回0，若出错则返回-1</span><br></pre></td></tr></table></figure>
+<p>此函数创建一个新的空目录，其中 . 和 .. 目录项自动创建的，所指定的文件访问权限mode 由进程的文件模式创建屏蔽字修改.</p>
+<p>常见的错误是指定与文件相同的mode(只指定读、写权限). 但是，对于目录通常至少要设置1个执行权限位，以允许访问该目录中的文件名.</p>
+<p>用rmdir 函数可以删除一个空目录，空目录是只包含. 和 .. 这两项的目录.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">int rmdir(const char *pathname);</span><br><span class="line"></span><br><span class="line">// 返回值：若成功返回0，若出错则返回 -1</span><br></pre></td></tr></table></figure>
+<p>###读目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;dirent.h&gt;</span><br><span class="line"></span><br><span class="line">DIR *opendir(const char *pathname);</span><br><span class="line">// 返回值：若成功返回指针，若出错则返回NULL</span><br><span class="line"></span><br><span class="line">struct dirent *readdir(DIR *dp);</span><br><span class="line">// 返回值：若成功则返回指针，若在目录结尾或出错则返回NULL</span><br><span class="line"></span><br><span class="line">void rewinddir(DIR *dp);</span><br><span class="line"></span><br><span class="line">int closedir(DIR *dp);</span><br><span class="line">// 返回值：若成功则返回0，若出错则返回-1</span><br><span class="line"></span><br><span class="line">long telldir(DIR *dp);</span><br><span class="line">// 返回值：与dp 关联的目录中的当前位置</span><br><span class="line"></span><br><span class="line">void seekdir(DIR *dp, long loc);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">数据结构：</span><br><span class="line"></span><br><span class="line">struct dirent&#123;</span><br><span class="line">	ino_t d_ino;</span><br><span class="line">	char d_name[NAME_MAX + 1];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>实例：递归降序遍历目录层次结构，并按文件类型计数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;../apue.h&quot;</span><br><span class="line">#include &lt;dirent.h&gt;</span><br><span class="line">#include &lt;errno.h&gt;</span><br><span class="line">#include &lt;limits.h&gt;</span><br><span class="line"></span><br><span class="line">typedef int Myfunc(const char *, const struct stat *, int);</span><br><span class="line"></span><br><span class="line">static Myfunc myfunc;</span><br><span class="line">static int myftw(char *, Myfunc *);</span><br><span class="line">static int dopath(Myfunc *);</span><br><span class="line">char *path_alloc(int *sizep);</span><br><span class="line"></span><br><span class="line">static long nreg, ndir, nblk, nchr, nfifo, nslink, nsock, ntot;</span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;       </span><br><span class="line">	int ret;</span><br><span class="line">	if (argc != 2) &#123;</span><br><span class="line">		err_quit(&quot;usage: ftw &lt;starting-pathname&gt;&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	ret = myftw(argv[1], myfunc);</span><br><span class="line"></span><br><span class="line">	ntot = nreg + ndir + nblk + nchr + nfifo + nslink + nsock;</span><br><span class="line">	if (ntot == 0) &#123;</span><br><span class="line">		ntot = 1;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	printf(&quot;regular files = %7ld, %5.2f %%\n&quot;, nreg, (nreg * 100.0) / ntot);</span><br><span class="line">	printf(&quot;directories files = %7ld, %5.2f %%\n&quot;, ndir, ndir * 100.0 / ntot);</span><br><span class="line">	printf(&quot;block special  = %7ld, %5.2f %%\n&quot;, nblk, nblk * 100.0 / ntot);</span><br><span class="line">	printf(&quot;char special   = %7ld, %5.2f %%\n&quot;, nchr, nchr * 100.0 / ntot);</span><br><span class="line">	printf(&quot;FIFOs          = %7ld, %5.2f %%\n&quot;, nfifo, nfifo * 100.0 / ntot);</span><br><span class="line">	printf(&quot;symbolic links = %7ld, %5.2f %%\n&quot;, nslink, nslink * 100.0 / ntot);</span><br><span class="line">	printf(&quot;sockets        = %7ld, %5.2f %%\n&quot;, nsock, nsock * 100.0 / ntot);</span><br><span class="line"></span><br><span class="line">	exit(ret);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#define FTW_F 1</span><br><span class="line">#define FTW_D 2</span><br><span class="line">#define FTW_DNR 3</span><br><span class="line">#define FTW_NS 4</span><br><span class="line"></span><br><span class="line">static char *fullpath;</span><br><span class="line"></span><br><span class="line">static int myftw(char *pathname, Myfunc *func)</span><br><span class="line">&#123;</span><br><span class="line">	int len;</span><br><span class="line">	fullpath = path_alloc(&amp;len);</span><br><span class="line"></span><br><span class="line">	strncpy(fullpath, pathname, len);</span><br><span class="line"></span><br><span class="line">	return (dopath(func));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static int dopath(Myfunc *func)</span><br><span class="line">&#123;</span><br><span class="line">	struct stat statbuf;</span><br><span class="line">	struct dirent *dirp;</span><br><span class="line">	DIR *dp;</span><br><span class="line">	int ret;</span><br><span class="line">	char *ptr;</span><br><span class="line"></span><br><span class="line">	if (lstat(fullpath, &amp;statbuf) &lt; 0) &#123;</span><br><span class="line">		return (func(fullpath, &amp;statbuf, FTW_NS));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if (S_ISDIR(statbuf.st_mode) == 0) &#123;</span><br><span class="line">		return (func(fullpath, &amp;statbuf, FTW_F));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	ptr = fullpath + strlen(fullpath);</span><br><span class="line">	*ptr++ = &apos;/&apos;;</span><br><span class="line">	*ptr = 0;</span><br><span class="line"></span><br><span class="line">	if ((dp = opendir(fullpath)) == NULL) &#123;</span><br><span class="line">		return (func(fullpath, &amp;statbuf, FTW_DNR));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	while((dirp = readdir(dp)) != NULL) &#123;</span><br><span class="line">		if (strcmp(dirp-&gt;d_name, &quot;.&quot;) == 0 || strcmp(dirp-&gt;d_name, &quot;..&quot;) == 0) &#123;</span><br><span class="line">			continue;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		strcpy(ptr, dirp-&gt;d_name);</span><br><span class="line"></span><br><span class="line">		if ((ret = dopath(func)) != 0) &#123;</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	ptr[-1] = 0;</span><br><span class="line"></span><br><span class="line">	if (closedir(dp) &lt; 0) &#123;</span><br><span class="line">		err_ret(&quot;cant&apos;t close directory %s&quot;, fullpath);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static int myfunc(const char *pathname, const struct stat *statptr, int type)</span><br><span class="line">&#123;</span><br><span class="line">	switch(type) &#123;</span><br><span class="line">		case FTW_F:</span><br><span class="line">			switch (statptr-&gt;st_mode &amp; S_IFMT) &#123;</span><br><span class="line">				case S_IFREG: nreg++; break;</span><br><span class="line">				case S_IFBLK: nblk++; break;</span><br><span class="line">				case S_IFCHR: nchr++; break;</span><br><span class="line">				case S_IFIFO: nfifo++; break;</span><br><span class="line">				case S_IFLNK: nslink++; break;</span><br><span class="line">				case S_IFSOCK: nsock++; break;</span><br><span class="line">				case S_IFDIR:</span><br><span class="line">							   err_dump(&quot;for S_ISDIR for %s&quot;, pathname);</span><br><span class="line">			&#125;</span><br><span class="line">			break;</span><br><span class="line">		case FTW_D:</span><br><span class="line">			ndir++;</span><br><span class="line">			break;</span><br><span class="line">		case FTW_DNR:</span><br><span class="line">			err_ret(&quot;can&apos;t read directory %s&quot;, pathname);</span><br><span class="line">			break;</span><br><span class="line">		case FTW_NS:</span><br><span class="line">			err_ret(&quot;stat error for %s&quot;, pathname);</span><br><span class="line">			break;</span><br><span class="line">		default:</span><br><span class="line">			err_dump(&quot;unknown type %d for pathname %s&quot;, type, pathname);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>path_alloc 的实现方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;../apue.h&quot;</span><br><span class="line">#include &lt;errno.h&gt;</span><br><span class="line">#include &lt;limits.h&gt;</span><br><span class="line"></span><br><span class="line">#ifdef PATH_MAX</span><br><span class="line">static int pathmax = PATH_MAX;</span><br><span class="line">#else</span><br><span class="line">static int pathmax = 0;</span><br><span class="line">#endif</span><br><span class="line">#define SUSV3 200112L</span><br><span class="line">static long posix_version = 0;</span><br><span class="line">#define PATH_MAX_GUESS 1024</span><br><span class="line"></span><br><span class="line">char *path_alloc(int *sizep)</span><br><span class="line">&#123;       </span><br><span class="line">	void *ptr;</span><br><span class="line">	int size;</span><br><span class="line"></span><br><span class="line">	if (posix_version == 0) &#123;</span><br><span class="line">		posix_version = sysconf(_SC_VERSION);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if (pathmax == 0) &#123;</span><br><span class="line">		errno = 0;</span><br><span class="line">		if ((pathmax = pathconf(&quot;/&quot;, _PC_PATH_MAX)) &lt; 0) &#123;</span><br><span class="line">			if (errno == 0) &#123;</span><br><span class="line">				pathmax = PATH_MAX_GUESS;</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				err_sys(&quot;pathconf error for _PC_PATH_MAX&quot;); </span><br><span class="line">			&#125;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			pathmax++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if (posix_version &lt; SUSV3) &#123;</span><br><span class="line">		size = pathmax + 1;</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		size = pathmax;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if ((ptr = malloc(size)) == NULL) &#123;</span><br><span class="line">		err_sys(&quot;malloc error for pathname&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if (sizep != NULL) &#123;</span><br><span class="line">		*sizep = size;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return (char *) ptr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###chdir 、fchdir 和 getcwd 函数</p>
+<p>每个进程都有一个当前的工作目录，进程通过调用 chdir 或 fchdir 函数可以更改当前工作目录.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">int chdir(const char *pathname);</span><br><span class="line">int fchdir(int filedes);</span><br><span class="line">// 两个函数的返回值：若成功则返回0，若出错则返回 -1</span><br></pre></td></tr></table></figure>
+<p>因为当前工作目录是进程的一个属性没，所以它只影响调用chdir的进程本身，而不影响其他进程。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;../apue.h&quot;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	if (chdir(&quot;/tmp&quot;) &lt; 0) &#123;</span><br><span class="line">		err_sys(&quot;chdir failed.&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;chdir to /tmp succeeded\n&quot;);</span><br><span class="line">	exit(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>函数 getcwd() 可以获取当前进程的工作目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">char *getcwd(char *buf, size_t size);</span><br><span class="line">// 返回值：若成功则返回buf, 若出错则返回NULL</span><br></pre></td></tr></table></figure>
+<p>向此函数传递两个参数，一个是缓存地址buf, 另一个是缓存的长度 size .该缓存必须由足够的长度若纳绝对路径名再加上一个 NULL 终止字符.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;../apue.h&quot;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	char *ptr;</span><br><span class="line">	int size;</span><br><span class="line"></span><br><span class="line">	if (chdir(&quot;/usr&quot;) &lt; 0) &#123;</span><br><span class="line">		err_sys(&quot;chdir failed.&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	ptr = path_alloc(&amp;size);</span><br><span class="line">	if (getcwd(ptr, size) == NULL) &#123;</span><br><span class="line">		err_sys(&quot;getcwd failed.&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	printf(&quot;cwd = %s\n&quot;, ptr);</span><br><span class="line">	exit(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###设备特殊文件</p>
+<ul>
+<li>每个文件系统所在的存储设备都由其主、次设备号表示。设备号所用的数据类型是基本系统数据类型 dev_t</li>
+<li>我们通常可以使用两个宏即 major 和 minor来访问主、次设备号。大多数实现都定义了这两个宏。</li>
+<li>系统中的每个文件关联的 st_dev 值是文件系统的设备号，该文件系统包含了这一文件名以及与其对应的 i 节点。</li>
+<li>只有字符特殊文件和块特殊文件才有st_rdev 值，此值包含实际设备的设备号。</li>
+</ul>
+<p>打印 st_dev 和 st_rdev 值(在 linux 下未编译通过)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;../apue.h&quot;</span><br><span class="line"></span><br><span class="line">#ifdef SOLARIS</span><br><span class="line">#include &lt;sys/mkdev.h&gt;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">	int i;</span><br><span class="line">	struct stat buf;</span><br><span class="line"></span><br><span class="line">	for (i = 1; i &lt; argc; i++) &#123;</span><br><span class="line">		printf(&quot;%s:&quot;, argv[i]);</span><br><span class="line">		if (stat(argv[i], &amp;buf) &lt; 0) &#123;</span><br><span class="line">			err_ret(&quot;stat error&quot;);</span><br><span class="line">			continue;   </span><br><span class="line">		&#125;   </span><br><span class="line"></span><br><span class="line">		printf(&quot;dev = %d/%d&quot;, major(buf.st_dev), minor(buf.st_dev));</span><br><span class="line">		if (S_ISBLK(buf.st_mode) || S_ISLNK(buf.st_mode)) &#123;</span><br><span class="line">			printf(&quot; (%s) rdev = %d/%d&quot;, (S_ISCHR(buf.st_mode)) ? &quot;character&quot; : &quot;block&quot;,</span><br><span class="line">					major(buf.st_rdev), minor(buf.st_rdev));    </span><br><span class="line">		&#125;                               </span><br><span class="line"></span><br><span class="line">		printf(&quot;\n&quot;);</span><br><span class="line">	&#125;   </span><br><span class="line"></span><br><span class="line">	exit(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2013/05/14/unix_note_file_state/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2013/05/14/unix_note_file_io/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Nmred's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        nmred_2008@126.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2015/05/">五月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/10/">十月 2014<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/09/">九月 2014<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/04/">四月 2014<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/03/">三月 2014<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/02/">二月 2014<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/09/">九月 2013<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/05/">五月 2013<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/02/">二月 2013<span class="sidebar_archives-count">20</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/C-语言/">C 语言<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Hadoop/">Hadoop<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/linux/">linux<span class="sidebar_archives-count">21</span></a></li><li><a class="sidebar_archives-link" href="/categories/php/">php<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/《C-Primer-Plus-第6版-》练习/">《C++ Primer Plus(第6版)》练习<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/《unix-高级编程》-Note/">《unix 高级编程》-Note<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/《快学scala》练习/">《快学scala》练习<span class="sidebar_archives-count">16</span></a></li><li><a class="sidebar_archives-link" href="/categories/虚拟技术/">虚拟技术<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://weibo.com/nmred" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/nmred" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;2013&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Iodsp
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.0 -->
+    <script>
+        window.materialVersion = "1.5.0"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Title -->
+    
+    <title>
+        
+            Linux中的Apache配置 | 
+        
+        Iodsp
+    </title>
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Nmred">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",apache">
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Iodsp">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icon -->
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://www.swanlinux.net">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Linux中的Apache配置 | Iodsp">
+    <meta property="og:image" content="http://www.swanlinux.net/img/favicon.png" />
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="apache"> 
+
+    
+        <meta property="article:published_time" content="Tue Feb 12 2013 18:13:16 GMT+0800" />
+        <meta property="article:modified_time" content="Wed Nov 15 2017 14:07:13 GMT+0800" />
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="Linux中的Apache配置 | Iodsp">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="http://www.swanlinux.net/img/favicon.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://www.swanlinux.net" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://www.swanlinux.net/2013/02/12/linux_apache_setting/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://www.swanlinux.net/2013/02/12/linux_apache_setting/index.html",
+    "headline": "Linux中的Apache配置",
+    "datePublished": "Tue Feb 12 2013 18:13:16 GMT+0800",
+    "dateModified": "Wed Nov 15 2017 14:07:13 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Nmred",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Everything in order to facilitate"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Iodsp",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",apache",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Linux中的Apache配置
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Nmred</strong>
+        <span>2月 12, 2013</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC2UlEQVR42u3aQZLiMBAEQP7/afYBu3iq1GbHllMnggBLqQONuvR6P3K8sLGxsbGxsbGxsS/JfsXj78//49EfvvXpu58+c/y0ds3Y2NjYT2D/8NN/iDx+//h1vq3Hm5WsDRsbG/sJ7OOlJBO8lkYCXts+bGxsbOy8eCTPaQ8k80KIjY2NjX38mflxJS9p2NjY2NhnNZWOi027Ze2x59d6adjY2NiXZ7etnyu8/oV8GxsbG/uS7HYkDaOzjhznDmxsbOxd2Wvt/sUSUl7xaVdywgkMGxsb+4bsvD2ULzQvaWvFL/lWUbexsbGxb85eax7lx4azrvjkG1ocRbCxsbG3YOcP+t6FnvzaTTLLYt3GxsbGvjk7X1a7HWsRcrL1dXSBjY2NvSm7jV3zBv2k7LUxQHQowsbGxt6Unf+5nxSwtQCg3dC6qYSNjY29BXse2SaxcTLjZOvrphI2Njb2duz8gk4eHiw28eOtrIslNjY29qbs0Z/7QStqLbhNiuhivo2NjY19W/aE106fRxFt8PAOBjY2Nvbe7LOaRHkk3AbG7YzY2NjYT2NPGj2jpZSRQ97kwsbGxsZur0sm4CROaOc6oamEjY2NvQV70gxqGXlZ+k+XL7GxsbG3YJ91JJgXoTzWxcbGxsZuQ9w2GGgDhnyjFy/3YGNjY2/Nbls2k9I1f8JiUI2NjY29Kbs9EuSMPH5oL9+vXffBxsbGfg570vqZHFraoCKJh7GxsbGfwE4etHaxpl1cXsawsbGxsd+DsbZN8+uVX2wqYWNjY9+c/YpHfmBIwte6JbS0ZdjY2NjPYSdFaxIPJ03/+TWgxZtK2NjY2Bux22NDu5R2K9tw94cZsbGxsbEHBSy/mjMPBr5SwLCxsbG3Y58V7q7FA4tHIGxsbOwHsNeaSvmBJIkEjt/5ylEEGxsbewt2+6c/L05tC6l9J49+sbGxsXdlP2dgY2NjY2NjY2NjX2b8AYXq4pVR7gH0AAAAAElFTkSuQmCC">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/apache/">apache</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Linux中的Apache配置&url=http://www.swanlinux.net/2013/02/12/linux_apache_setting/index.html&pic=http://www.swanlinux.net/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Linux中的Apache配置&url=http://www.swanlinux.net/2013/02/12/linux_apache_setting/index.html&via=Nmred" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://www.swanlinux.net/2013/02/12/linux_apache_setting/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://www.swanlinux.net/2013/02/12/linux_apache_setting/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>###HTTPD服务的目录结构</p>
+<p>####HTTPD安装的说明</p>
+<p>   [安装APACHE的部分配置]</p>
+<pre><code>./configure –prefix=/usr/local/apache2/ –sysconfdir=/etc/httpd/conf
+                  安装APACHE的目录                安装APACHE时的配置文件目录
+</code></pre><p>####按照上述安装APACHE的目录</p>
+<blockquote>
+<p>服务目录：/usr/local/apache2/</p>
+<p>主配置文件：/etc/httpd/conf/httpd.conf</p>
+<p>网页目录：/usr/local/apache2/htdocs/</p>
+<p>服务脚本：/usr/local/apache2/bin/apachectl</p>
+<p>执行程序：/usr/local/apache2/bin/httpd</p>
+<p>访问日志： /usr/local/apache2/log/access_log</p>
+<p>错误日志： /usr/local/apache2/log/error_log </p>
+</blockquote>
+<p>###构建基本可用的Web服务器</p>
+<p>####构建的步骤</p>
+<p>1) 修改主配置文件httpd.conf，进行相关设置</p>
+<p>2) 进行语法检查</p>
+<pre><code>/usr/local/apache2/bin/apachectl  -t
+或者
+/usr/local/apache2/bin/httpd  -t
+</code></pre><p>3) 启动httpd服务</p>
+<pre><code>/usr/local/apache2/bin/apachectl start
+</code></pre><p>4) 访问网站进行测试</p>
+<p><a href="http://www.lamp.com" target="_blank" rel="external">http://www.lamp.com</a></p>
+<p>####httpd.conf配置文件</p>
+<p>1)常用的全局配置参数 </p>
+<blockquote>
+<p>ServerRoot：              服务目录</p>
+<p>ServerAdmin：             管理员邮箱</p>
+<p>User：                    运行服务的用户身份</p>
+<p>Group：                   运行服务的组身份</p>
+<p>ServerName：              网站服务器的域名</p>
+<p>DocumentRoot              网页文档的根目录</p>
+<p>Listen：                  监听的IP地址、端口号</p>
+<p>PidFile：                 保存httpd进程PID号的文件</p>
+<p>DirectoryIndex：          默认的索引页文件</p>
+<p>ErrorLog：                错误日志文件的位置</p>
+<p>CustomLog：               访问日志文件的位置</p>
+<p>LogLevel：                记录日志的级别，默认为warn</p>
+<p>Timeout：                 网络连接超时，默认为300秒</p>
+<p>KeepAlive：               是否保持连接，可选On或Off</p>
+<p>MaxKeepAliveRequests：    每次连接最多请求文件数</p>
+<p>KeepAliveTimeout：        保持连接状态时的超时时间</p>
+<p>Include：                 需要包含进来的其他配置文件</p>
+<p>StartServers 8            http启动进程的数目 </p>
+</blockquote>
+<p>2)httpd服务的日志</p>
+<p>两类日志文件</p>
+<blockquote>
+<p>访问日志：/usr/local/apache2/logs/access_log</p>
+<p>错误日志：/usr/local/apache2/logs/error_log</p>
+</blockquote>
+<p>3)载入模块指令 </p>
+<p>Apache服务器采用动态共享对象（DSO，Dynamic Shared Object）的机制，在启动Apache服务器时可根据实际需要载入适当的模块，使其具有相应的功能。</p>
+<p>载入模块的相关指令有：</p>
+<blockquote>
+<p>LoadModule<br>ClearModuleList<br>AddModule</p>
+</blockquote>
+<p>LoadModule指令用于动态载入模块，即将模块外挂在Apache服务器上。</p>
+<p>语法：</p>
+<p>LoadModule 模块名称  模块文件路径全名</p>
+<p>实例：</p>
+<p>LoadModule status_module modules/mod_status.so </p>
+<p>4)容器指令</p>
+<p>容器指令（container directive）通常包括在&lt;>括号内，较容易识别，常用的容器指令有：</p>
+<pre><code>&lt;Directory&gt;
+&lt;Files&gt;
+&lt;Location&gt;
+&lt;VirtualHost&gt;
+</code></pre><p>a.使用<directory>… </directory>设置指定目录的访问权限，其中可包含：</p>
+<pre><code>Options
+AllowOverride
+Order
+Allow
+Deny
+</code></pre><p>五个属性:</p>
+<p>I.Options属性</p>
+<p>Options  FollowSymLinks  Indexes  MultiViews</p>
+<p>Options可以组合设置下列选项：</p>
+<blockquote>
+<p>All：用户可以在此目录中作任何事情。</p>
+<p>ExecCGI：允许在此目录中执行CGI程序。</p>
+<p>FollowSymLinks：服务器可使用符号链接指向的文件或目录。</p>
+<p>Indexes：服务器可生成此目录的文件列表。</p>
+<p>None：不允许访问此目录</p>
+<p>multiviews: 允许多用户浏览</p>
+</blockquote>
+<p>II.AllowOverride</p>
+<blockquote>
+<p>AllowOverride None</p>
+</blockquote>
+<p>AllowOverride会根据设定的值决定是否读取目录中的.htaccess文件，来改变原来所设置的权限。</p>
+<blockquote>
+<p>All：读取.htaccess文件的内容，修改原来的访问权限。</p>
+<p>None：不读取.htaccess文件</p>
+</blockquote>
+<p>为避免用户自行建立.htaccess文件修改访问权限，http.conf文件中默认设置每个目录为： AllowOverride None。</p>
+<p>III.Allow</p>
+<p>设定允许访问Apache服务器的主机</p>
+<blockquote>
+<p>Allow from all</p>
+<p>允许所有主机的访问</p>
+</blockquote>
+<p>Allow from 202.96.0.97 202.96.0.98</p>
+<p>允许来自指定IP地址主机的访问</p>
+<p>IV.Deny</p>
+<p>设定拒绝访问Apache服务器的主机</p>
+<blockquote>
+<p>Deny from  all</p>
+<p>拒绝来自所有主机的访问</p>
+</blockquote>
+<p>Deny from  202.96.0.99  202.96.0.88</p>
+<p>拒绝指定IP地址主机的访问</p>
+<p>V.Order</p>
+<p>Order allow,deny</p>
+<p>Order用于指定allow和deny的先后次序。</p>
+<p>范例：</p>
+<blockquote>
+<p>Order deny,allow</p>
+<p>Deny from all</p>
+<p>Allow from 202.96.0.97</p>
+<p>Order allow,deny</p>
+<p>Allow from all</p>
+<p>Deny from 202.96.0.97</p>
+</blockquote>
+<p>b.<files>容器包含只应用于指定文件的指令，文件应该由文件名（必要时使用统配符）指定</files></p>
+<p>实例：</p>
+<pre><code>&lt;Files  =  “^\.ht”&gt;
+Order allow,deny
+Deny from all
+&lt;/Files&gt;
+</code></pre><p>c.<location>容器包含只应用于特定URL的指令。</location></p>
+<p>实例：</p>
+<pre><code>&lt;Location /server-status&gt;
+SetHandler server-status
+order deny,allow
+allow from 127.0.0.1
+deny from all
+&lt;/Location&gt;
+</code></pre><p>5)认证和授权</p>
+<p>a.认证类型:</p>
+<p>Basic</p>
+<p>digest(摘要认证)</p>
+<p>b.建立认证与授权的步骤</p>
+<p>建立用户库</p>
+<p>配置服务器的保护域</p>
+<p>什么用户具有访问权限</p>
+<p>c.认证指令：</p>
+<blockquote>
+<p>Authname     受保护领域名称</p>
+<p>Authtype     认证方式</p>
+<p>Authuserfile     认证口令文件</p>
+<p>authgroupfile 认证组文件</p>
+<p>Require user        授权指定用户</p>
+<p>Require group    授权指定组</p>
+<p>Require valid-user    授权给认证口令文件用户</p>
+</blockquote>
+<p>d.建立用户库基本认证</p>
+<blockquote>
+<p>htpasswd -c authfile username</p>
+<p>口令文件格式</p>
+<p>Username:password </p>
+</blockquote>
+<p>####httpd服务的访问控制</p>
+<p>1)基于用户的访问控制</p>
+<p>添加认证授权设置</p>
+<p><img src="/image/linux/linux-apache-001-015.png" alt="linux-apache-001-015"></p>
+<p>2)创建存储认证用户账号及口令的文件</p>
+<p>需使用htpasswd工具 </p>
+<p><img src="/image/linux/linux-apache-002-015.png" alt="linux-apache-002-015"></p>
+<p>3)配置内容解释(应用到上面认证与授权知识)</p>
+<p>a.AuthType Basic</p>
+<p>AuthType指令用于设置身份认证时传送密码的编码方式。设置为“Basic”时利用uuencode编码方式传送密码。</p>
+<p>AuthType需与AuthName 、Require、AuthUserFile一同使用。</p>
+<p>b.AuthName auth-domain</p>
+<p>AuthName指令对当前定义的认证区域进行命名，该名称会出现在浏览器客户端的用户认证对话框中，以标识用户被认证的区域。如认证区域名称中包含空格需用“”括起。</p>
+<p>AuthName需与AuthType、Require、AuthUserFile一同使用。</p>
+<p>c.Require</p>
+<p>Require指令用于设定可进行身份验证的用户。</p>
+<p>Require user 用户名 [用户名] ……</p>
+<p>设置指定用户名的用户可通过身份验证访问区域。</p>
+<p>Require group 组名 [组名 ] ……</p>
+<p>设置指定组内的用户可通过身份验证访问区域。</p>
+<p>Require valid-user</p>
+<p>设置所有合法用户可通过身份验证访问区域。</p>
+<p>d.htpasswd命令</p>
+<p>htpasswd指令用于创建密码文件和设置用户密码：</p>
+<blockquote>
+<p>htpasswd -c 文件名  用户名<br>例： htpasswd –c .htpasswd user1</p>
+</blockquote>
+<p>htpasswd 文件名  用户名</p>
+<p>在指定的密码文件中添加指定用户的密码，如该用户已存在则修改用户密码</p>
+<p>e.AuthUserFile</p>
+<p>AuthUserFile file-path</p>
+<p>AuthUserFile指令用于设置验证用户身份的密码文件，该文件名需设置绝对路径。</p>
+<p>例如：</p>
+<blockquote>
+<p>AuthUserFile /etc/httpd/conf/.htpasswd</p>
+<p>密码文件是用htpasswd命令创建的。</p>
+</blockquote>
+<p>AuthType指令用于设置身份认证时传送密码的编码方式。设置为“Basic”时利用uuencode编码方式传送密码。</p>
+<p>AuthType需与AuthName 、Require、AuthUserFile一同使用 </p>
+<p>####Apache虚拟目录</p>
+<p>虚拟目录的优点:</p>
+<blockquote>
+<p>便于访问</p>
+<p>便于移动站点目录</p>
+<p>加大磁盘空间</p>
+<p>安全性好</p>
+</blockquote>
+<p>应用案例：</p>
+<p>为Apache在linux的根增加一个目录/vln128</p>
+<blockquote>
+<p>1)mkdir /vln128</p>
+<p>2)vi /etc/httpd/conf/http.conf</p>
+</blockquote>
+<p>在其中添加如下配置内容即可. </p>
+<p><img src="/image/linux/linux-apache-003-015.png" alt="linux-apache-003-015"></p>
+<p><img src="/image/linux/linux-apache-004-015.png" alt="linux-apache-004-015"></p>
+<p>####构建虚拟Web主机</p>
+<p>1)虚拟Web主机</p>
+<p>即在同一台服务器中运行多个Web站点的应用，其中每一个站点并不独立占用一台真正的计算机</p>
+<p>2)httpd支持的虚拟主机类型</p>
+<blockquote>
+<p>基于IP地址的虚拟主机</p>
+<p>基于端口的虚拟主机</p>
+<p>基于域名的虚拟主机</p>
+</blockquote>
+<p>3)构建虚拟Web主机-基于IP地址</p>
+<blockquote>
+<p>应用示例：</p>
+<p>构建2个虚拟Web站点：</p>
+<p>www.lamp.com，IP地址为 192.168.10.1</p>
+<p>www.accp.com，IP地址为 192.168.4.1</p>
+<p>在浏览器中访问这两个IP时，分别显示不同的内容 </p>
+</blockquote>
+<p><img src="/image/linux/linux-apache-005-015.png" alt="linux-apache-005-015"></p>
+<p>4)构建虚拟Web主机-基于端口</p>
+<blockquote>
+<p>应用示例：</p>
+<p>构建2个虚拟Web站点：</p>
+<p>www.lamp.com，IP地址、端口为 192.168.10.1:80</p>
+<p>www.accp.com，IP地址、端口为 192.168.10.1:8080</p>
+<p>在浏览器中访问这两个端口时，分别显示不同的内容</p>
+</blockquote>
+<p><img src="/image/linux/linux-apache-006-015.png" alt="linux-apache-006-015"></p>
+<p>5)构建虚拟Web主机-基于域名(一般生产环境的解决方案)</p>
+<blockquote>
+<p>应用示例：</p>
+<p>构建2个虚拟Web站点：</p>
+<p>www.lamp.com，IP地址为 192.168.216.128</p>
+<p>www.accp.com，IP地址为 192.168.216.128</p>
+<p>在浏览器中访问这两个域名时，分别显示不同的内容</p>
+</blockquote>
+<p><img src="/image/linux/linux-apache-007-015.png" alt="linux-apache-007-015"></p>
+<p><img src="/image/linux/linux-apache-008-015.png" alt="linux-apache-008-015"></p>
+<p><img src="/image/linux/linux-apache-009-015.png" alt="linux-apache-009-015"></p>
+<p>####建立系统用户的个人主页</p>
+<p>1) 修改httpd.conf，启用个人主页功能</p>
+<p>UserDir public_html</p>
+<p><img src="/image/linux/linux-apache-010-015.png" alt="linux-apache-010-015"></p>
+<p>确认目录区域设置</p>
+<p>2) 建立个人主页测试网页</p>
+<p>~/public_html/index.html</p>
+<p>添加权限：chmod o+x /home/jerry/</p>
+<p>3) 重新启动httpd服务</p>
+<p>/usr/local/apache2/bin/apachectl  restart</p>
+<p>4) 访问测试</p>
+<p><a href="http://www.lamp.com/~user" target="_blank" rel="external">http://www.lamp.com/~user</a></p>
+<p>####Apache Rewrite 拟静态配置</p>
+<p>1)mod_rewrite 简介和配置</p>
+<p>Rewirte主要的功能就是实现URL的跳转和隐藏真实地址，基于Perl语言的正则表达式规范。平时帮助我们实现拟静态，拟目录，域名跳转，防止盗链等</p>
+<p>2)apache配置rewrite</p>
+<p>支持httpd.conf 配置和目录 .htaccess配置</p>
+<p>a.启用rewrite</p>
+<pre><code># LoadModule rewrite_module            modules/mod_rewrite.so
+去除前面的 #
+LoadModule rewrite_module modules/mod_rewrite.so
+</code></pre><p>b.启用.htaccess</p>
+<blockquote>
+<p>AllowOverride None    修改为:  AllowOverride All</p>
+</blockquote>
+<p>3)mod_rewrite 规则的使用(一般为了兼容性编写到.htaccess)</p>
+<pre><code>RewriteEngine on               启动rewrite引擎
+
+RewriteCond %{HTTP_HOST} !^www.lamp.com  [NC]          判断主机
+
+RewriteRule   ^/(.*) http://www.lamp.com/ [L]              跳转到
+
+RewriteEngine on                启动rewrite引擎
+RewriteRule ^/test([0-9]*).html$ /test.php?id=$1
+RewriteRule ^/new([0-9]*)/$ /new.php?id=$1 [R]            跳转到
+</code></pre><p>4)mod_rewrite 规则修正符</p>
+<blockquote>
+<p>a) R 强制外部重定向</p>
+<p>b) F 禁用URL,返回403HTTP状态码</p>
+<p>c) G 强制URL为GONE，返回410HTTP状态码</p>
+<p>d) P 强制使用代理转发</p>
+<p>e) L 表明当前规则是最后一条规则，停止分析以后规则的重写</p>
+<p>f) N 重新从第一条规则开始运行重写过程</p>
+<p>g) C 与下一条规则关联</p>
+<p>h) NS  只用于不是内部子请求</p>
+<p>i) NC 不区分大小写</p>
+<p>j) NE 不在输出转义特殊字符   \%3d$1  等价于 =$1</p>
+</blockquote>
+<p>5)apache rewrite日志功能</p>
+<pre><code>vi /etc/httpd/httpd.conf
+
+rewritelog /usr/local/apache/logs/rewrite.log  rewriteloglevel 9
+</code></pre><p>这样就可以把用apache做过的所有的rewrite过程全记录下来.</p>
+<p>当需要调试时请用rewritelog and rewriteloglevel 9联合,9为最大即得到最多的调试信息,最小为1，最小的调试信息，默认为0,没有调试信息</p>
+<p>6)应用案例</p>
+<p>a.将输入 en.lamp.com 的域名时跳转到www.lamp.com</p>
+<pre><code>RewriteEngine on
+RewriteCond %{HTTP_HOST} ^en. lamp.com [NC]
+RewriteRule ^(.*) http://www.lamp.com/ [L]
+</code></pre><p>b. 将<a href="http://ss.kiya.cn/bbs/tread-60.html" target="_blank" rel="external">http://ss.kiya.cn/bbs/tread-60.html</a>, 让它在新的域名下继续有效，点击后转发到<a href="http://bbs.lamp.com/index.html" target="_blank" rel="external">http://bbs.lamp.com/index.html</a></p>
+<pre><code>RewriteEngine On
+RewriteCond %{REQUEST_URI} ^/bbs/
+RewriteRule ^bbs/(.*) http://bbs.lmap.com/$1 [L] 
+</code></pre>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2013/02/12/linux_bg_shell/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2013/02/12/linux_ssh/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Nmred's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        nmred_2008@126.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2015/05/">五月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/10/">十月 2014<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/09/">九月 2014<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/04/">四月 2014<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/03/">三月 2014<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/02/">二月 2014<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/09/">九月 2013<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/05/">五月 2013<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/02/">二月 2013<span class="sidebar_archives-count">20</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/C-语言/">C 语言<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Hadoop/">Hadoop<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/linux/">linux<span class="sidebar_archives-count">21</span></a></li><li><a class="sidebar_archives-link" href="/categories/php/">php<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/《C-Primer-Plus-第6版-》练习/">《C++ Primer Plus(第6版)》练习<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/《unix-高级编程》-Note/">《unix 高级编程》-Note<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/《快学scala》练习/">《快学scala》练习<span class="sidebar_archives-count">16</span></a></li><li><a class="sidebar_archives-link" href="/categories/虚拟技术/">虚拟技术<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://weibo.com/nmred" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/nmred" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;2013&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Iodsp
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

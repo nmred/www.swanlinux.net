@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.0 -->
+    <script>
+        window.materialVersion = "1.5.0"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Title -->
+    
+    <title>
+        
+            Linux系统配置DNS主从及缓存服务器 | 
+        
+        Iodsp
+    </title>
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Nmred">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",dns">
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Iodsp">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icon -->
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://www.swanlinux.net">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Linux系统配置DNS主从及缓存服务器 | Iodsp">
+    <meta property="og:image" content="http://www.swanlinux.net/img/favicon.png" />
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="dns"> 
+
+    
+        <meta property="article:published_time" content="Tue Feb 12 2013 18:13:16 GMT+0800" />
+        <meta property="article:modified_time" content="Wed Nov 15 2017 14:07:13 GMT+0800" />
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="Linux系统配置DNS主从及缓存服务器 | Iodsp">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="http://www.swanlinux.net/img/favicon.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://www.swanlinux.net" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://www.swanlinux.net/2013/02/12/linux_dns/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://www.swanlinux.net/2013/02/12/linux_dns/index.html",
+    "headline": "Linux系统配置DNS主从及缓存服务器",
+    "datePublished": "Tue Feb 12 2013 18:13:16 GMT+0800",
+    "dateModified": "Wed Nov 15 2017 14:07:13 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Nmred",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Everything in order to facilitate"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Iodsp",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",dns",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Linux系统配置DNS主从及缓存服务器
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Nmred</strong>
+        <span>2月 12, 2013</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACZ0lEQVR42u3aQXKDMBAEQP//08kDXNgzKwSUqzmlYkPUHKTN7L7+fvp64eHh4eHh4eHhPYz3iq/3778/5+g7R3cdPWG2Njw8PLwreV+22oPvtPcmi1tfGx4eHt6VvM+HQQ442tw//5XPT8vXhoeHh/c03qykzn+Ph4eH99u8vNQeFsd4eHh4j+e1RXMeKOR35aU8Hh4e3r28tgF25c839Pfw8PDwPvLaqw0dVmLc4Qrx8PDwNvPy0na9cbXyCvLXgYeHh3cNL4kM2o1+NtI6O4rw8PDwruQl8Wu+cS8ta3QM4OHh4d3Fywek2pCiHTJoP41iXDw8PLxTee1warLcKDIYNdjqgwEPDw9vGy8JZPMSfBbvnjX8ioeHh7ebl5fF7bKSQYH8teZIPDw8vCfwkq1/GBwsDMuedjDg4eHhLXSIzh0/zWPc2dBAcTDg4eHhbeAV225wMKwMVOWRBx4eHt5zeCvjVm1x3JbOJ/zHgIeHh7fMmw2hts3+c6ONLwcVHh4e3iW8hLReBM9eQR0r4+Hh4V3Ia2PZfDg1af+3d0VhBB4eHt4GXhKSzoYD2m19/bXi4eHh3cVLtuO2RG6f1h45eHh4eFfy1hfRNvvbhllduOPh4eFt5rVXG7wm7a42yPhS3OPh4eFt5rWbclv+JvFB3mw7oaTGw8PDO4lXDzYtNKva0hkPDw/vybyzhp/ysngFXwxd4eHh4d3Km5GSMCL5dPvBgIeHh7eZtx6/zoKMOsbFw8PD28Zrw4jZ8ZBv9PlhgIeHh3c9b9YAa8cLZlcdHOPh4eFt5v3ehYeHh4eHh4eH94DrH46soJScioLdAAAAAElFTkSuQmCC">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/dns/">dns</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Linux系统配置DNS主从及缓存服务器&url=http://www.swanlinux.net/2013/02/12/linux_dns/index.html&pic=http://www.swanlinux.net/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Linux系统配置DNS主从及缓存服务器&url=http://www.swanlinux.net/2013/02/12/linux_dns/index.html&via=Nmred" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://www.swanlinux.net/2013/02/12/linux_dns/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://www.swanlinux.net/2013/02/12/linux_dns/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>###DNS系统概述</p>
+<p>1.DNS系统的作用</p>
+<p>正向解析：根据主机名称（域名）查找对应的IP地址</p>
+<p>反向解析：根据IP地址查找对应的主机域名</p>
+<p><img src="/image/linux/linux-dns-001-014.png" alt="linux-dns-001-014"></p>
+<p>2.DNS查询方式：</p>
+<p>1)递归查询</p>
+<p>大多数客户机向DNS服务器解析域名的方式</p>
+<p>2)迭代查询</p>
+<p>大多数DNS服务器向其他DNS服务器解析域名的方式</p>
+<p>3.DNS服务的整体结构</p>
+<p>1)DNS服务体系是一个庞大的分布式数据库</p>
+<p>2)DNS服务采用树型层次结构</p>
+<p>3)全世界的DNS服务器具有共同的根域（.）</p>
+<p>4)对域名的查询是分层次进行的</p>
+<p>5)例如：对域名www.sina.com.cn域名的解析需要依次经过 </p>
+<blockquote>
+<p>根（．）域的DNS服务器</p>
+<p>“cn.”域的DNS服务器</p>
+<p>“com.cn. ”域的DNS服务器</p>
+<p>“sina.com.cn.”域的DNS服务器 </p>
+</blockquote>
+<p><img src="/image/linux/linux-dns-002-014.png" alt="linux-dns-002-014"></p>
+<p>4.DNS服务器的类型</p>
+<p>1)缓存域名服务器</p>
+<p>通过向其他域名服务器查询获得域名-&gt;IP地址记录将域名查询结果缓存到本地，提高重复查询时的速度</p>
+<p>2)主域名服务器</p>
+<p>特定DNS区域的官方服务器，具有唯一性负责维护该区域内所有域名-&gt;IP地址的映射记录</p>
+<p>3)从域名服务器</p>
+<p>也称为 辅助域名服务器,其维护的 域名-&gt;IP地址记录 来源于主域名服务器</p>
+<p>5.DNS域名服务器软件安装</p>
+<p>BIND（Berkeley Internet Name Daemon）相关软件包 </p>
+<pre><code>bind-9.3.3-7.el5.i386.rpm
+bind-utils-9.3.3-7.el5.i386.rpm
+bind-chroot-9.3.3-7.el5.i386.rpm
+caching-nameserver-9.3.3-7.el5.i386.rpm(缓存DNS服务器软件) 
+</code></pre><p>6.BIND域名服务基础</p>
+<p>1)BIND服务器端程序</p>
+<p>主要执行程序：/usr/sbin/named</p>
+<p>服务脚本：/etc/init.d/named</p>
+<p>默认监听端口：53</p>
+<p>2)主配置文件：</p>
+<p>/var/named/chroot/etc/</p>
+<p>3)保存DNS解析记录的数据文件位于：</p>
+<p>/var/named/chroot/var/named/ </p>
+<p>###DNS服务器配置文件相关解析</p>
+<p>1.全局配置文件</p>
+<p>全局配置部分</p>
+<p>设置DNS服务器的全局参数</p>
+<p>包括监听地址/端口、数据文件的默认位置等</p>
+<p>使用 options { …… }; 的配置段 </p>
+<p><img src="/image/linux/linux-dns-003-014.png" alt="linux-dns-003-014"></p>
+<blockquote>
+<p>注意：在软件默认安装后，一般需求配置是将127.0.0.1和localhost全部替换成any即可</p>
+</blockquote>
+<p>2.区域配置文件</p>
+<p>区域配置部分</p>
+<p>设置本服务器提供域名解析的特定DNS区域</p>
+<p>包括域名、服务器角色、数据文件名等</p>
+<p>使用 zone “区域名” IN { …… }; 的配置段</p>
+<p><img src="/image/linux/linux-dns-004-014.png" alt="linux-dns-004-014"></p>
+<p>区域配置部分</p>
+<p>倒序网络地址.in-addr.arpa 的形式表示反向区域</p>
+<p><img src="/image/linux/linux-dns-005-014.png" alt="linux-dns-005-014"></p>
+<p>3.区域数据解析文件</p>
+<p>全局TTL配置项及SOA记录</p>
+<p>$TTL（Time To Live，生存时间）记录</p>
+<p>SOA（Start Of Authority，授权信息开始）记录</p>
+<p>分号“;”开始的部分表示注释信息 </p>
+<p><img src="/image/linux/linux-dns-006-014.png" alt="linux-dns-006-014"></p>
+<p>域名解析记录</p>
+<p>NS域名服务器（Name Server）记录</p>
+<p>MX邮件交换（Mail Exchange）记录</p>
+<p>A地址（Address）记录，只用在正向解析的区域数据文件中</p>
+<p>CNAME别名（Canonical Name）记录 </p>
+<p><img src="/image/linux/linux-dns-007-014.png" alt="linux-dns-007-014"></p>
+<p>域名解析记录</p>
+<p>PTR指针（Point）记录，只用在反向解析的区域数据文件中配置反向解析记录时，只需要指定IP地址中的主机地址部分即可，网络地址部分不用写 </p>
+<p><img src="/image/linux/linux-dns-008-014.png" alt="linux-dns-008-014"></p>
+<p>区域数据解析文件特殊用法</p>
+<p>1)基于域名解析的负载均衡，同一域名对应到多个IP地址</p>
+<p>2)泛域名解析,找不到精确对应的A记录时，使用“*”进行匹配</p>
+<p><img src="/image/linux/linux-dns-009-014.png" alt="linux-dns-009-014"></p>
+<p>###配置DNS实例 </p>
+<p>应用案例：解析一个域名ln128.net</p>
+<p>其中：</p>
+<blockquote>
+<p>主机名www的IP为192.168.216.1</p>
+<p>主机名bbs的IP为192.168.216.2</p>
+<p>主机名mp3的IP为192.168.216.3</p>
+<p>主机名blog的IP为192.168.216.4</p>
+<p>主DNS服务器的IP为192.168.216.128</p>
+<p>从DNS服务器的IP为192.168.216.129</p>
+<p>要求有缓存服务器 </p>
+</blockquote>
+<p>1.构建缓存域名服务器</p>
+<blockquote>
+<p>注意：在安装DNS服务器相关软件中caching-nameserver安装后默认就是一台缓存服务器，所以默认不用配置即可。</p>
+</blockquote>
+<p>只需修改一下主配置文件即可：</p>
+<p>将named.caching-nameserver.conf中127.0.0.1和localhost替换成any即可 </p>
+<p><img src="/image/linux/linux-dns-010-014.png" alt="linux-dns-010-014"></p>
+<p><img src="/image/linux/linux-dns-011-014.png" alt="linux-dns-011-014"></p>
+<p>[扩展知识]</p>
+<p>1)根区域设置</p>
+<p>named.caching-nameserver.conf中的根区域设置</p>
+<pre><code>zone “.” IN {
+        type hint;
+        file “named.ca”;
+};
+</code></pre><p>a)type设置为hint表示该区域的类型是根区域</p>
+<p>b)file用于设置区域文件，根区域文件的名称是“named.ca”</p>
+<p>2)根区域文件</p>
+<p>named.ca是根区域文件，位于“/var/named/chroot/var/named/ ”目录中</p>
+<p>a)localhost正向解析</p>
+<p>localhost区域的作用是对主机名称“localhost”和环回地址“127.0.0.1” 进行解析</p>
+<pre><code>zone “localhost” IN {
+        type master;
+        file “localhost.zone”;
+};
+</code></pre><p>type设置为master表示区域的类型为主服务器</p>
+<p>b)localhost反向解析</p>
+<pre><code>zone “0.0.127.in-addr.arpa” IN {
+        type master;
+        file “named.local”;
+}; 
+</code></pre><p>2.构建主域名服务器</p>
+<p>A、在named.rfc1912.zones文件中设置域</p>
+<p>1)建立正向解析域</p>
+<pre><code>zone “ln128.net” {
+    type master;
+    file “ln128.z”;
+};
+</code></pre><p>2)建立反向解析域</p>
+<pre><code>zone “216.168.192.in-addr.arpa” {
+    type master;
+    file “ln128.f”;
+};
+</code></pre><p>注意反向解析的IP是倒着写的，而且只需编写IP的前3位，只要网段即可.如：192.168.216.128 </p>
+<p><img src="/image/linux/linux-dns-012-014.png" alt="linux-dns-012-014"></p>
+<p>B、建立正向数据区域解析文件</p>
+<p>创建技巧：可以直接复制named.local文件直接在此基础上修改</p>
+<p>/var/named/chroot/var/named/ln128.z</p>
+<p><img src="/image/linux/linux-dns-013-014.png" alt="linux-dns-013-014"></p>
+<p>1)基本设置</p>
+<pre><code>$TTL    86400
+@   IN SOA    ns1.lamp.com.   root.ln128.net. (
+  42              ; serial (d. adams)
+  3H              ; refresh
+  15M             ; retry
+  1W              ; expiry
+  1D )            ; minimum 
+</code></pre><p>2)添加域名服务器记录</p>
+<p>域名服务器记录又称为NS记录，在区域文件中用于设置当前域的DNS服务器名称</p>
+<pre><code>@               IN      NS      ns1.ln128.net.
+</code></pre><p>“@”符号在区域文件中代表默认的域（当前域）</p>
+<p>3)添加地址记录</p>
+<p>地址记录又称为A记录，用于设置主机名到IP地址的对应记录</p>
+<pre><code>ns1          IN      A       192.168.216.128
+www          IN      A       192.168.216.1
+bbs          IN      A       192.168.216.2
+mp3          IN      A       192.168.216.3
+blog         IN      A       192.168.216.4
+</code></pre><p>4)添加别名记录</p>
+<p>别名记录又称CNAME记录，用于在区域文件中对主机名称设置别名</p>
+<pre><code>indec            IN      CNAME   www.ln128.net.
+bbs2             IN      CNAME   bbs.ln128.net.
+</code></pre><p>5)添加邮件交换记录</p>
+<p>邮件交换记录又称MX记录，用于设置当前域中提供邮件服务的服务器名称</p>
+<pre><code>@              IN      MX      5       mail.ln128.net.
+</code></pre><p>C、建立反向区域文件</p>
+<p>/var/named/chroot/var/named/ln128.net</p>
+<p>1)基本设置</p>
+<p>内容与正向区域文件中的基本设置相同</p>
+<p>2)域名服务器设置</p>
+<p>内容与正向区域文件中的基本设置相同</p>
+<p>添加反向地址解析记录</p>
+<pre><code>128                   IN      PTR     ns1.ln128.net.
+1                     IN      PTR     www.ln128.net.
+2                     IN      PTR     bbs.ln128.net.
+3                     IN      PTR     mp3.ln128.net.
+3                     IN      PTR     blog.ln128.net.
+</code></pre><blockquote>
+<p>注意：一定要修改数据域解析文件的所属组为named</p>
+</blockquote>
+<p><img src="/image/linux/linux-dns-014-014.png" alt="linux-dns-014-014"></p>
+<p>3.构建从域名服务器</p>
+<p>构建的方法和主服务器的大致一样，区别在于：</p>
+<p>1)在named.rfc1912.zones文件中设置域</p>
+<p>建立正向解析域</p>
+<pre><code>zone “ln128.net” {
+    type slave;
+    file “slaves/ln128.z”
+    masters { 192.168.216.128 ; };
+};
+</code></pre><p>建立反向解析域</p>
+<pre><code>zone “216.168.192.in-addr.arpa” {
+    type slave;
+    file ” slaves/ln128.f”;
+    masters { 192.168.216.128 ; };
+}; 
+</code></pre><p><img src="/image/linux/linux-dns-015-014.png" alt="linux-dns-015-014"></p>
+<p>说明：</p>
+<blockquote>
+<p>a)type设置为“slave”，表示当前DNS服务器是该域的从域名服务器类型</p>
+<p>b)从域名服务器中的区域文件应设置保存在 “slaves”子目录中，区域文件将从主域名服务器中获取并保存在该目录中</p>
+<p>c)使用masters设置主域名服务器的IP地址</p>
+</blockquote>
+<p>2)不用设置数据解析文件，如果配置成功后会在/var/named/chroot/var/named/slaves下生成对应的数据解析文件</p>
+<p><img src="/image/linux/linux-dns-016-014.png" alt="linux-dns-016-014"></p>
+<p><img src="/image/linux/linux-dns-017-014.png" alt="linux-dns-017-014"></p>
+<blockquote>
+<p>特别注意：如果主服务器修改数据解析文件后一定要修改文件标识号，否则不会同步 </p>
+</blockquote>
+<p><img src="/image/linux/linux-dns-018-014.png" alt="linux-dns-018-014"></p>
+<p>###DNS测试原理 </p>
+<p>DNS服务器的主要测试方法</p>
+<p>设置客户机使用指定的DNS服务器，通过使用网络客户端程序访问主机域名对DNS服务器进行简单的测试</p>
+<p>使用nslookup、dig和host等专用工具可以对DNS服务器进行较全面的测试, nslookup命令在Linux和Windows系统中都默认安装，是比较常用的测试工具</p>
+<p>使用nslookup测试DNS服务器</p>
+<p>进入nslookup命令交换环境</p>
+<pre><code># nslookup
+&gt;
+设置使用指定的DNS服务器
+&gt; www.ln128.net
+测试localhost主机域名的正向解析
+&gt; localhost
+测试localhost主机域名的反向解析
+&gt; 127.0.0.1 
+</code></pre><p><img src="/image/linux/linux-dns-019-014.png" alt="linux-dns-019-014"></p>
+<blockquote>
+<p>注意：在测试该DNS的时候首先确保一下两点：</p>
+<p>1)测试机和DNS服务器网络互通</p>
+<p>2)测试机的DNS是DNS服务器的地址</p>
+</blockquote>
+<p><img src="/image/linux/linux-dns-020-014.png" alt="linux-dns-020-014"></p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2013/02/12/linux_firewall_setting/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2013/02/12/linux_cd_recover/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Nmred's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        nmred_2008@126.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2015/05/">五月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/10/">十月 2014<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/09/">九月 2014<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/04/">四月 2014<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/03/">三月 2014<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/02/">二月 2014<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/09/">九月 2013<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/05/">五月 2013<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/02/">二月 2013<span class="sidebar_archives-count">20</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/C-语言/">C 语言<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Hadoop/">Hadoop<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/linux/">linux<span class="sidebar_archives-count">21</span></a></li><li><a class="sidebar_archives-link" href="/categories/php/">php<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/《C-Primer-Plus-第6版-》练习/">《C++ Primer Plus(第6版)》练习<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/《unix-高级编程》-Note/">《unix 高级编程》-Note<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/《快学scala》练习/">《快学scala》练习<span class="sidebar_archives-count">16</span></a></li><li><a class="sidebar_archives-link" href="/categories/虚拟技术/">虚拟技术<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://weibo.com/nmred" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/nmred" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;2013&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Iodsp
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
