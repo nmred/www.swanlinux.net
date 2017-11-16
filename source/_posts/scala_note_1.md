@@ -2,6 +2,7 @@ title: 《快学scala》第一章 基础
 date: 2014-09-05 13:13:16
 tags: scala
 categories: 《快学scala》练习
+thumbnail: /thumbnail/scala_image.png
 ---
 
 \1. 在 Scala REPL 中键入3，然后按TAB键。有那些方法可以被应用？ 

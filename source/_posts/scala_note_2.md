@@ -2,6 +2,7 @@ title: 《快学scala》第二章 控制结构和函数
 date: 2014-09-05 15:13:16
 tags: scala
 categories: 《快学scala》练习
+thumbnail: /thumbnail/scala_image.png
 ---
 
 \1. 一个数字如果为正数，则它的signum为1；如果是负数，则signum为-1；如果是0，则signum为0.编写一个函数来计算这个值。

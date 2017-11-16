@@ -1,6 +1,7 @@
 title: 《快学scala》第六章 对象
 date: 2014-09-08 13:56:16
 tags: scala
+thumbnail: /thumbnail/scala_image.png
 categories: 《快学scala》练习
 ---
 

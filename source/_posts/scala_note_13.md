@@ -1,6 +1,7 @@
 title: 《快学scala》第十三章 集合 
 date: 2014-10-19 14:42:16
 tags: scala
+thumbnail: /thumbnail/scala_image.png
 categories: 《快学scala》练习
 ---
 

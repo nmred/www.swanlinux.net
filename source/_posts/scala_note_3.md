@@ -1,6 +1,7 @@
 title: 《快学scala》第三章 数组相关操作
 date: 2014-09-05 23:13:16
 tags: scala
+thumbnail: /thumbnail/scala_image.png
 categories: 《快学scala》练习
 ---
 

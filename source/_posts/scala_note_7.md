@@ -1,6 +1,7 @@
 title: 《快学scala》第七章 包和引入
 date: 2014-09-09 11:40:16
 tags: scala
+thumbnail: /thumbnail/scala_image.png
 categories: 《快学scala》练习
 ---
 

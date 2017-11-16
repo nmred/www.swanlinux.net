@@ -1,6 +1,7 @@
 title: 《快学scala》第九章 文件和正则表达式
 date: 2014-09-10 11:32:16
 tags: scala
+thumbnail: /thumbnail/scala_image.png
 categories: 《快学scala》练习
 ---
 

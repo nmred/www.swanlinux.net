@@ -3,7 +3,7 @@
 ## Source: https://github.com/tommy351/hexo/
 
 # Site
-title: Swan
+title: Iodsp
 subtitle:
 description:
 author: Nmred
@@ -79,11 +79,9 @@ disqus_shortname:
 # Extensions
 ## Plugins: https://github.com/tommy351/hexo/wiki/Plugins
 ## Themes: https://github.com/tommy351/hexo/wiki/Themes
-theme: pacman
+theme: material
 exclude_generator:
 
-plugins:
-- hexo-generator-feed
 # Markdown
 ## https://github.com/chjj/marked
 markdown:
@@ -98,6 +96,6 @@ markdown:
 # Deployment
 ## Docs: http://zespia.tw/hexo/docs/deployment.html
 deploy:
-  type: github
+  type: git
   repository: git@github.com:nmred/www.swanlinux.net.git 
   branch: gh-pages

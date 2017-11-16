@@ -3,3 +3,5 @@ db.json
 debug.log
 public
 .deploy
+node_modules/
+.deploy_git/

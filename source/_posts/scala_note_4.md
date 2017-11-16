@@ -1,6 +1,7 @@
 title: 《快学scala》第四章 映射和元组
 date: 2014-09-08 02:13:16
 tags: scala
+thumbnail: /thumbnail/scala_image.png
 categories: 《快学scala》练习
 ---
 

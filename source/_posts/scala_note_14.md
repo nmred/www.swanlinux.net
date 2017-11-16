@@ -1,6 +1,7 @@
 title: 《快学scala》第十四章 模式匹配和样例类
 date: 2014-10-21 19:42:16
 tags: scala
+thumbnail: /thumbnail/scala_image.png
 categories: 《快学scala》练习
 ---
 
