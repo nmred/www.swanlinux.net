@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.0 -->
+    <script>
+        window.materialVersion = "1.5.0"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Title -->
+    
+    <title>
+        
+            GNU M4 技术文档------ 语法词法 | 
+        
+        Iodsp
+    </title>
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Nmred">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",GNU M4">
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/iodsp.png">
+    <link rel="icon" sizes="192x192" href="/img/iodsp.png">
+    <link rel="apple-touch-icon" href="/img/iodsp.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Iodsp">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icon -->
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://www.swanlinux.net">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="GNU M4 技术文档------ 语法词法 | Iodsp">
+    <meta property="og:image" content="http://www.swanlinux.net/img/iodsp.png" />
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="GNU M4"> 
+
+    
+        <meta property="article:published_time" content="Fri May 15 2015 16:13:16 GMT+0800" />
+        <meta property="article:modified_time" content="Wed Nov 15 2017 18:56:43 GMT+0800" />
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="GNU M4 技术文档------ 语法词法 | Iodsp">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="http://www.swanlinux.net/img/iodsp.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://www.swanlinux.net" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://www.swanlinux.net/2015/05/15/gnu_m4_lexical_syntactic/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://www.swanlinux.net/2015/05/15/gnu_m4_lexical_syntactic/index.html",
+    "headline": "GNU M4 技术文档------ 语法词法",
+    "datePublished": "Fri May 15 2015 16:13:16 GMT+0800",
+    "dateModified": "Wed Nov 15 2017 18:56:43 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Nmred",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.jpg"
+        },
+        "description": "Everything in order to facilitate"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Iodsp",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/iodsp.png"
+        }
+    },
+    "keywords": ",GNU M4",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#语法与词法"><span class="post-toc-number">1.</span> <span class="post-toc-text">语法与词法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#宏名称"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">宏名称</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#m4-引号输入"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">m4 引号输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注释"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">注释</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他语法"><span class="post-toc-number">1.0.4.</span> <span class="post-toc-text">其他语法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#m4-输入文件转化为输出文件规则"><span class="post-toc-number">1.0.5.</span> <span class="post-toc-text">m4 输入文件转化为输出文件规则</span></a></li></ol></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                GNU M4 技术文档------ 语法词法
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Nmred</strong>
+        <span>5月 15, 2015</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC10lEQVR42u3aUXLiMBAEUO5/6d0DZNd0j0ziSE9fFAZbT1Rloh69/hw5XtjY2NjY2NjY2NiPZL/i8fVb/7j1l88nr2dX6zljY2Njb81+86e/RF4vVg5uF/36M9jY2NgnsP836evSkk83KT+zonj9GWxsbGzs2TYg+dZsObCxsbGxP8G+BrzZJIyo2NjY2NizgOZ625C3BNpF+eEsDRsbG/vx7HZT8YTX39rfxsbGxn4wux3RP/1BeVsphMOZY2NjY2/KzgtDO608bLq3RYGNjY19Jjt58CzQb4tZfrfkx8DGxsY+mT0rRe2WJor12/CozdKwsbGxfzl7VnLW30+WOD92WTd6sbGxsTdl5wuRtwRWmgHJNinfRGFjY2Ofw54FSW0INVuUldYvNjY29q7stiQkjdionARX8wZG8gNgY2Nj782ehUSzJu6sDTx7OjY2NvY57OSYY4JpJ9c2CVYOCWFjY2Pvys7DnZUWbP5OsrFplwMbGxv7BPb69iOPjfK7tQcui1AJGxsbezt29LW4gN11iCffltShEjY2NvZG7JXJzdrAs3vmzy2O7GBjY2NvxC4OvpSHIFfu2cZYbwohNjY29tbslRB/Fie1jeT2KcVWBBsbG/uXs5PgZtbozctbG/rn2x5sbGzsE9iveKw0ffOgP3n6MK7CxsbG3pqd37RdrDZyyo8T5WBsbGzs09jrwVA+6RaTl886S8PGxsbejj0L9FdCpdmxoWIjhI2NjX0Me53RFqpZyNVugbCxsbF3ZbfjrumuFMX8udjY2NgnsFci/jxsyq/e2yTGxsbGPoedF62WOjsMdEMzABsbG/tIdh4q5eUtx7w+MLCxsbGxZxPND9+slMYfKGDY2NjYW7PzAzdtG6BtM39rAcPGxsZ+GLs9iJMH+vlmIz+mmbcusLGxsU9gz0L8WTlpC15+/w/2t7GxsbEfzD5nYGNjY2NjY2NjYz9m/AVTDhVHNh7QLQAAAABJRU5ErkJggg==">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/GNU-M4/">GNU M4</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=GNU M4 技术文档------ 语法词法&url=http://www.swanlinux.net/2015/05/15/gnu_m4_lexical_syntactic/index.html&pic=http://www.swanlinux.net/img/iodsp.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=GNU M4 技术文档------ 语法词法&url=http://www.swanlinux.net/2015/05/15/gnu_m4_lexical_syntactic/index.html&via=Nmred" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://www.swanlinux.net/2015/05/15/gnu_m4_lexical_syntactic/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://www.swanlinux.net/2015/05/15/gnu_m4_lexical_syntactic/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="语法与词法"><a href="#语法与词法" class="headerlink" title="语法与词法"></a>语法与词法</h1><p>m4 读取的输入数据通过标记分隔，标记可以是名称、引号引用的字符串或者是单个字符，并不属于一个宏名称或者字符串的一部分。m4 输入数据中也可以包含注释。由于 GNU m4 无法理解多字节域；所以所有的操作都是面向字节而不是面向字符的（虽然你使用单字节编码如 ISO-8859-1, 也不会发现差异）。然而，m4 是按照 8-bit 位编码，所以你可以使用引证字符将非 ASCII 字符括起来（参考 <a href="">修改引证符号</a>I)，包括注释 (参考<a href="">Changecom</a>) ，宏名称参考 (<a href="">Indir</a>), 除了字符 NUL (‘\0’) 等</p>
+<h3 id="宏名称"><a href="#宏名称" class="headerlink" title="宏名称"></a>宏名称</h3><p>宏名称由任意字母、数字、下划线组成，首个字符不能是数字。m4 将从输入中查找最长的序列。如果是一个定义的宏，将会被做宏展开处理(参考第四章<a href="">宏</a>) 。宏名称大小写敏感。例如合法的宏名称：<code>foo</code>、<code>_tmp</code> 和 <code>name01</code></p>
+<h3 id="m4-引号输入"><a href="#m4-引号输入" class="headerlink" title="m4 引号输入"></a>m4 引号输入</h3><p>一个引证字符串是由引证字符包起来的字符串，引证字符默认是 <code>&#39;</code>, 引证字符在嵌套时开始和结束引证符必须是闭合的。引证的字符串是文本，并且会一级一级的展开，例如：</p>
+<blockquote>
+<p><strong>‘’</strong></p>
+<p><strong>=&gt;</strong></p>
+</blockquote>
+<p>将输出空字符串，两个引证字符最终结果将变成有一个引证字符包括的字符串：</p>
+<blockquote>
+<p><strong>‘’quoted’’</strong></p>
+<p><strong>=&gt;’quoted’</strong></p>
+</blockquote>
+<p>引证字符可以随时修改，使用内建宏 <code>changequote</code>, 更多信息参考<a href="">修改引证字符</a></p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>在 m4 中注释是正常情况下是通过 <code>#</code> 字符或者新行限定。在注释限定范围内的所有字符串都将忽略，但是所有的注释最终会输出，m4 在输出的时候不会忽略注释。</p>
+<p>注释不能嵌套，所以新行首个 <code>#</code> 字符后就是注释。如果字符<code>#</code> 通过引证字符引起来可以是注释含义失效 </p>
+<blockquote>
+<p><strong>$ m4</strong></p>
+<p><strong>‘quoted text’ # ‘commented text’</strong></p>
+<p><strong>=&gt;quoted text # ‘commented text’</strong> </p>
+<p><strong>‘quoting inhibits’ ‘#’ ‘comments’</strong></p>
+<p><strong>=&gt;quoting inhibits # comments</strong></p>
+</blockquote>
+<p>注释分隔符在任何时候都可以修改，使用内建宏 <code>changecom</code>。更多信息参考 <a href="">修改注释符</a></p>
+<h3 id="其他语法"><a href="#其他语法" class="headerlink" title="其他语法"></a>其他语法</h3><p>任何字符，其既不是宏名的一部分，也不是引证字符或注释，其实就是其本身。当不是宏展开上下文是所有的标记仅仅是拷贝复制到输出中，然而在宏展开时，空白字符（空格、tab、换行符、回车符、制表符），圆括号（<code>(</code>和 <code>)</code>）, 逗号(<code>,</code>) 以及<code>$</code> 将有附加含义，稍后解释 </p>
+<h3 id="m4-输入文件转化为输出文件规则"><a href="#m4-输入文件转化为输出文件规则" class="headerlink" title="m4 输入文件转化为输出文件规则"></a>m4 输入文件转化为输出文件规则</h3><p>As m4 reads the input token by token, it will copy each token directly to the output immediately.</p>
+<p>作为一个通过 m4 标记输入的任何标记都将会立即复制写入到输出中。除非发现是一个宏定义，m4 将计算宏展开，参数通过读取更多的输入获取。然后将展开后的值插入到剩余输入的前面. 换句话说，调用一个宏解析展开后会被再次计算宏展开。</p>
+<p>m4 展开宏操作非常快，如果在展开一个宏时会收集计算参数，参数将被再次展开在调用宏前。该处理将会继续，知道没有任何宏调用需要展开。</p>
+<p>例如，m4 中输入：</p>
+<blockquote>
+<p><strong>format(‘Result is %d’, eval(‘2</strong>15’))**</p>
+</blockquote>
+<p>首先，m4 看到标记<code>format</code> 是一个宏名称，说以通过收集标记 <code>(</code>, <code>&#39;Result is %d&#39;</code>, <code>,</code> 和 <code>&#39; &#39;</code> 在遇到下一个可能是宏的标记时。的确， <code>eval</code> 是一个宏名称，所以将嵌套收集参数 <code>(</code>, <code>&#39;2**15&#39;</code> 和 <code>)</code>, 调用宏 <code>eval</code> 参数为 <code>2**15</code>. <code>eval(2**15)</code> 展开后的结果为 <code>32768</code>, 将继续扫描五个标记 <code>3</code>,<code>2</code>,<code>7</code>,<code>6</code>和<code>8</code>；合并左括号 <code>)</code> ，现在宏格式化了所有的参数，就类似与用户输入一样：</p>
+<blockquote>
+<p><strong>format(‘Result is %d’, 32768)</strong></p>
+</blockquote>
+<p>这个格式的宏展开后 <code>Result is 32768</code>, 并且我们进行下一轮扫描标记 <code>Result</code>, <code>`,</code>is<code>,</code> <code>,</code>3<code>,</code>2<code>,</code>7<code>,</code>6<code>和</code>8`。 这些里面不再存在宏名称，所以最终输出：</p>
+<blockquote>
+<p>=&gt;<strong>Result is 32768</strong></p>
+</blockquote>
+<p>举一个复杂的例子，将对照一个 GNULIB 实际的代码示例, 既能显示代码又能得到预期的结果。用户期望输入一个 shell 赋值语句，通过将参数转化为一个 shell 变量，并且变量名称会转化为带前缀的大写字母组成. 例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">changequote([,])dnl</span><br><span class="line">define([gl_STRING_MODULE_INDICATOR],</span><br><span class="line">  [</span><br><span class="line">    dnl comment</span><br><span class="line">    GNULIB_]translit([$1],[a-z],[A-Z])[=1</span><br><span class="line">])dnl</span><br><span class="line">gl_STRING_MODULE_INDICATOR([strcase])</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>=&gt;</strong></p>
+<p><strong>=&gt;        GNULIB_strcase=1</strong></p>
+<p><strong>=&gt;</strong></p>
+</blockquote>
+<p>参数没有大写，尽管在手册上不太容易显示，出现两个空行实际上在尾部有两个空格。解析到这步很容易看到其发生了什么。首先，m4 看到标记 <code>changequote</code>, 这是一个宏标记，随后的 <code>(</code>, <code>[</code>, <code>]</code> 和 <code>)</code><br>Oops – the argument did not get capitalized. And although the manual is not able to easily show it, both lines that appear empty actually contain two trailing spaces. By stepping through the parse, it is easy to see what happened. First, m4 sees the token ‘changequote’, which it recognizes as a macro, followed by ‘(’, ‘[’, ‘,’, ‘]’, and ‘)’ to form the argument list. The macro expands to the empty string, but changes the quoting characters to something more useful for generating shell code (unbalanced ‘‘’ and ‘’’ appear all the time in shell scripts, but unbalanced ‘[]’ tend to be rare). Also in the first line, m4 sees the token ‘dnl’, which it recognizes as a builtin macro that consumes the rest of the line, resulting in no output for that line.<br>The second line starts a macro definition. m4 sees the token ‘define’, which it recognizes as a macro, followed by a ‘(’, ‘[gl_STRING_MODULE_INDICATOR]’, and ‘,’. Because an unquoted comma was encountered, the first argument is known to be the expansion of the single-quoted string token, or ‘gl_STRING_MODULE<em>INDICATOR’. Next, m4 sees ‘NL’, ‘ ’, and ‘ ’, but this whitespace is discarded as part of argument collection. Then comes a rather lengthy single-quoted string token, ‘[NL dnl commentNL GNULIB</em>]’. This is followed by the token ‘translit’, which m4 recognizes as a macro name, so a nested macro expansion has started.<br>The arguments to the translit are found by the tokens ‘(’, ‘[$1]’, ‘,’, ‘[a-z]’, ‘,’, ‘[A-Z]’, and finally ‘)’. All three string arguments are expanded (or in other words, the quotes are stripped), and since neither ‘$’ nor ‘1’ need capitalization, the result of the macro is ‘$1’. This expansion is rescanned, resulting in the two literal characters ‘$’ and ‘1’.<br>Scanning of the outer macro resumes, and picks up with ‘[=1NL ]’, and finally ‘)’. The collected pieces of expanded text are concatenated, with the end result that the macro ‘gl_STRING_MODULE<em>INDICATOR’ is now defined to be the sequence ‘NL dnlcommentNL GNULIB</em>$1=1NL ’. Once again, ‘dnl’ is recognized and avoids a newline in the output.<br>The final line is then parsed, beginning with ‘ ’ and ‘ ’ that are output literally. Then ‘gl_STRING_MODULE_INDICATOR’ is recognized as a macro name, with an argument list of ‘(’, ‘[strcase]’, and ‘)’. Since the definition of the macro contains the sequence ‘$1’, that sequence is replaced with the argument ‘strcase’ prior to starting the rescan. The rescan sees ‘NL’ and four spaces, which are output literally, then ‘dnl’, which discards the text ‘ commentNL’. Next comes four more spaces, also output literally, and the token ‘GNULIB_strcase’, which resulted from the earlier parameter substitution. Since that is not a macro name, it is output literally, followed by the literal tokens ‘=’, ‘1’, ‘NL’, and two more spaces. Finally, the original ‘NL’ seen after the macro invocation is scanned and output literally.<br>Now for a corrected approach. This rearranges the use of newlines and whitespace so that less whitespace is output (which, although harmless to shell scripts, can be visually unappealing), and fixes the quoting issues so that the capitalization occurs when the macro ‘gl_STRING_MODULE_INDICATOR’ is invoked, rather then when it is defined. It also adds another layer of quoting to the first argument of translit, to ensure that the output will be rescanned as a string rather than a potential uppercase macro name needing further expansion.</p>
+<pre><code>changequote([,])dnl
+define([gl_STRING_MODULE_INDICATOR],
+</code></pre><p>[dnl comment<br>       GNULIB_[]translit([[$1]], [a-z], [A-Z])=1dnl<br>     ])dnl<br>gl_STRING_MODULE_INDICATOR([strcase]) ) GNULIB<em>STRCASE=1<br>The parsing of the first line is unchanged. The second line sees the name of the macro to define, then sees the discarded ‘NL’ and two spaces, as before. But this time, the next token is ‘[dnlcommentNL GNULIB</em>[]translit([[$1]],[a-z],[A-Z])=1dnlNL]’, which includes nested quotes, followed by ‘)’ to end the macro definition and ‘dnl’ to skip the newline. No early expansion of translit occurs, so the entire string becomes the definition of the macro.<br>The final line is then parsed, beginning with two spaces that are output literally, and an invocation of gl_STRING_MODULE<em>INDICATOR with the argument ‘strcase’. Again, the ‘$1’ in the macro definition is substituted prior to rescanning. Rescanning first encounters ‘dnl’, and discards ‘ commentNL’. Then two spaces are output literally. Next comes the token ‘GNULIB</em>’, but that is not a macro, so it is output literally. The token ‘[]’ is an empty string, so it does not a↵ect output. Then the token ‘translit’ is encountered.<br>This time, the arguments to translit are parsed as ‘(’, ‘[[strcase]]’, ‘,’, ‘ ’, ‘[a-z]’, ‘,’, ‘ ’, ‘[A-Z]’, and ‘)’. The two spaces are discarded, and the translit results in the desired result ‘[STRCASE]’. This is rescanned, but since it is a string, the quotes are stripped and the only output is a literal ‘STRCASE’. Then the scanner sees ‘=’ and ‘1’, which are output literally, followed by ‘dnl’ which discards the rest of the definition of gl_STRING<em>MODULE</em> INDICATOR. The newline at the end of output is the literal ‘NL’ that appeared after the invocation of the macro.<br>The order in which m4 expands the macros can be further explored using the trace facilities of GNU m4 (see Section 7.2 [Trace], page 55).</p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2015/05/20/gnu_m4_invoke_macro/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2015/05/12/gnu_m4_invoke_m4/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.jpg" alt="Nmred's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        nmred_2008@126.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">19</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/06/">六月 2015<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/05/">五月 2015<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/10/">十月 2014<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/09/">九月 2014<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/04/">四月 2014<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/03/">三月 2014<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/02/">二月 2014<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/09/">九月 2013<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/05/">五月 2013<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/02/">二月 2013<span class="sidebar_archives-count">20</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Adbase-文档/">Adbase 文档<span class="sidebar_archives-count">21</span></a></li><li><a class="sidebar_archives-link" href="/categories/C-语言/">C 语言<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/GNU-M4-技术文档/">GNU M4 技术文档<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Hadoop/">Hadoop<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/SBT-快速入门/">SBT 快速入门<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/categories/linux/">linux<span class="sidebar_archives-count">21</span></a></li><li><a class="sidebar_archives-link" href="/categories/php/">php<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/《C-Primer-Plus-第6版-》练习/">《C++ Primer Plus(第6版)》练习<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/《unix-高级编程》-Note/">《unix 高级编程》-Note<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/《快学scala》练习/">《快学scala》练习<span class="sidebar_archives-count">16</span></a></li><li><a class="sidebar_archives-link" href="/categories/虚拟技术/">虚拟技术<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">96</span>
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://weibo.com/nmred" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/nmred" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;2013&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Iodsp
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

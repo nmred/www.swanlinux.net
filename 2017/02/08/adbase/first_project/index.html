@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.0 -->
+    <script>
+        window.materialVersion = "1.5.0"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Title -->
+    
+    <title>
+        
+            ADBASE 快速入门 ------ 第一个项目 | 
+        
+        Iodsp
+    </title>
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Nmred">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",C++,ADBASE">
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/iodsp.png">
+    <link rel="icon" sizes="192x192" href="/img/iodsp.png">
+    <link rel="apple-touch-icon" href="/img/iodsp.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Iodsp">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icon -->
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://www.swanlinux.net">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="ADBASE 快速入门 ------ 第一个项目 | Iodsp">
+    <meta property="og:image" content="http://www.swanlinux.net/img/iodsp.png" />
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="C++"> <meta property="og:article:tag" content="ADBASE"> 
+
+    
+        <meta property="article:published_time" content="Wed Feb 08 2017 09:13:16 GMT+0800" />
+        <meta property="article:modified_time" content="Thu Nov 16 2017 13:57:08 GMT+0800" />
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="ADBASE 快速入门 ------ 第一个项目 | Iodsp">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="http://www.swanlinux.net/img/iodsp.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://www.swanlinux.net" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://www.swanlinux.net/2017/02/08/adbase/first_project/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://www.swanlinux.net/2017/02/08/adbase/first_project/index.html",
+    "headline": "ADBASE 快速入门 ------ 第一个项目",
+    "datePublished": "Wed Feb 08 2017 09:13:16 GMT+0800",
+    "dateModified": "Thu Nov 16 2017 13:57:08 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Nmred",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.jpg"
+        },
+        "description": "Everything in order to facilitate"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Iodsp",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/iodsp.png"
+        }
+    },
+    "keywords": ",C++,ADBASE",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多模匹配服务"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">多模匹配服务</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#需求"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">需求</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#需求分析"><span class="post-toc-number">2.</span> <span class="post-toc-text">需求分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Adbase-Seed-生成项目骨架代码"><span class="post-toc-number">3.</span> <span class="post-toc-text">Adbase Seed 生成项目骨架代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建项目代码目录"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">创建项目代码目录</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置-adbase-ini"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">配置 adbase.ini</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#运行-adbase-skeleton-生成代码"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">运行 adbase_skeleton 生成代码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#编译测试"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">编译测试</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#骨架代码"><span class="post-toc-number">4.</span> <span class="post-toc-text">骨架代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#骨架代码运行流程图"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">骨架代码运行流程图</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#骨架代码配置"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">骨架代码配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开发项目"><span class="post-toc-number">5.</span> <span class="post-toc-text">开发项目</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#项目配置"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">项目配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#配置定义"><span class="post-toc-number">5.1.0.1.</span> <span class="post-toc-text">配置定义</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#配置解析"><span class="post-toc-number">5.1.0.2.</span> <span class="post-toc-text">配置解析</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#配置读取"><span class="post-toc-number">5.1.0.3.</span> <span class="post-toc-text">配置读取</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#匹配服务核心逻辑实现"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">匹配服务核心逻辑实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#Wumanber-算法实现"><span class="post-toc-number">5.2.0.1.</span> <span class="post-toc-text">Wumanber 算法实现</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#实现-Wumanber-管理类"><span class="post-toc-number">5.2.0.2.</span> <span class="post-toc-text">实现 Wumanber 管理类</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#配置构建文件"><span class="post-toc-number">5.2.0.3.</span> <span class="post-toc-text">配置构建文件</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#App-对象增加-PatternManager-属性"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">App 对象增加 PatternManager 属性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#创建对象"><span class="post-toc-number">5.3.0.1.</span> <span class="post-toc-text">创建对象</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#设置-Adserver-上下文"><span class="post-toc-number">5.3.0.2.</span> <span class="post-toc-text">设置 Adserver 上下文</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#引入-Json-库"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">引入 Json 库</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#开发-HTTP-接口"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">开发 HTTP 接口</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#实现接口逻辑"><span class="post-toc-number">5.5.0.1.</span> <span class="post-toc-text">实现接口逻辑</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#注册接口"><span class="post-toc-number">5.5.0.2.</span> <span class="post-toc-text">注册接口</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现-Memcache-get"><span class="post-toc-number">5.6.</span> <span class="post-toc-text">实现 Memcache get</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#结束"><span class="post-toc-number">5.7.</span> <span class="post-toc-text">结束</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#项目部署"><span class="post-toc-number">6.</span> <span class="post-toc-text">项目部署</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                ADBASE 快速入门 ------ 第一个项目
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Nmred</strong>
+        <span>2月 08, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC20lEQVR42u3aUZLaMBAEUO5/6eQAmzjdIxOM9PRFUcb4aat2mB69fh25XtjY2NjY2NjY2NiPZL/i9fP6P9z6x/vXn82vv37/+pmxsbGxT2D/41//JbLdspx0vR3tM2NjY2OfwE4eN/rRHxStFjzbPmxsbGzsvHgULUHckCTPgI2NjY09Yye89W1ab2mwsbGxT2PPWou72pL1kOuNWRo2Njb249krEf+nXn9gvo2NjY39SHa72iZkpeW4d2FjY2Pvyk7CoHw0uxIwXY8KZkMIbGxs7BPYbdwzG9DmR3OuS+BK4IWNjY29K7sNa1aKX1sgk2FAPlrAxsbG3pXdxjp5Gcs3KD92k98NGxsb+xx2W2Bm1HaEPCuHw/k2NjY29pez8+LUhj7t0Z+VMUB0HBMbGxv7GHbbeKw0JPlRnvwwEDY2NvZp7DygGTYAQYuSI9vtwMbGxj6HPRvE5m1GEeKXw4n/lKVhY2NjP5jdHn9J4pt2kLwSGBVDZWxsbOxj2LPDl7MoPy+NLR4bGxv7HPb7jjy+FtawRF03OdjY2Nibsttxb1J+ViKkqBTNmhZsbGzsTdkrP/pbcN5stN8SBVvY2NjYm7KTQjIbrybtTVuW2jYGGxsb+wT2rKjk4U7eriSblbOLM6fY2NjYX85eKQx3BUx5C5SX0qJuY2NjY385u42Q8i1ro/wPZGnY2NjYW7DbstSGR7NAqv0sNjY2NnZezPIQaqVoveUPgI2Njb0p+zVa+YO2r2cjh+FUBBsbG3sLdrvWH3TlPrPYCxsbG3tv9juKVkvNB73JlhWDXmxsbOyN2HnRaq9pw/12oFtsHDY2NvYB7JXCk8f0+Uh49r1/3VBsbGxs7LJJaMe9+bGetkHCxsbGxs6DpPbObbORF7+bWxFsbGzsL2HngdHsYM0sVGq3443jAWxsbOwHs9sf/XdhkpHtSrHExsbGPoF9zsLGxsbGxsbGxsZ+zPoN5JVTJesr3SYAAAAASUVORK5CYII=">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/ADBASE/">ADBASE</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/C/">C++</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=ADBASE 快速入门 ------ 第一个项目&url=http://www.swanlinux.net/2017/02/08/adbase/first_project/index.html&pic=http://www.swanlinux.net/img/iodsp.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=ADBASE 快速入门 ------ 第一个项目&url=http://www.swanlinux.net/2017/02/08/adbase/first_project/index.html&via=Nmred" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://www.swanlinux.net/2017/02/08/adbase/first_project/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://www.swanlinux.net/2017/02/08/adbase/first_project/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>为了让大家跟好的入门 Adbase 的开发，我们采用一个完整的例子逐步的讲解开发过程。以开发一个多模匹配服务为例</p>
+<p><a href="https://github.com/weiboad/adbase_case/tree/master/pattern" target="_blank" rel="external">全部源代码</a></p>
+<h4 id="多模匹配服务"><a href="#多模匹配服务" class="headerlink" title="多模匹配服务"></a>多模匹配服务</h4><p>在实际业务开发中可能需要用到一个高性能的匹配服务，用来做关键词过滤等功能。本例中采用 Wu-Manber 多模匹配算法来实现匹配服务，具体的 Wu-Manber 算法实现细节大家没有必要深入研究，感兴趣的可以参考<a href="https://memorycn.wordpress.com/2011/11/05/matching_algorithm_-_wu-manber_algorithm_based_on_the_the_suffix_search_of_multi-mode/" target="_blank" rel="external">Wu-Manber</a>，本例子重点是利用这个应用场景来详细的讲解基于 Adbase 开发后端服务</p>
+<h4 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h4><p>编写一个支持 Http 、Memcache 协议通信的匹配服务，匹配的词典存放到文件中，在启动的时候加载，客户端通过 Http 或者 Memcache 协议给定匹配文本进行匹配计算，最终将匹配结果返回</p>
+<ul>
+<li><p>交互数据格式</p>
+<ul>
+<li><p>参数: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;dict&quot;: &quot;parrent_dict_name&quot;,</span><br><span class="line">	&quot;contents&quot;: [</span><br><span class="line">		&quot;近日俄罗斯两名五岁幼童越园了！两人经过预谋，用小铲子挖洞，逃出幼儿园要去买豪车！两人到了豪车展示厅，但是没钱买…一热心市民后将他们送到了警察局&quot;,</span><br><span class="line">		&quot;买枪, 卫星电视安装、卫星电视接收器材、电视锅、卫星锅&quot;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br><span class="line">// dict ：由于该服务支持多个匹配关键词字典，指定匹配的字典</span><br><span class="line">// contents : 指定要匹配的文本内容</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>请求返回接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;code&quot;: 200,</span><br><span class="line">	&quot;exposure_id&quot;: &quot;1441789531430499&quot;,</span><br><span class="line">	&quot;result&quot;: [</span><br><span class="line">		&#123;</span><br><span class="line">			&quot;hit&quot;: 5,</span><br><span class="line">			&quot;patterns&quot;: [</span><br><span class="line">				&quot;买枪&quot;,</span><br><span class="line">				&quot;卫星电视安装&quot;,</span><br><span class="line">				&quot;卫星电视接收器材&quot;,</span><br><span class="line">				&quot;卫星锅&quot;,</span><br><span class="line">				&quot;电视锅&quot;</span><br><span class="line">			]</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			&quot;hit&quot;: 0,</span><br><span class="line">			&quot;patterns&quot;: []</span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 如果匹配到了列出匹配到的关键字和匹配到的个数，如果没有则返回空数组</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Http 接口</p>
+<ul>
+<li>接口：/api/pattern</li>
+<li>请求方式：POST</li>
+</ul>
+</li>
+<li><p>Memcache 接口</p>
+<ul>
+<li>使用 get 命令</li>
+<li>key 为请求参数</li>
+<li>最终 get 返回的数据即为请求返回数据</li>
+</ul>
+</li>
+</ul>
+<h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><p>通过上述需求描述我们需要做的是实现 Wumanber 算法提供匹配计算，并且要实现 HTTP Server、Memcache Server 做网络交互, 在 Adbase 中有 Adbase Seed 基于 Adbase 进一步封装了 Http/Memcache Server 的实现，并且通过 Adbase Seed 生成的骨架代码替我们完成了整个项目构建等等一些列通用的代码。所以我们采用 Adbase 中的 Seed 生成项目骨架代码，然后基于这个骨架代码实现匹配逻辑即可, 大致的项目如图所示：</p>
+<p><img src="/image/adbase/adbase_parrent.png" alt="匹配服务概况" title="匹配服务"></p>
+<h3 id="Adbase-Seed-生成项目骨架代码"><a href="#Adbase-Seed-生成项目骨架代码" class="headerlink" title="Adbase Seed 生成项目骨架代码"></a>Adbase Seed 生成项目骨架代码</h3><p>为了快速入门第一个项目示例采用 Adbase Seed 生成项目骨架代码，Seed 在使用时仅需要配置一个 adbase.ini 配置文件，运行 <code>adbase_skeleton</code> 命令即可。假如该项目名称为 <code>pattern</code>，生成骨架代码的步骤如下：</p>
+<h4 id="创建项目代码目录"><a href="#创建项目代码目录" class="headerlink" title="创建项目代码目录"></a>创建项目代码目录</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir pattern</span><br><span class="line">cd pattern</span><br></pre></td></tr></table></figure>
+<h4 id="配置-adbase-ini"><a href="#配置-adbase-ini" class="headerlink" title="配置 adbase.ini"></a>配置 adbase.ini</h4><p>在项目根目录中创建 adbase.ini 配置文件，内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">[project]</span><br><span class="line">; 项目名称</span><br><span class="line">ADINF_PROJECT_NAME=pattern</span><br><span class="line">; 项目描述</span><br><span class="line">ADINF_PROJECT_SUMMARY=Adbase case</span><br><span class="line">; 项目主页</span><br><span class="line">ADINF_PROJECT_URL=https://github.com/weiboad/adbase</span><br><span class="line">; 项目打包维护信息</span><br><span class="line">ADINF_PROJECT_VENDOR=nmred  &lt;nmred_2008@126.com&gt;</span><br><span class="line">ADINF_PROJECT_PACKAGER=nmred  &lt;nmred_2008@126.com&gt;</span><br><span class="line"></span><br><span class="line">[module]</span><br><span class="line">; 是否启用生成 adserver 相关代码，如果使用 http/memcache rpc 服务请开启</span><br><span class="line">adserver=yes</span><br><span class="line">; 是否启用生成 timer 相关代码，如果需要定时执行一些操作请开启</span><br><span class="line">timer=no</span><br><span class="line">; 是否启用生成 kafka 相关代码，如果使用 kafka 做消息队列相关操作请开启</span><br><span class="line">kafkac=no</span><br><span class="line">kafkap=no</span><br><span class="line">; 是否启用生成 logging 相关代码，建议开启</span><br><span class="line">logging=yes</span><br><span class="line"></span><br><span class="line">[params]</span><br><span class="line">; 对于 timer 模块该参数生效，定时器名称，多个定时器用逗号分隔</span><br><span class="line">timers=</span><br><span class="line">; 对于 adserver 模块该参数生效，http server 的 controller 名称, 多个用逗号分隔</span><br><span class="line">http_controllers=Api</span><br><span class="line">;对于 aims consumer 模块该参数生效，分别是kafka consumer 名称、topic、groupid, 多个用逗号分隔, 三个参数的个数必须一一对应</span><br><span class="line">kafka_consumers=</span><br><span class="line">kafka_consumers_topics=</span><br><span class="line">kafka_consumers_groups=</span><br><span class="line">;对于 aims producer 模块该参数生效，分别是kafka producer 名称、topic, 多个用逗号分隔, 两个参数的个数必须一一对应</span><br><span class="line">kafka_producers=</span><br><span class="line">kafka_producers_topics=</span><br><span class="line"></span><br><span class="line">[files]</span><br><span class="line">src/main.cpp=src/@ADINF_PROJECT_NAME@.cpp</span><br><span class="line">rpm/main.spec.in=rpm/@ADINF_PROJECT_NAME@.spec.in</span><br><span class="line"></span><br><span class="line">[execs]</span><br><span class="line">cmake.sh=1</span><br><span class="line">build_rpm.in=1</span><br></pre></td></tr></table></figure></p>
+<p>在这个配置文件中对代码生成比较重要的配置信息是 project 段和 module 段，project 提供给生成器项目的一些基础信息，module 用来配置生成代码模块，由于本案例中仅仅使用 RPC 服务，所以仅需要选择 adserver 和 logging 模块即可，其他模块将在后续章节详细介绍</p>
+<h4 id="运行-adbase-skeleton-生成代码"><a href="#运行-adbase-skeleton-生成代码" class="headerlink" title="运行 adbase_skeleton 生成代码"></a>运行 adbase_skeleton 生成代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">[zhongxiu@bpdev pattern]$ adbase_skeleton</span><br><span class="line">20170220 06:21:26.441379Z 140081539787104 INFO  ./ - Seed.cpp:714</span><br><span class="line">Generate file list:</span><br><span class="line">	./rpm/pattern.spec.in</span><br><span class="line">	./rpm/build_rpm.in</span><br><span class="line">	./src/Timer.hpp</span><br><span class="line">	./src/BootStrap.cpp</span><br><span class="line">	./src/HeadProcessor.cpp</span><br><span class="line">	./src/AdbaseConfig.hpp</span><br><span class="line">	./src/McProcessor.hpp</span><br><span class="line">	./src/pattern.cpp</span><br><span class="line">	./src/Http.hpp</span><br><span class="line">	./src/AdServer.hpp</span><br><span class="line">	./src/McProcessor.cpp</span><br><span class="line">	./src/HeadProcessor.hpp</span><br><span class="line">	./src/AdServer.cpp</span><br><span class="line">	./src/Http/Api.hpp</span><br><span class="line">	./src/Http/Server.cpp</span><br><span class="line">	./src/Http/HttpInterface.hpp</span><br><span class="line">	./src/Http/Server.hpp</span><br><span class="line">	./src/Http/Api.cpp</span><br><span class="line">	./src/Http/HttpInterface.cpp</span><br><span class="line">	./src/Timer.cpp</span><br><span class="line">	./src/BootStrap.hpp</span><br><span class="line">	./src/CMakeLists.txt</span><br><span class="line">	./src/App.hpp</span><br><span class="line">	./src/App.cpp</span><br><span class="line">	./src/Http.cpp</span><br><span class="line">	./src/Version.hpp.in</span><br><span class="line">	./conf/system.ini</span><br><span class="line">	./cmake.sh</span><br><span class="line">	./CMakeLists.txt</span><br></pre></td></tr></table></figure>
+<h4 id="编译测试"><a href="#编译测试" class="headerlink" title="编译测试"></a>编译测试</h4><ul>
+<li>生成项目构建配置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[zhongxiu@bpdev pattern]$ ./cmake.sh</span><br><span class="line">Start cmake configure.....</span><br><span class="line">编译 Debug 级别 [Debug(D)|Release(R)]: D</span><br><span class="line">cmake -DCMAKE_BUILD_TYPE=Debug -DADINFVERSION= -DGIT_SHA1=a6af14f8 -DGIT_DIRTY=0 -DBUILD_ID=bpdev-1487574668 -DOPVERSION=el6.5 ..</span><br><span class="line">-- The C compiler identification is GNU</span><br><span class="line">-- The CXX compiler identification is GNU</span><br><span class="line">-- Check for working C compiler: /usr/bin/gcc</span><br><span class="line">-- Check for working C compiler: /usr/bin/gcc -- works</span><br><span class="line">-- Detecting C compiler ABI info</span><br><span class="line">-- Detecting C compiler ABI info - done</span><br><span class="line">-- Check for working CXX compiler: /usr/bin/c++</span><br><span class="line">-- Check for working CXX compiler: /usr/bin/c++ -- works</span><br><span class="line">-- Detecting CXX compiler ABI info</span><br><span class="line">-- Detecting CXX compiler ABI info - done</span><br><span class="line">CMake Warning (dev) in CMakeLists.txt:</span><br><span class="line">  No cmake_minimum_required command is present.  A line of code such as</span><br><span class="line"></span><br><span class="line">    cmake_minimum_required(VERSION 2.6)</span><br><span class="line"></span><br><span class="line">  should be added at the top of the file.  The version specified may be lower</span><br><span class="line">  if you wish to support older CMake versions for this project.  For more</span><br><span class="line">  information run &quot;cmake --help-policy CMP0000&quot;.</span><br><span class="line">This warning is for project developers.  Use -Wno-dev to suppress it.</span><br><span class="line"></span><br><span class="line">-- Configuring done</span><br><span class="line">-- Generating done</span><br><span class="line">-- Build files have been written to: /usr/home/zhongxiu/code/adbase_case/pattern/build</span><br></pre></td></tr></table></figure>
+<ul>
+<li>编译项目</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[zhongxiu@bpdev pattern]$ cd build/</span><br><span class="line">[zhongxiu@bpdev build]$ make -j 12</span><br><span class="line">Scanning dependencies of target pattern</span><br><span class="line">[ 18%] [ 27%] [ 27%] [ 36%] [ 45%] [ 54%] [ 63%] [ 72%] [ 81%] Building CXX object bin/CMakeFiles/pattern.dir/pattern.o</span><br><span class="line">Building CXX object bin/CMakeFiles/pattern.dir/BootStrap.o</span><br><span class="line">Building CXX object bin/CMakeFiles/pattern.dir/App.o</span><br><span class="line">Building CXX object bin/CMakeFiles/pattern.dir/AdServer.o</span><br><span class="line">Building CXX object bin/CMakeFiles/pattern.dir/Http.o</span><br><span class="line">Building CXX object bin/CMakeFiles/pattern.dir/Http/HttpInterface.o</span><br><span class="line">Building CXX object bin/CMakeFiles/pattern.dir/Http/Server.o</span><br><span class="line">Building CXX object bin/CMakeFiles/pattern.dir/Http/Api.o</span><br><span class="line">Building CXX object bin/CMakeFiles/pattern.dir/McProcessor.o</span><br><span class="line">[ 90%] [100%] Building CXX object bin/CMakeFiles/pattern.dir/HeadProcessor.o</span><br><span class="line">Building CXX object bin/CMakeFiles/pattern.dir/Timer.o</span><br><span class="line">Linking CXX executable pattern</span><br><span class="line">[100%] Built target pattern</span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行项目</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">[zhongxiu@bpdev build]$ mkdir logs</span><br><span class="line">[zhongxiu@bpdev build]$ ./bin/pattern -c ../conf/system.ini</span><br><span class="line">20170220 15:15:31.170330 140302409378144 TRACE initHttp Init http server, host:0.0.0.0 port:10110 - AdServer.cpp:87</span><br><span class="line">20170220 15:15:31.170470 140302409378144 DEBUG Server Init Http Server. - Server.cpp:49</span><br><span class="line">20170220 15:15:31.170554 140302409378144 DEBUG registerLocation Server Location: /server/status register success. - Server.cpp:245</span><br><span class="line">20170220 15:15:31.170573 140302409378144 DEBUG registerLocation Server Location: /api/index register success. - Server.cpp:245</span><br><span class="line">20170220 15:15:31.170641 140302409378144 DEBUG Acceptor Bind: 0.0.0.0:10111 - Acceptor.cpp:29</span><br><span class="line">20170220 15:15:31.170813 140302409378144 DEBUG start Create worker thread success - Server.cpp:195</span><br><span class="line">20170220 15:15:31.170910 140302409378144 DEBUG start Create worker thread success - Server.cpp:195</span><br><span class="line">20170220 15:15:31.170907 140302398879488 DEBUG threadFunc Start create base event. - Server.cpp:122</span><br><span class="line">20170220 15:15:31.171008 140302388389632 DEBUG threadFunc Start create base event. - Server.cpp:122</span><br><span class="line">20170220 15:15:31.171101 140302398879488 TRACE threadFunc Worker start. - Server.cpp:136</span><br><span class="line">20170220 15:15:31.171117 140302388389632 TRACE threadFunc Worker start. - Server.cpp:136</span><br><span class="line">20170220 15:15:31.171136 140302388389632 DEBUG threadFunc Start create new evhttp. - Server.cpp:138</span><br><span class="line">20170220 15:15:31.171139 140302377899776 DEBUG threadFunc Start create base event. - Server.cpp:122</span><br><span class="line">20170220 15:15:31.171142 140302409378144 DEBUG start Create worker thread success - Server.cpp:195</span><br><span class="line">20170220 15:15:31.171151 140302388389632 DEBUG threadFunc Start set evhttp onRequest callback. - Server.cpp:145</span><br><span class="line">20170220 15:15:31.171175 140302388389632 DEBUG threadFunc Start bind evhttp socket, host:0.0.0.0 port:10110 - Server.cpp:151</span><br><span class="line">20170220 15:15:31.171124 140302398879488 DEBUG threadFunc Start create new evhttp. - Server.cpp:138</span><br><span class="line">20170220 15:15:31.171198 140302398879488 DEBUG threadFunc Start set evhttp onRequest callback. - Server.cpp:145</span><br><span class="line">20170220 15:15:31.171176 140302377899776 TRACE threadFunc Worker start. - Server.cpp:136</span><br><span class="line">20170220 15:15:31.171229 140302377899776 DEBUG threadFunc Start create new evhttp. - Server.cpp:138</span><br><span class="line">20170220 15:15:31.171250 140302377899776 DEBUG threadFunc Start set evhttp onRequest callback. - Server.cpp:145</span><br><span class="line">20170220 15:15:31.171321 140302398879488 DEBUG threadFunc Start set accecp evhttp socket. - Server.cpp:166</span><br><span class="line">20170220 15:15:31.171347 140302409378144 DEBUG start Create worker thread success - Server.cpp:195</span><br><span class="line">20170220 15:15:31.171373 140302377899776 DEBUG threadFunc Start set accecp evhttp socket. - Server.cpp:166</span><br><span class="line">20170220 15:15:31.171405 140302367409920 DEBUG threadFunc Start create base event. - Server.cpp:122</span><br><span class="line">20170220 15:15:31.171491 140302367409920 TRACE threadFunc Worker start. - Server.cpp:136</span><br><span class="line">20170220 15:15:31.171511 140302367409920 DEBUG threadFunc Start create new evhttp. - Server.cpp:138</span><br><span class="line">20170220 15:15:31.171521 140302367409920 DEBUG threadFunc Start set evhttp onRequest callback. - Server.cpp:145</span><br><span class="line">20170220 15:15:31.171533 140302367409920 DEBUG threadFunc Start set accecp evhttp socket. - Server.cpp:166</span><br><span class="line">20170220 15:15:33.183004 140302409378144 DEBUG start Create all worker thread, total 4 thread. - Server.cpp:202</span><br><span class="line">20170220 15:15:33.183114 140302409378144 DEBUG start Create worker thread success - TcpServer.cpp:36</span><br><span class="line">20170220 15:15:33.183192 140302409378144 DEBUG start Create worker thread success - TcpServer.cpp:36</span><br><span class="line">20170220 15:15:33.183289 140302409378144 DEBUG start Create worker thread success - TcpServer.cpp:36</span><br><span class="line">20170220 15:15:33.183324 140302234384128 TRACE start Worker start. - TcpWorker.cpp:50</span><br><span class="line">20170220 15:15:33.183422 140302409378144 DEBUG start Create worker thread success - TcpServer.cpp:36</span><br><span class="line">20170220 15:15:33.183440 140301884716800 TRACE start Worker start. - TcpWorker.cpp:50</span><br><span class="line">20170220 15:15:33.183325 140302244873984 TRACE start Worker start. - TcpWorker.cpp:50</span><br><span class="line">20170220 15:15:33.183528 140301874226944 TRACE start Worker start. - TcpWorker.cpp:50</span><br></pre></td></tr></table></figure>
+<ul>
+<li>测试 Http 接口<br>访问 <a href="http://127.0.0.1:10010/server-status" target="_blank" rel="external">http://127.0.0.1:10010/server-status</a> 结果如图所示</li>
+</ul>
+<p><img src="/image/adbase/adbase_http_status.png" alt="http status"></p>
+<ul>
+<li>测试 memcache server </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">nmred@ubuntu12:~$ telnet 10.13.4.162 10111</span><br><span class="line">Trying 10.13.4.162...</span><br><span class="line">Connected to 10.13.4.162.</span><br><span class="line">Escape character is &apos;^]&apos;.</span><br><span class="line">version</span><br><span class="line">VERSION 0.1.0</span><br><span class="line">get test</span><br><span class="line">VALUE test 0 4</span><br><span class="line">test</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+<p>如果上述测试通过恭喜你完成了 adbase 第一个项目的开发，下面将要做的就是将核心业务逻辑增加到项目中即可</p>
+<p>走到这一步可能心里即窃喜又懵逼，窃喜的是很多代码自动完成了，仅仅需要写核心业务逻辑即可。懵逼的是生成这么一坨不知从何入手写业务逻辑，在正式开发前先介绍一下生成的代码的目录结构及其作用。</p>
+<h3 id="骨架代码"><a href="#骨架代码" class="headerlink" title="骨架代码"></a>骨架代码</h3><p>如下是是通过 seed 工具生成的代码骨架</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── adbase.ini</span><br><span class="line">├── CMakeLists.txt 	项目构建 cmake 配置文件</span><br><span class="line">├── cmake.sh</span><br><span class="line">├── conf  项目配置文件</span><br><span class="line">│   └── system.ini</span><br><span class="line">├── rpm   项目打包 rpm 相关脚本配置</span><br><span class="line">│   ├── build_rpm.in</span><br><span class="line">│   └── pattern.spec.in</span><br><span class="line">└── src   项目代码</span><br><span class="line">    ├── AdbaseConfig.hpp	Adbase 全局配置</span><br><span class="line">    ├── AdServer.cpp		AdServer 代码实现，包含 http memcache adhead server 实现</span><br><span class="line">    ├── AdServer.hpp</span><br><span class="line">    ├── App.cpp				App 项目入口，main 函数最终调用 bootstrap 后调用 app-&gt;run 执行</span><br><span class="line">    ├── App.hpp</span><br><span class="line">    ├── BootStrap.cpp	    项目引导初始化</span><br><span class="line">    ├── BootStrap.hpp</span><br><span class="line">    ├── CMakeLists.txt		cmake 配置文件</span><br><span class="line">    ├── HeadProcessor.cpp</span><br><span class="line">    ├── HeadProcessor.hpp</span><br><span class="line">    ├── Http				Http 接口实现目录，如果扩展 http 接口请在此目录修改</span><br><span class="line">    │   ├── Api.cpp			该项目配置生成器自动生成 /api/xxx 接口的 controller</span><br><span class="line">    │   ├── Api.hpp</span><br><span class="line">    │   ├── HttpInterface.cpp Http 接口实现基类</span><br><span class="line">    │   ├── HttpInterface.hpp</span><br><span class="line">    │   ├── Server.cpp		Seed 自动生成的用来实时查询整个项目的运行状态信息</span><br><span class="line">    │   └── Server.hpp</span><br><span class="line">    ├── Http.cpp			Http Server 实现</span><br><span class="line">    ├── Http.hpp</span><br><span class="line">    ├── McProcessor.cpp     Memcache Server 回调方法实现，如果实现 memcache 具体命令请修改该文件实现</span><br><span class="line">    ├── McProcessor.hpp</span><br><span class="line">    ├── pattern.cpp			项目 main 入口</span><br><span class="line">    ├── Timer.cpp			定时器实现</span><br><span class="line">    ├── Timer.hpp</span><br><span class="line">    └── Version.hpp.in		自动管理版本</span><br></pre></td></tr></table></figure>
+<h4 id="骨架代码运行流程图"><a href="#骨架代码运行流程图" class="headerlink" title="骨架代码运行流程图"></a>骨架代码运行流程图</h4><p><img src="/image/adbase/adbase_seed.png" alt="流程图"></p>
+<p>如图所示本图按照不同的颜色将线程归类，主线程为红色的，日志处理线程为绿色、AdServer线程为紫色、用户自定义线程为黑色. 骨架代码在启动的时候会执行 bootstrap 初始化、注册信号回调、bootstrap run 三个过程，在 bootstrap run 中使用 evenloop 调用主线程进行工作。</p>
+<ul>
+<li><p>bootstrap init</p>
+<p>  在执行 bootstrap init 这个阶段会做以下事情：</p>
+<ul>
+<li>将解析配置并且将配置对象 <code>AdbaseConfig</code> 保存在 BootStrap 中，贯穿项目整个生命周期</li>
+<li>初始化 daemon 守护进程</li>
+<li>初始化日志工具，创建日志异步处理线程</li>
+</ul>
+</li>
+<li><p>注册信号回调</p>
+<p>  注册信号处理回调，骨架代码会处理两类型的信息，分别是终止类型的和 SIGUSR1 信号</p>
+<ul>
+<li>终止类型：调用 bootstrap stop 回收资源结束进程</li>
+<li>SIGUSR1: 重新加载配置文件，开发者可以在 <code>App-&gt;reload</code> 方法中自定义在重载配置后执行的操作</li>
+</ul>
+</li>
+<li><p>bootstrap run</p>
+<p>  这个步骤是骨架代码核心的部分，也是在下一步实际开发中需要理解执行过程的一步，具体执行步骤如下：</p>
+<ul>
+<li>度量工具库初始化，该模块是用来统计项目运行时的一些状态参数</li>
+<li><code>App-&gt;run</code> 这个方法初始化情况下是空的，需要用户自定义，类似于 main 函数的功能，用户可以在这个方法中初始化线程，或者初始化内存堆变量等</li>
+<li>设置 AdServer 上下文指针，这个过程调用 <code>App-&gt;setAdServerContext</code> 方法，用户可以在该方法中设置传递给 Server 线程的变量指针，用来关联 RPC 服务数据源</li>
+<li>初始化启动 AdServer, 该过程是通过配置文件，默认骨架代码包含 Http/Memcache/Adhead Server的实现，可以根据需求在配置文件中配置要启动的 Server</li>
+<li>初始化定时器, 如果需要定义定时器，将在这个过程中初始化</li>
+</ul>
+</li>
+</ul>
+<h4 id="骨架代码配置"><a href="#骨架代码配置" class="headerlink" title="骨架代码配置"></a>骨架代码配置</h4><h3 id="开发项目"><a href="#开发项目" class="headerlink" title="开发项目"></a>开发项目</h3><h4 id="项目配置"><a href="#项目配置" class="headerlink" title="项目配置"></a>项目配置</h4><p>由于业务需求是支持多个关键字字典的匹配服务，所以我们要允许项目启动的时候通过配置文件配置关键词字典名称和对应的字典路劲，这样面临的问题是如何在 Adbase Seed 骨架代码上增加配置解析和配置读取以及配置定义</p>
+<h6 id="配置定义"><a href="#配置定义" class="headerlink" title="配置定义"></a>配置定义</h6><p>在骨架代码中增加一个全局的配置项，需要在 ini 配置文件增加配置项和在 AdbaseConfig 这个结构体总增加定义</p>
+<p>修改 conf/system.ini 文件增加匹配服务本身的配置项，用来配置匹配服务支持的字典</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[pattern]</span><br><span class="line">dicta=./dicta.txt</span><br><span class="line">dictb=./dictb.txt</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/conf/system.ini#L46-L48" target="_blank" rel="external">GITHUB代码段</a></p>
+<p>修改 src/AdbaseConfig.hpp 在 <code>AdbaseConfig</code> 这个结构体中增加属性 patternConfig 用来存储匹配关键字字典的映射关系</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, <span class="built_in">std</span>::<span class="built_in">string</span>&gt; patternConfig;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/src/AdbaseConfig.hpp#L70" target="_blank" rel="external">GITHUB代码段</a></p>
+<h6 id="配置解析"><a href="#配置解析" class="headerlink" title="配置解析"></a>配置解析</h6><p>在定义好配置项后下一步是通过解析 ini 配置文件，将配置文件中的配置项和 <code>AdbaseConfig</code> 这个全局的配置变量中的配置项关联起来，这块在骨架代码中启动的时候会将 Ini 配置文件解析，具体的 <code>AdbaseConfig</code> 关联是通过回调 <code>App-&gt;loadConfig</code> 这个方法实现的，所以我们要解析一个配置到全局配置中，需要在这个方法中实现，具体的操作如下：</p>
+<p>修改后的 <code>App-&gt;loadCondig</code> 代码如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> App::loadConfig(adbase::IniConfig&amp; config) &#123;</span><br><span class="line">    <span class="comment">// 解析词库配置</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt; patternKeys  = config.options(<span class="string">"pattern"</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, <span class="built_in">std</span>::<span class="built_in">string</span>&gt; patternConfig;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> &amp; t : patternKeys) &#123;</span><br><span class="line">        patternConfig[t] = config.getOption(<span class="string">"pattern"</span>, t);</span><br><span class="line">    &#125;</span><br><span class="line">    _configure-&gt;patternConfig = patternConfig;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/src/App.cpp#L82-L90" target="_blank" rel="external">GITHUB代码段</a></p>
+<h6 id="配置读取"><a href="#配置读取" class="headerlink" title="配置读取"></a>配置读取</h6><p>在解析了配置后，需要在项目中用到配置对于 <code>App</code> 这个对象中提供一个 <code>_configure</code> 指针，开发者可以将该指针进行传递来读取配置，对于该项目我们将在下面的匹配服务核心逻辑实现时会用到</p>
+<h4 id="匹配服务核心逻辑实现"><a href="#匹配服务核心逻辑实现" class="headerlink" title="匹配服务核心逻辑实现"></a>匹配服务核心逻辑实现</h4><p>匹配服务核心逻辑分为两部分，一部分是 Wumanber 算法的实现，一部分是用来管理 Wumanber 对象的。如图所示</p>
+<p><img src="/image/adbase/adbase_pattern_wumanber.png" alt="核心匹配逻辑"></p>
+<p>多个 <code>Wumanber</code> 实例对应多个匹配关键字字典，对于后面的 RPC 调用直接和 Pattern Manager 这个对象交互，分别有两个交互方法，一个是在系统启动的时候加载关键词字典并初始化 Wumanber 的 <code>Init</code> 方法， 一个是提供匹配的检索方法<code>Search</code></p>
+<h6 id="Wumanber-算法实现"><a href="#Wumanber-算法实现" class="headerlink" title="Wumanber 算法实现"></a>Wumanber 算法实现</h6><p>在 src 中创建目录 <code>app</code> , 并且创建对应的 <code>Wumanber.cpp</code> 和 <code>Wumanber.hpp</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/app/Wumanber.hpp</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> PATTERN_WUMANBER_HPP</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PATTERN_WUMANBER_HPP</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdint.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> app &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::<span class="built_in">set</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt; ResultSetType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::pair&lt;<span class="keyword">unsigned</span> <span class="keyword">int</span>, <span class="keyword">int</span>&gt; PrefixIdPairType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;PrefixIdPairType&gt; PrefixTableType;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WuManber</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        WuManber();</span><br><span class="line">        ~WuManber();</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * init Function</span></span><br><span class="line"><span class="comment">         * </span></span><br><span class="line"><span class="comment">         * @param patterns      pattern list to be matched</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">bool</span> <span class="title">init</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt;&amp; patterns)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** </span></span><br><span class="line"><span class="comment">         * @param text           raw text</span></span><br><span class="line"><span class="comment">         * @param textLength     length of text</span></span><br><span class="line"><span class="comment">         * @param res            string set containing matched patterns</span></span><br><span class="line"><span class="comment">         * </span></span><br><span class="line"><span class="comment">         * @return value 0: no pattern matchs, n: n patterns matched(n&gt;0)</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">( <span class="keyword">const</span> <span class="keyword">char</span>* text, <span class="keyword">const</span> <span class="keyword">int</span> textLength, ResultSetType&amp; res)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @param  str           raw text</span></span><br><span class="line"><span class="comment">         * @param  res           string set containing matched patterns</span></span><br><span class="line"><span class="comment">         *</span></span><br><span class="line"><span class="comment">         * @return value 0: no pattern matchs, n: n patterns matched(n&gt;0)</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">         <span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; str, ResultSetType&amp; res)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief search text </span></span><br><span class="line"><span class="comment">         *</span></span><br><span class="line"><span class="comment">         * @return value 0: no pattern matchs, n: n patterns matched(n&gt;0)</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* text, <span class="keyword">const</span> <span class="keyword">int</span> textLength)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief search text</span></span><br><span class="line"><span class="comment">         *</span></span><br><span class="line"><span class="comment">         * @return value 0: no pattern matchs, n: n patterns matched(n&gt;0)</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; str)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="comment">// minmum length of patterns</span></span><br><span class="line">        <span class="keyword">int32_t</span> mMin;</span><br><span class="line">        <span class="comment">// SHIFT table</span></span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int32_t</span>&gt; mShiftTable;</span><br><span class="line">        <span class="comment">// a combination of HASH and PREFIX table </span></span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;PrefixTableType&gt; mHashTable;</span><br><span class="line">        <span class="comment">// patterns</span></span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt; mPatterns;</span><br><span class="line">        <span class="comment">// size of SHIFT and HASH table</span></span><br><span class="line">        <span class="keyword">int32_t</span> mTableSize;</span><br><span class="line">        <span class="comment">// size of block</span></span><br><span class="line">        <span class="keyword">int32_t</span> mBlock;</span><br><span class="line">&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/src/app/WuManber.hpp" target="_blank" rel="external">GITHUB代码段</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/app/Wumanber.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;adbase/Logging.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"WuManber.hpp"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> app &#123;</span><br><span class="line"><span class="comment">// &#123;&#123;&#123; hashCode()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * @brief   String hash function.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * @param str   the string needed to be hashed</span></span><br><span class="line"><span class="comment"> * @param len   length of the substr should be hashed</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * @return hash code</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* str, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> hash = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (*str &amp;&amp; len&gt;<span class="number">0</span>) &#123;</span><br><span class="line">        hash = (*str++) + (hash &lt;&lt; <span class="number">6</span>) + (hash &lt;&lt; <span class="number">16</span>) - hash;</span><br><span class="line">        --len;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (hash &amp; <span class="number">0x7FFFFFFF</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; WuManber::WuManber()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * @brief constructor </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">WuManber::WuManber() : mMin(<span class="number">0</span>), mTableSize(<span class="number">0</span>), mBlock(<span class="number">3</span>) &#123;</span><br><span class="line">    <span class="comment">//VOID</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; WuManber::init()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief init</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">bool</span> WuManber::init(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; patterns) &#123;</span><br><span class="line">    <span class="keyword">int</span> patternSize = patterns.size();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//check if no pattern specified</span></span><br><span class="line">    <span class="keyword">if</span> (patternSize == <span class="number">0</span>) &#123;</span><br><span class="line">		LOG_ERROR &lt;&lt; <span class="string">"wumanber init failed because no pattern specified."</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//caculate the minmum pattern length</span></span><br><span class="line">    mMin = patterns[<span class="number">0</span>].length();</span><br><span class="line">    <span class="keyword">int32_t</span> lenPattern = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; patternSize; ++i) &#123;</span><br><span class="line">        lenPattern = patterns[i].length();</span><br><span class="line">        <span class="keyword">if</span> (lenPattern &lt; mMin) &#123;</span><br><span class="line">            mMin = lenPattern;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//check if mBlock larger than mMin</span></span><br><span class="line">    <span class="keyword">if</span> (mBlock &gt; mMin) &#123;</span><br><span class="line">		LOG_WARN &lt;&lt; <span class="string">"mBlock is larger than minmum pattern length, reset mBlock to minmum, but it will seriously affect the effiency."</span>;</span><br><span class="line">        mBlock = mMin;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//choose a suitable mTableSize for SHIFT, HASH table</span></span><br><span class="line">    <span class="keyword">int32_t</span> primes[<span class="number">6</span>] = &#123;<span class="number">1003</span>, <span class="number">10007</span>, <span class="number">100003</span>, <span class="number">1000003</span>, <span class="number">10000019</span>, <span class="number">100000007</span>&#125;;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int32_t</span>&gt; primeList(&amp;primes[<span class="number">0</span>], &amp;primes[<span class="number">6</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int32_t</span> threshold = <span class="number">10</span> * mMin;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; primeList.size(); ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (primeList[i] &gt; patternSize &amp;&amp; primeList[i] / patternSize &gt; threshold) &#123;</span><br><span class="line">            mTableSize = primeList[i];</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//if size of patternList is huge.</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="number">0</span> == mTableSize) &#123;</span><br><span class="line">		LOG_WARN &lt;&lt; <span class="string">"amount of pattern is very large, will cost a great amount of memory."</span>;</span><br><span class="line">        mTableSize = primeList[<span class="number">5</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//construct ShiftTable and HashTable, and set default value for SHIFT table</span></span><br><span class="line">    mPatterns = patterns;</span><br><span class="line">    mHashTable.resize(mTableSize);</span><br><span class="line">    <span class="comment">// default value is m-mBlock+1 for shift</span></span><br><span class="line">    <span class="keyword">int32_t</span> defaultValue = mMin - mBlock + <span class="number">1</span>;</span><br><span class="line">    mShiftTable.resize(mTableSize, defaultValue);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//loop through patterns</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> id = <span class="number">0</span>; id &lt; patternSize; ++id) &#123; </span><br><span class="line">        <span class="comment">// loop through each pattern from right to left</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> index = mMin; index &gt;= mBlock; --index) &#123;</span><br><span class="line">            <span class="keyword">unsigned</span> <span class="keyword">int</span> hash = hashCode(patterns[id].c_str() + index - mBlock, mBlock) % mTableSize;</span><br><span class="line">            <span class="keyword">if</span> (mShiftTable[hash] &gt; (mMin - index)) &#123;</span><br><span class="line">                mShiftTable[hash]  = mMin - index;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (index == mMin) &#123;</span><br><span class="line">                <span class="keyword">unsigned</span> <span class="keyword">int</span> prefixHash = hashCode(patterns[id].c_str(), mBlock);</span><br><span class="line">                mHashTable[hash].push_back(make_pair(prefixHash, id));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; WuManber::~WuManber()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * @brief destructor</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">WuManber::~WuManber() &#123;</span><br><span class="line">    <span class="comment">//VOID</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; WuManber::search()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @public</span></span><br><span class="line"><span class="comment"> * @brief search multiple pattern in text at one time</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">int</span> WuManber::search(<span class="keyword">const</span> <span class="keyword">char</span>* text, <span class="keyword">const</span> <span class="keyword">int</span> textLength, ResultSetType&amp; res) &#123;</span><br><span class="line">    <span class="comment">//hit count: value to be returned</span></span><br><span class="line">    <span class="keyword">int</span> hits = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int32_t</span> index = mMin - <span class="number">1</span>; <span class="comment">// start off by matching end of largest common pattern</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int32_t</span> blockMaxIndex = mBlock - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int32_t</span> windowMaxIndex = mMin - <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (index &lt; textLength) &#123;</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">int</span> blockHash = hashCode(text + index - blockMaxIndex, mBlock);</span><br><span class="line">        blockHash = blockHash % mTableSize;</span><br><span class="line">        <span class="keyword">int</span> shift = mShiftTable[blockHash];</span><br><span class="line">        <span class="keyword">if</span> (shift &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            index += shift;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">            <span class="comment">// we have a potential match when shift is 0</span></span><br><span class="line">            <span class="keyword">unsigned</span> <span class="keyword">int</span> prefixHash = hashCode(text + index - windowMaxIndex, mBlock);</span><br><span class="line">            PrefixTableType &amp;element = mHashTable[blockHash];</span><br><span class="line">            PrefixTableType::iterator iter = element.begin();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (element.end() != iter) &#123;</span><br><span class="line">                <span class="keyword">if</span> (prefixHash == iter-&gt;first) &#123;   </span><br><span class="line">                    <span class="comment">// since prefindex matches, compare target substring with pattern</span></span><br><span class="line">                    <span class="comment">// we know first two characters already match</span></span><br><span class="line">                    <span class="keyword">const</span> <span class="keyword">char</span>* indexTarget = text + index - windowMaxIndex;    <span class="comment">//+mBlock</span></span><br><span class="line">                    <span class="keyword">const</span> <span class="keyword">char</span>* indexPattern = mPatterns[iter-&gt;second].c_str(); <span class="comment">//+mBlock</span></span><br><span class="line">                    </span><br><span class="line">                    <span class="keyword">while</span> ((<span class="string">'\0'</span> != *indexTarget) &amp;&amp; (<span class="string">'\0'</span> != *indexPattern)) &#123;</span><br><span class="line">                        <span class="comment">// match until we reach end of either string</span></span><br><span class="line">                        <span class="keyword">if</span> (*indexTarget == *indexPattern) &#123;</span><br><span class="line">                            <span class="comment">// match against chosen case sensitivity</span></span><br><span class="line">                            ++indexTarget;</span><br><span class="line">                            ++indexPattern;</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">						&#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">// match succeed since we reach the end of the pattern.</span></span><br><span class="line">                    <span class="keyword">if</span> (<span class="string">'\0'</span> == *indexPattern) &#123;</span><br><span class="line">                        res.insert(<span class="built_in">string</span>(mPatterns[iter-&gt;second]));</span><br><span class="line">                        ++hits;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="comment">//end if</span></span><br><span class="line">                ++iter;</span><br><span class="line">            &#125; <span class="comment">//end while</span></span><br><span class="line">            ++index;</span><br><span class="line">        &#125; <span class="comment">//end else</span></span><br><span class="line">    &#125; <span class="comment">//end while</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> hits;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; WuManber::search()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * search</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">int</span> WuManber::search(<span class="keyword">const</span> <span class="built_in">string</span>&amp; str, ResultSetType&amp; res) &#123;</span><br><span class="line">    <span class="keyword">return</span> search(str.c_str(), str.length(), res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; WuManber::search()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * search</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">int</span> WuManber::search(<span class="keyword">const</span> <span class="keyword">char</span>* text, <span class="keyword">const</span> <span class="keyword">int</span> textLength) &#123;</span><br><span class="line">    <span class="comment">//hit count: value to be returned</span></span><br><span class="line">    <span class="keyword">int</span> hits = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> index = mMin - <span class="number">1</span>; <span class="comment">// start off by matching end of largest common pattern</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">uint32_t</span> blockMaxIndex = mBlock - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">uint32_t</span> windowMaxIndex = mMin - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (index &lt; textLength) &#123;</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">int</span> blockHash = hashCode(text + index - blockMaxIndex, mBlock);</span><br><span class="line">        blockHash = blockHash % mTableSize;</span><br><span class="line">        <span class="keyword">int</span> shift = mShiftTable[blockHash];</span><br><span class="line">        <span class="keyword">if</span> (shift &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            index += shift;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// we have a potential match when shift is 0</span></span><br><span class="line">            <span class="keyword">unsigned</span> <span class="keyword">int</span> prefixHash = hashCode(text + index - windowMaxIndex, mBlock);</span><br><span class="line">            <span class="comment">//prefixHash = prefixHash % mTableSize;</span></span><br><span class="line">            PrefixTableType &amp;element = mHashTable[blockHash];</span><br><span class="line">            PrefixTableType::iterator iter = element.begin();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (element.end() != iter) &#123;</span><br><span class="line">                <span class="keyword">if</span> (prefixHash == iter-&gt;first) &#123;</span><br><span class="line">                    <span class="comment">// since prefindex matches, compare target substring with pattern</span></span><br><span class="line">                    <span class="comment">// we know first two characters already match</span></span><br><span class="line">                    <span class="keyword">const</span> <span class="keyword">char</span>* indexTarget = text + index - windowMaxIndex;    <span class="comment">//+mBlock</span></span><br><span class="line">                    <span class="keyword">const</span> <span class="keyword">char</span>* indexPattern = mPatterns[iter-&gt;second].c_str();  <span class="comment">//+mBlock</span></span><br><span class="line"></span><br><span class="line">                    <span class="keyword">while</span> ((<span class="string">'\0'</span> != *indexTarget) &amp;&amp; (<span class="string">'\0'</span> != *indexPattern)) &#123;</span><br><span class="line">                        <span class="comment">// match until we reach end of either string</span></span><br><span class="line">                        <span class="keyword">if</span> (*indexTarget == *indexPattern) &#123;</span><br><span class="line">                            <span class="comment">// match against chosen case sensitivity</span></span><br><span class="line">                            ++indexTarget;</span><br><span class="line">                            ++indexPattern;</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">						&#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">// match succeed since we reach the end of the pattern.</span></span><br><span class="line">                    <span class="keyword">if</span> (<span class="string">'\0'</span> == *indexPattern) &#123;</span><br><span class="line">                        ++hits;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="comment">//end if</span></span><br><span class="line">                ++iter;</span><br><span class="line">            &#125;<span class="comment">//end while</span></span><br><span class="line">            ++index;</span><br><span class="line">        &#125;<span class="comment">//end else</span></span><br><span class="line">    &#125;<span class="comment">//end while</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> hits;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; WuManber::search()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> WuManber::search(<span class="keyword">const</span> <span class="built_in">string</span>&amp; str) &#123;</span><br><span class="line">    <span class="keyword">return</span> search(str.c_str(), str.length());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/src/app/WuManber.cpp" target="_blank" rel="external">GITHUB代码段</a></p>
+<h6 id="实现-Wumanber-管理类"><a href="#实现-Wumanber-管理类" class="headerlink" title="实现 Wumanber 管理类"></a>实现 Wumanber 管理类</h6><p>用来管理多个 Wumanber 实例，读取多个关键字字典并初始化对应 Wumanber 实现, 创建对应 <code>PatternManager.hpp</code> 和 <code>PatternManager.cpp</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/app/PatternManager.hpp</span></span><br><span class="line">fndef PATTERN_PATTERNMANAGER_HPP_</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PATTERN_PATTERNMANAGER_HPP_</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"AdbaseConfig.hpp"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"WuManber.hpp"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> app &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, <span class="built_in">std</span>::<span class="built_in">string</span>&gt; PatternConfig;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, WuManber*&gt; WuManberMap;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PatternManager</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    PatternManager(AdbaseConfig* config);</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">string</span>&amp; type, <span class="built_in">std</span>::<span class="built_in">string</span>&amp; text, <span class="built_in">std</span>::<span class="built_in">set</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt;&amp; patternResult)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">string</span>&amp; type, <span class="built_in">std</span>::<span class="built_in">string</span>&amp; text)</span></span>;</span><br><span class="line">    ~PatternManager();</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    AdbaseConfig* _config;</span><br><span class="line">    WuManberMap _wuManbers;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/src/app/PatternManager.hpp" target="_blank" rel="external">GITHUB代码段</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/app/PatternManager.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"PatternManager.hpp"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;adbase/Logging.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> app &#123;</span><br><span class="line"><span class="comment">// &#123;&#123;&#123; PatternManager::PatternManager()</span></span><br><span class="line"></span><br><span class="line">PatternManager::PatternManager(AdbaseConfig* config) :</span><br><span class="line">    _config(config) &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; PatternManager::~PatternManager()</span></span><br><span class="line"></span><br><span class="line">PatternManager::~PatternManager() &#123;</span><br><span class="line">    <span class="keyword">if</span> (!_wuManbers.size()) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> &amp; t: _wuManbers) &#123;</span><br><span class="line">        <span class="keyword">if</span> (t.second != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">delete</span> t.second;</span><br><span class="line">            t.second = <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; void PatternManager::init()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> PatternManager::init() &#123;</span><br><span class="line">    <span class="keyword">if</span> (!_config-&gt;patternConfig.size()) &#123;</span><br><span class="line">        LOG_FATAL &lt;&lt; <span class="string">"Must has pattern text config."</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;t : _config-&gt;patternConfig) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt; patterns;</span><br><span class="line">        <span class="built_in">std</span>::<span class="function">ifstream <span class="title">pat</span><span class="params">(t.second)</span></span>;</span><br><span class="line">        <span class="keyword">if</span> (!pat.good() || !pat.is_open()) &#123;</span><br><span class="line">            LOG_FATAL &lt;&lt; <span class="string">"Pattern type :"</span> &lt;&lt; t.first &lt;&lt; <span class="string">" config file: "</span> &lt;&lt; t.second &lt;&lt; <span class="string">" is not good."</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">string</span> str;</span><br><span class="line">        <span class="keyword">while</span> (pat&gt;&gt; str) &#123;</span><br><span class="line">            patterns.push_back(str);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        WuManber* wumanber = <span class="keyword">new</span> WuManber;</span><br><span class="line">        wumanber-&gt;init(patterns);</span><br><span class="line">        _wuManbers[t.first] = wumanber; </span><br><span class="line">        LOG_INFO &lt;&lt; <span class="string">"Init dict "</span> &lt;&lt; t.first &lt;&lt; <span class="string">" complete."</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; int PatternManager::search() </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> PatternManager::search(<span class="built_in">std</span>::<span class="built_in">string</span>&amp; type, <span class="built_in">std</span>::<span class="built_in">string</span>&amp; text, <span class="built_in">std</span>::<span class="built_in">set</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt;&amp; patternResult) &#123;</span><br><span class="line">    <span class="keyword">if</span> (_wuManbers.find(type) == _wuManbers.end()) &#123;</span><br><span class="line">        LOG_INFO &lt;&lt; <span class="string">"Search pattern type `"</span> &lt;&lt; type &lt;&lt; <span class="string">"` not exists."</span>; </span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;   </span><br><span class="line"></span><br><span class="line">    WuManber* wumanber = _wuManbers[type];</span><br><span class="line">    wumanber-&gt;search(text, patternResult);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(patternResult.size());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; int PatternManager::search() </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> PatternManager::search(<span class="built_in">std</span>::<span class="built_in">string</span>&amp; type, <span class="built_in">std</span>::<span class="built_in">string</span>&amp; text) &#123;</span><br><span class="line">    <span class="keyword">if</span> (_wuManbers.find(type) == _wuManbers.end()) &#123;</span><br><span class="line">        LOG_INFO &lt;&lt; <span class="string">"Search pattern type `"</span> &lt;&lt; type &lt;&lt; <span class="string">"` not exists."</span>; </span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;   </span><br><span class="line"></span><br><span class="line">    WuManber* wumanber = _wuManbers[type];</span><br><span class="line">    <span class="keyword">return</span> wumanber-&gt;search(text);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/src/app/PatternManager.cpp" target="_blank" rel="external">GITHUB代码段</a></p>
+<h6 id="配置构建文件"><a href="#配置构建文件" class="headerlink" title="配置构建文件"></a>配置构建文件</h6><p>修改 CMake 构建配置文件 <code>src/CMakeLists.txt</code>，增加上述两个 cpp 源文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app/Wumanber.cpp</span><br><span class="line">app/PatternManager.cpp</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/src/CMakeLists.txt#L34-L35" target="_blank" rel="external">GITHUB代码段</a></p>
+<h4 id="App-对象增加-PatternManager-属性"><a href="#App-对象增加-PatternManager-属性" class="headerlink" title="App 对象增加 PatternManager 属性"></a>App 对象增加 PatternManager 属性</h4><p>由于 PatternManager 对象实例在整个项目的生命周期都存在，所以我们将 PatternManager 对象保存在 App 这个对象中，在后面的 RPC 调用时通过 AdServer 上下文的方式将 PatternManager 的指针传递过去即可调用</p>
+<h6 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h6><p>App.hpp 中引入 PatternManager.hpp</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"app/PatternManager.hpp"</span></span></span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/src/App.hpp#L6" target="_blank" rel="external">GITHUB代码段</a></p>
+<p>在 App.hpp 中增加 PatternManager 指针属性</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app::PatternManager* _patternManager;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/src/App.hpp#L23" target="_blank" rel="external">GITHUB代码段</a></p>
+<p>在 <code>App-&gt;run</code> 中创建 PatternManager 对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">void App::run() &#123;</span><br><span class="line">    _patternManager = new app::PatternManager(_configure);</span><br><span class="line">    _patternManager-&gt;init();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/src/App.cpp#L44-L47" target="_blank" rel="external">GITHUB代码段</a></p>
+<p>在 <code>App-&gt;stop</code> 中销毁 PatternManager 对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void App::stop() &#123;</span><br><span class="line">    if (_patternManager != nullptr) &#123;</span><br><span class="line">        delete _patternManager;</span><br><span class="line">        _patternManager = nullptr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/src/App.cpp#L58-L63" target="_blank" rel="external">GITHUB代码段</a></p>
+<h6 id="设置-Adserver-上下文"><a href="#设置-Adserver-上下文" class="headerlink" title="设置 Adserver 上下文"></a>设置 Adserver 上下文</h6><p>设置 Adserver 上下文指针供 Adserver 调用</p>
+<p>修改 AdbaseConfig.cpp 中 adserverContext 这个结构体，在该结构体中增加一个属性 <code>patternManager</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app::PatternManager* patternManager;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/src/AdbaseConfig.hpp#L83" target="_blank" rel="external">GITHUB代码段</a></p>
+<p>为了防止依赖，我们采用前置申明的方式声明 <code>app::PatternManager</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> app &#123;</span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">PatternManager</span>;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/src/AdbaseConfig.hpp#L74-L76" target="_blank" rel="external">GITHUB代码段</a></p>
+<p>修改 <code>App::setAdServerContext</code> 方法</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> App::setAdServerContext(AdServerContext* context) &#123;</span><br><span class="line">	context-&gt;app = <span class="keyword">this</span>;</span><br><span class="line">	context-&gt;patternManager = _patternManager;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/src/App.cpp#L68-L71" target="_blank" rel="external">GITHUB代码段</a></p>
+<p>这样后面 AdServer 中通过使用 <code>context-&gt;patternManager</code> 的方式就可以引用匹配管理对象实例了</p>
+<h4 id="引入-Json-库"><a href="#引入-Json-库" class="headerlink" title="引入 Json 库"></a>引入 Json 库</h4><p>首先由于接口交互都是 Json 格式所以我们需要引入 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add https://github.com/miloyip/rapidjson.git pattern/src/thirdparty/rapidjson</span><br></pre></td></tr></table></figure>
+<p>修改项目构建配置文件 <code>src/CMakeLists.txt</code>, 增加如下配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INCLUDE_DIRECTORIES(./thirdparty/rapidjson/include)</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/src/CMakeLists.txt#L3" target="_blank" rel="external">GITHUB代码段</a></p>
+<p>将 rapidjson 下载到 <code>src/thirdparty/rapidjson</code> 目录中, 在 <code>src/app</code> 中创建 <code>Json.hpp</code> 引入 json 头文件，后面再使用json库的时候直接引用即可</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/app/Json.hpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> PATTERN_JSON_HPP_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PATTERN_JSON_HPP_</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> GCC diagnostic ignored <span class="meta-string">"-Wconversion"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> GCC diagnostic ignored <span class="meta-string">"-Wold-style-cast"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"rapidjson/document.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"rapidjson/error/en.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"rapidjson/stringbuffer.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"rapidjson/writer.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> GCC diagnostic <span class="meta-keyword">warning</span> <span class="meta-string">"-Wconversion"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> GCC diagnostic <span class="meta-keyword">warning</span> <span class="meta-string">"-Wold-style-cast"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/src/app/Json.hpp" target="_blank" rel="external">GITHUB代码段</a></p>
+<h4 id="开发-HTTP-接口"><a href="#开发-HTTP-接口" class="headerlink" title="开发 HTTP 接口"></a>开发 HTTP 接口</h4><p>到目前为止我们的匹配服务的核心逻辑已经实现，暴露出来一个方法 <code>search</code> 可以用来匹配, 通过设置上面设置 Adserver 的上下文指针 <code>PatternManager*</code> 来调用 search 方法</p>
+<p>在 <code>Http/Api.hpp</code> 和 <code>Http/Api.cpp</code> 增加接口方法 <code>pattern</code> 的声明和实现</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pattern</span><span class="params">(adbase::http::Request* request, adbase::http::Response* response, <span class="keyword">void</span>*)</span></span>;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/src/Http/Api.hpp#L13" target="_blank" rel="external">GITHUB代码段</a></p>
+<h6 id="实现接口逻辑"><a href="#实现接口逻辑" class="headerlink" title="实现接口逻辑"></a>实现接口逻辑</h6><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> Api::pattern(adbase::http::Request* request, adbase::http::Response* response, <span class="keyword">void</span>*) &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> data = request-&gt;getPostData();</span><br><span class="line">    rapidjson::Document documentData;</span><br><span class="line">    documentData.Parse(data.c_str());</span><br><span class="line">    <span class="keyword">if</span> (documentData.HasParseError()) &#123;</span><br><span class="line">        LOG_ERROR &lt;&lt; rapidjson::GetParseError_En(documentData.GetParseError());</span><br><span class="line">	    responseJson(response, <span class="string">""</span>, <span class="number">10000</span>, rapidjson::GetParseError_En(documentData.GetParseError()), <span class="literal">true</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!documentData.IsObject()) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">string</span> error = <span class="string">"pattern format is invalid."</span>;</span><br><span class="line">        LOG_ERROR &lt;&lt; error;</span><br><span class="line">	    responseJson(response, <span class="string">""</span>, <span class="number">10000</span>, error, <span class="literal">true</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!documentData.HasMember(<span class="string">"dict"</span>) || !documentData.HasMember(<span class="string">"contents"</span>)) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">string</span> error = <span class="string">"pattern format is invalid."</span>;</span><br><span class="line">        LOG_ERROR &lt;&lt; error;</span><br><span class="line">	    responseJson(response, <span class="string">""</span>, <span class="number">10000</span>, error, <span class="literal">true</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    rapidjson::Value&amp; contents = documentData[<span class="string">"contents"</span>];</span><br><span class="line">    <span class="keyword">if</span> (!contents.IsArray() || !<span class="keyword">static_cast</span>&lt;<span class="keyword">uint32_t</span>&gt;(contents.Size())) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">string</span> error = <span class="string">" contents not is array or empty."</span>;</span><br><span class="line">        LOG_ERROR &lt;&lt; error;</span><br><span class="line">	    responseJson(response, <span class="string">""</span>, <span class="number">10000</span>, error, <span class="literal">true</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> patternType = documentData[<span class="string">"dict"</span>].GetString();</span><br><span class="line"></span><br><span class="line">    rapidjson::Document document;</span><br><span class="line">    rapidjson::Document::AllocatorType&amp; allocator = document.GetAllocator();</span><br><span class="line">    rapidjson::<span class="function">Value <span class="title">result</span><span class="params">(rapidjson::kArrayType)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(contents.Size()); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!contents[i].IsString()) &#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        rapidjson::<span class="function">Value <span class="title">item</span><span class="params">(rapidjson::kObjectType)</span></span>;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">set</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt; patternResult;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">string</span> text = <span class="built_in">std</span>::<span class="built_in">string</span>(contents[i].GetString());</span><br><span class="line">        LOG_INFO &lt;&lt; <span class="string">"Pattern type: `"</span> &lt;&lt; patternType &lt;&lt; <span class="string">"` text: "</span> &lt;&lt; text;</span><br><span class="line">        <span class="keyword">int</span> hit = _context-&gt;patternManager-&gt;search(patternType, text, patternResult);</span><br><span class="line"></span><br><span class="line">        rapidjson::<span class="function">Value <span class="title">patterns</span><span class="params">(rapidjson::kArrayType)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;t : patternResult) &#123;</span><br><span class="line">            rapidjson::Value messageValue;</span><br><span class="line">            messageValue.SetString(t.c_str(), <span class="keyword">static_cast</span>&lt;<span class="keyword">unsigned</span> <span class="keyword">int</span>&gt;(t.size()), allocator);</span><br><span class="line">            patterns.PushBack(messageValue, allocator);</span><br><span class="line">        &#125;</span><br><span class="line">        item.AddMember(<span class="string">"hit"</span>, hit, allocator);</span><br><span class="line">        item.AddMember(<span class="string">"patterns"</span>, patterns, allocator);</span><br><span class="line">        result.PushBack(item, allocator);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    rapidjson::StringBuffer buffer;</span><br><span class="line">    rapidjson::Writer&lt;rapidjson::StringBuffer&gt; writer(buffer);</span><br><span class="line">    result.Accept(writer);</span><br><span class="line"></span><br><span class="line">	responseJson(response, buffer.GetString(), <span class="number">0</span>, <span class="string">""</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/src/Http/Api.cpp#L33-L97" target="_blank" rel="external">GITHUB代码段</a></p>
+<h6 id="注册接口"><a href="#注册接口" class="headerlink" title="注册接口"></a>注册接口</h6><p>在给某个 controller 增加接口时需要在<code>registerLocation</code> 方法中使用 宏 <code>ADSERVER_HTTP_ADD_API</code> 注册</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> Api::registerLocation(adbase::http::Server* http) &#123;</span><br><span class="line">	ADSERVER_HTTP_ADD_API(http, Api, index)</span><br><span class="line">	ADSERVER_HTTP_ADD_API(http, Api, pattern)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/src/Http/Api.cpp#L19" target="_blank" rel="external">GITHUB代码段</a></p>
+<h4 id="实现-Memcache-get"><a href="#实现-Memcache-get" class="headerlink" title="实现 Memcache get"></a>实现 Memcache get</h4><p>对于实现 Memcache 协议 get 比较简单，将业务逻辑写在 McProcessor 中的get 方法中即可</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">adbase::mc::ProtocolBinaryResponseStatus McProcessor::get(<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">			<span class="keyword">uint16_t</span> keylen,</span><br><span class="line">			adbase::Buffer *data) &#123;</span><br><span class="line">	std::string keyData(static_cast&lt;const char*&gt;(key), static_cast&lt;size_t&gt;(keylen));</span><br><span class="line">    rapidjson::Document documentData;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// base64 decode</span></span><br><span class="line">    <span class="keyword">char</span> decodeData[<span class="keyword">static_cast</span>&lt;<span class="keyword">size_t</span>&gt;(keylen)];</span><br><span class="line">    <span class="built_in">memset</span>(decodeData, <span class="number">0</span>, <span class="keyword">static_cast</span>&lt;<span class="keyword">size_t</span>&gt;(keylen));</span><br><span class="line">    <span class="keyword">int</span> length = <span class="number">0</span>;</span><br><span class="line">    adbase::base64Decode(decodeData, &amp;length, keyData);</span><br><span class="line"></span><br><span class="line">    documentData.Parse(decodeData);</span><br><span class="line">    <span class="keyword">if</span> (documentData.HasParseError()) &#123;</span><br><span class="line">        <span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_KEY_ENOENT;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!documentData.IsObject()) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">string</span> error = <span class="string">"pattern format is invalid."</span>;</span><br><span class="line">        LOG_ERROR &lt;&lt; error;</span><br><span class="line">        <span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_KEY_ENOENT;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!documentData.HasMember(<span class="string">"dict"</span>) || !documentData.HasMember(<span class="string">"contents"</span>)) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">string</span> error = <span class="string">"pattern format is invalid."</span>;</span><br><span class="line">        LOG_ERROR &lt;&lt; error;</span><br><span class="line">        <span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_KEY_ENOENT;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    rapidjson::Value&amp; contents = documentData[<span class="string">"contents"</span>];</span><br><span class="line">    <span class="keyword">if</span> (!contents.IsArray() || !<span class="keyword">static_cast</span>&lt;<span class="keyword">uint32_t</span>&gt;(contents.Size())) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">string</span> error = <span class="string">" contents not is array or empty."</span>;</span><br><span class="line">        LOG_ERROR &lt;&lt; error;</span><br><span class="line">        <span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_KEY_ENOENT;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> patternType = documentData[<span class="string">"dict"</span>].GetString();</span><br><span class="line"></span><br><span class="line">    rapidjson::Document document;</span><br><span class="line">    rapidjson::Document::AllocatorType&amp; allocator = document.GetAllocator();</span><br><span class="line">    rapidjson::<span class="function">Value <span class="title">result</span><span class="params">(rapidjson::kArrayType)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(contents.Size()); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!contents[i].IsString()) &#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        rapidjson::<span class="function">Value <span class="title">item</span><span class="params">(rapidjson::kObjectType)</span></span>;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">set</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt; patternResult;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">string</span> text = <span class="built_in">std</span>::<span class="built_in">string</span>(contents[i].GetString());</span><br><span class="line">        LOG_INFO &lt;&lt; <span class="string">"Pattern type: `"</span> &lt;&lt; patternType &lt;&lt; <span class="string">"` text: "</span> &lt;&lt; text;</span><br><span class="line">        <span class="keyword">int</span> hit = _context-&gt;patternManager-&gt;search(patternType, text, patternResult);</span><br><span class="line"></span><br><span class="line">        rapidjson::<span class="function">Value <span class="title">patterns</span><span class="params">(rapidjson::kArrayType)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;t : patternResult) &#123;</span><br><span class="line">            rapidjson::Value messageValue;</span><br><span class="line">            messageValue.SetString(t.c_str(), <span class="keyword">static_cast</span>&lt;<span class="keyword">unsigned</span> <span class="keyword">int</span>&gt;(t.size()), allocator);</span><br><span class="line">            patterns.PushBack(messageValue, allocator);</span><br><span class="line">        &#125;</span><br><span class="line">        item.AddMember(<span class="string">"hit"</span>, hit, allocator);</span><br><span class="line">        item.AddMember(<span class="string">"patterns"</span>, patterns, allocator);</span><br><span class="line">        result.PushBack(item, allocator);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    rapidjson::StringBuffer buffer;</span><br><span class="line">    rapidjson::Writer&lt;rapidjson::StringBuffer&gt; writer(buffer);</span><br><span class="line">    result.Accept(writer);</span><br><span class="line"></span><br><span class="line">	data-&gt;append(<span class="keyword">static_cast</span>&lt;<span class="keyword">const</span> <span class="keyword">char</span>*&gt;(buffer.GetString()), <span class="keyword">static_cast</span>&lt;<span class="keyword">size_t</span>&gt;(buffer.GetSize()));</span><br><span class="line">	<span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/weiboad/adbase_case/blob/master/pattern/src/McProcessor.cpp#L102-L171" target="_blank" rel="external">GITHUB代码段</a></p>
+<h4 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h4><p>到目前为止使用 Adbase 开发的第一个项目就开发完成了，可以编译测试了</p>
+<h3 id="项目部署"><a href="#项目部署" class="headerlink" title="项目部署"></a>项目部署</h3>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/02/09/adbase/case/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/01/22/adbase/adbase/utility/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.jpg" alt="Nmred's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        nmred_2008@126.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">19</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/06/">六月 2015<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/05/">五月 2015<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/10/">十月 2014<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/09/">九月 2014<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/04/">四月 2014<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/03/">三月 2014<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/02/">二月 2014<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/09/">九月 2013<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/05/">五月 2013<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/02/">二月 2013<span class="sidebar_archives-count">20</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Adbase-文档/">Adbase 文档<span class="sidebar_archives-count">21</span></a></li><li><a class="sidebar_archives-link" href="/categories/C-语言/">C 语言<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/GNU-M4-技术文档/">GNU M4 技术文档<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Hadoop/">Hadoop<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/SBT-快速入门/">SBT 快速入门<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/categories/linux/">linux<span class="sidebar_archives-count">21</span></a></li><li><a class="sidebar_archives-link" href="/categories/php/">php<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/《C-Primer-Plus-第6版-》练习/">《C++ Primer Plus(第6版)》练习<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/《unix-高级编程》-Note/">《unix 高级编程》-Note<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/《快学scala》练习/">《快学scala》练习<span class="sidebar_archives-count">16</span></a></li><li><a class="sidebar_archives-link" href="/categories/虚拟技术/">虚拟技术<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">96</span>
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://weibo.com/nmred" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/nmred" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;2013&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Iodsp
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

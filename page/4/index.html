@@ -56,9 +56,9 @@
     <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
 
     <!-- Favicons -->
-    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
-    <link rel="icon" sizes="192x192" href="/img/favicon.png">
-    <link rel="apple-touch-icon" href="/img/favicon.png">
+    <link rel="icon shortcut" type="image/ico" href="/img/iodsp.png">
+    <link rel="icon" sizes="192x192" href="/img/iodsp.png">
+    <link rel="apple-touch-icon" href="/img/iodsp.png">
 
     <!--iOS -->
     <meta name="apple-mobile-web-app-title" content="Title">
@@ -230,7 +230,7 @@
     <meta property="og:url" content="http://www.swanlinux.net">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Iodsp">
-    <meta property="og:image" content="http://www.swanlinux.net/img/favicon.png" />
+    <meta property="og:image" content="http://www.swanlinux.net/img/iodsp.png" />
     <meta property="og:description" content="">
     
 
@@ -239,7 +239,7 @@
     <!-- The Twitter Card protocol -->
     <meta name="twitter:title" content="Iodsp">
     <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="http://www.swanlinux.net/img/favicon.png">
+    <meta name="twitter:image" content="http://www.swanlinux.net/img/iodsp.png">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="http://www.swanlinux.net" />
 
@@ -308,19 +308,17 @@
     
 
         <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2013/05/16/c_static/">C 语言中static用法总结</a></p>
+        <p class="article-headline-p"><a href="/2015/06/05/sbt_quick_running/">SBT 快速入门 ------ 运行 SBT</a></p>
     </div>
 
     <!-- Post Excerpt -->
     <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
-            ###C程序存储空间布局
-C语言一直有下列部分组成：
-正文段 － CPU 执行的机器指令部分；一个程序只有一个副本；只读...
+            交互模式
         
         &nbsp;&nbsp;&nbsp;
         <span>
-            <a href="/2013/05/16/c_static/" target="_self">阅读全文</a>
+            <a href="/2015/06/05/sbt_quick_running/" target="_self">阅读全文</a>
         </span>
     </div>
     <!-- Post_entry Info-->
@@ -328,18 +326,18 @@ C语言一直有下列部分组成：
         <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
             <!-- Author Avatar -->
             <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Nmred's avatar">
+                <img src="/img/avatar.jpg" width="44px" height="44px" alt="Nmred's avatar">
             </div>
             <div>
                 <strong>Nmred</strong>
-                <span>5月 16, 2013</span>
+                <span>6月 05, 2015</span>
             </div>
         </div>
         <div id="post_entry-right-info">
           
               <!-- Category -->
               <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/C-语言/">C 语言</a>
+                  <a class="post_category-link" href="/categories/SBT-快速入门/">SBT 快速入门</a>
               </span>
             
 
@@ -371,18 +369,18 @@ C语言一直有下列部分组成：
     
 
         <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2013/05/14/c_extern/">C 语言中 extern 关键字详解</a></p>
+        <p class="article-headline-p"><a href="/2015/06/04/sbt_quick_directory_struct/">SBT 快速入门 ------ 目录结构</a></p>
     </div>
 
     <!-- Post Excerpt -->
     <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
-            ###用extern 声明外部变量
-定义：外部变量是指在函数或者文件外部定义的全局变量。外部变量定义必须在所有的函数之外，且只能定义一...
+            ###根目录
+在 sbt 术语中 “根目录”是一个包含项目的目录，所以如果创建一个 hello 项目将包含 hello/build.s...
         
         &nbsp;&nbsp;&nbsp;
         <span>
-            <a href="/2013/05/14/c_extern/" target="_self">阅读全文</a>
+            <a href="/2015/06/04/sbt_quick_directory_struct/" target="_self">阅读全文</a>
         </span>
     </div>
     <!-- Post_entry Info-->
@@ -390,18 +388,18 @@ C语言一直有下列部分组成：
         <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
             <!-- Author Avatar -->
             <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Nmred's avatar">
+                <img src="/img/avatar.jpg" width="44px" height="44px" alt="Nmred's avatar">
             </div>
             <div>
                 <strong>Nmred</strong>
-                <span>5月 14, 2013</span>
+                <span>6月 04, 2015</span>
             </div>
         </div>
         <div id="post_entry-right-info">
           
               <!-- Category -->
               <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/C-语言/">C 语言</a>
+                  <a class="post_category-link" href="/categories/SBT-快速入门/">SBT 快速入门</a>
               </span>
             
 
@@ -433,18 +431,17 @@ C语言一直有下列部分组成：
     
 
         <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2013/05/14/unix_note_stanard_file_io/">标准 IO 库</a></p>
+        <p class="article-headline-p"><a href="/2015/06/03/sbt_quick_hello_world/">SBT 快速入门 ------ Hello World</a></p>
     </div>
 
     <!-- Post Excerpt -->
     <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
-            ###流和 FILE 对象
-标准I/O文件流可用于单字节或多字节字符集，流的定向决定了所读、写的字符是单字节还是多字节的。当一个流最初...
+            
         
         &nbsp;&nbsp;&nbsp;
         <span>
-            <a href="/2013/05/14/unix_note_stanard_file_io/" target="_self">阅读全文</a>
+            <a href="/2015/06/03/sbt_quick_hello_world/" target="_self">阅读全文</a>
         </span>
     </div>
     <!-- Post_entry Info-->
@@ -452,18 +449,18 @@ C语言一直有下列部分组成：
         <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
             <!-- Author Avatar -->
             <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Nmred's avatar">
+                <img src="/img/avatar.jpg" width="44px" height="44px" alt="Nmred's avatar">
             </div>
             <div>
                 <strong>Nmred</strong>
-                <span>5月 14, 2013</span>
+                <span>6月 03, 2015</span>
             </div>
         </div>
         <div id="post_entry-right-info">
           
               <!-- Category -->
               <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/《unix-高级编程》-Note/">《unix 高级编程》-Note</a>
+                  <a class="post_category-link" href="/categories/SBT-快速入门/">SBT 快速入门</a>
               </span>
             
 
@@ -495,18 +492,20 @@ C语言一直有下列部分组成：
     
 
         <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2013/05/14/unix_note_public.c/">UNIX 环境编程测试公共函数</a></p>
+        <p class="article-headline-p"><a href="/2015/06/02/sbt_quick_install/">SBT 快速入门 ------ 安装</a></p>
     </div>
 
     <!-- Post Excerpt -->
     <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
-            ###apue.c 头文件
+            创建一个用 SBT 构建的工程大致需要如下几步：
 
+安装 SBT 并创建一个启动脚本
+创建一个简单的项目，...
         
         &nbsp;&nbsp;&nbsp;
         <span>
-            <a href="/2013/05/14/unix_note_public.c/" target="_self">阅读全文</a>
+            <a href="/2015/06/02/sbt_quick_install/" target="_self">阅读全文</a>
         </span>
     </div>
     <!-- Post_entry Info-->
@@ -514,18 +513,18 @@ C语言一直有下列部分组成：
         <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
             <!-- Author Avatar -->
             <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Nmred's avatar">
+                <img src="/img/avatar.jpg" width="44px" height="44px" alt="Nmred's avatar">
             </div>
             <div>
                 <strong>Nmred</strong>
-                <span>5月 14, 2013</span>
+                <span>6月 02, 2015</span>
             </div>
         </div>
         <div id="post_entry-right-info">
           
               <!-- Category -->
               <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/《unix-高级编程》-Note/">《unix 高级编程》-Note</a>
+                  <a class="post_category-link" href="/categories/SBT-快速入门/">SBT 快速入门</a>
               </span>
             
 
@@ -557,18 +556,17 @@ C语言一直有下列部分组成：
     
 
         <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2013/05/14/unix_note_file_state/">系统数据文件和信息</a></p>
+        <p class="article-headline-p"><a href="/2015/06/01/sbt_quick/">SBT 快速入门</a></p>
     </div>
 
     <!-- Post Excerpt -->
     <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
-            ###口令文件
-POSIX.1 只定义了两个获取口令文件项的函数，在给出用户登录名或数值用户 ID 后，这两个函数就能查询相关项。
+            
         
         &nbsp;&nbsp;&nbsp;
         <span>
-            <a href="/2013/05/14/unix_note_file_state/" target="_self">阅读全文</a>
+            <a href="/2015/06/01/sbt_quick/" target="_self">阅读全文</a>
         </span>
     </div>
     <!-- Post_entry Info-->
@@ -576,18 +574,18 @@ POSIX.1 只定义了两个获取口令文件项的函数，在给出用户登录
         <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
             <!-- Author Avatar -->
             <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Nmred's avatar">
+                <img src="/img/avatar.jpg" width="44px" height="44px" alt="Nmred's avatar">
             </div>
             <div>
                 <strong>Nmred</strong>
-                <span>5月 14, 2013</span>
+                <span>6月 01, 2015</span>
             </div>
         </div>
         <div id="post_entry-right-info">
           
               <!-- Category -->
               <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/《unix-高级编程》-Note/">《unix 高级编程》-Note</a>
+                  <a class="post_category-link" href="/categories/SBT-快速入门/">SBT 快速入门</a>
               </span>
             
 
@@ -619,18 +617,17 @@ POSIX.1 只定义了两个获取口令文件项的函数，在给出用户登录
     
 
         <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2013/05/14/unix_note_file_directory/">文件和目录</a></p>
+        <p class="article-headline-p"><a href="/2015/05/20/gnu_m4_invoke_macro/">GNU M4 技术文档------ 调用宏</a></p>
     </div>
 
     <!-- Post Excerpt -->
     <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
-            ###stat、fstat 和 lstat 函数
-
+            宏调用Thi...
         
         &nbsp;&nbsp;&nbsp;
         <span>
-            <a href="/2013/05/14/unix_note_file_directory/" target="_self">阅读全文</a>
+            <a href="/2015/05/20/gnu_m4_invoke_macro/" target="_self">阅读全文</a>
         </span>
     </div>
     <!-- Post_entry Info-->
@@ -638,18 +635,18 @@ POSIX.1 只定义了两个获取口令文件项的函数，在给出用户登录
         <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
             <!-- Author Avatar -->
             <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Nmred's avatar">
+                <img src="/img/avatar.jpg" width="44px" height="44px" alt="Nmred's avatar">
             </div>
             <div>
                 <strong>Nmred</strong>
-                <span>5月 14, 2013</span>
+                <span>5月 20, 2015</span>
             </div>
         </div>
         <div id="post_entry-right-info">
           
               <!-- Category -->
               <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/《unix-高级编程》-Note/">《unix 高级编程》-Note</a>
+                  <a class="post_category-link" href="/categories/GNU-M4-技术文档/">GNU M4 技术文档</a>
               </span>
             
 
@@ -681,18 +678,17 @@ POSIX.1 只定义了两个获取口令文件项的函数，在给出用户登录
     
 
         <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2013/05/14/unix_note_file_io/">文件IO</a></p>
+        <p class="article-headline-p"><a href="/2015/05/15/gnu_m4_lexical_syntactic/">GNU M4 技术文档------ 语法词法</a></p>
     </div>
 
     <!-- Post Excerpt -->
     <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
-            ###文件描述符
-对于内核而言，所有打开的文件都通过文件描述符引用。文件描述符是一个非负整数。当打开一个现有文件或创建一个新文件时，内...
+            语法与词法
         
         &nbsp;&nbsp;&nbsp;
         <span>
-            <a href="/2013/05/14/unix_note_file_io/" target="_self">阅读全文</a>
+            <a href="/2015/05/15/gnu_m4_lexical_syntactic/" target="_self">阅读全文</a>
         </span>
     </div>
     <!-- Post_entry Info-->
@@ -700,18 +696,18 @@ POSIX.1 只定义了两个获取口令文件项的函数，在给出用户登录
         <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
             <!-- Author Avatar -->
             <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Nmred's avatar">
+                <img src="/img/avatar.jpg" width="44px" height="44px" alt="Nmred's avatar">
             </div>
             <div>
                 <strong>Nmred</strong>
-                <span>5月 14, 2013</span>
+                <span>5月 15, 2015</span>
             </div>
         </div>
         <div id="post_entry-right-info">
           
               <!-- Category -->
               <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/《unix-高级编程》-Note/">《unix 高级编程》-Note</a>
+                  <a class="post_category-link" href="/categories/GNU-M4-技术文档/">GNU M4 技术文档</a>
               </span>
             
 
@@ -743,19 +739,17 @@ POSIX.1 只定义了两个获取口令文件项的函数，在给出用户登录
     
 
         <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2013/02/12/linux_special_permission_setting/">Linux 中特殊权限为设置</a></p>
+        <p class="article-headline-p"><a href="/2015/05/12/gnu_m4_invoke_m4/">GNU M4 技术文档------ 调用 M4</a></p>
     </div>
 
     <!-- Post Excerpt -->
     <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
-            ###粘着位
-1)粘着位的作用
-linux的文件或目录时，有时会遇到“t”为。“t”代表粘着位，如果在一个目录上出现“t...
+            调用 m4
         
         &nbsp;&nbsp;&nbsp;
         <span>
-            <a href="/2013/02/12/linux_special_permission_setting/" target="_self">阅读全文</a>
+            <a href="/2015/05/12/gnu_m4_invoke_m4/" target="_self">阅读全文</a>
         </span>
     </div>
     <!-- Post_entry Info-->
@@ -763,18 +757,18 @@ linux的文件或目录时，有时会遇到“t”为。“t”代表粘着位�
         <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
             <!-- Author Avatar -->
             <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Nmred's avatar">
+                <img src="/img/avatar.jpg" width="44px" height="44px" alt="Nmred's avatar">
             </div>
             <div>
                 <strong>Nmred</strong>
-                <span>2月 12, 2013</span>
+                <span>5月 12, 2015</span>
             </div>
         </div>
         <div id="post_entry-right-info">
           
               <!-- Category -->
               <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/linux/">linux</a>
+                  <a class="post_category-link" href="/categories/GNU-M4-技术文档/">GNU M4 技术文档</a>
               </span>
             
 
@@ -806,20 +800,17 @@ linux的文件或目录时，有时会遇到“t”为。“t”代表粘着位�
     
 
         <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2013/02/12/linux_nfs/">Linux 系统中文件共享之 NFS</a></p>
+        <p class="article-headline-p"><a href="/2015/05/09/gnu_m4_introduction_preliminaries/">GNU M4 技术文档------ 初步介绍</a></p>
     </div>
 
     <!-- Post Excerpt -->
     <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
-            ###NFS 网络共享的一般用法
-在NFS服务器主机中进行设置
-
-1）安装NFS服务器软件包
+            初步介绍
         
         &nbsp;&nbsp;&nbsp;
         <span>
-            <a href="/2013/02/12/linux_nfs/" target="_self">阅读全文</a>
+            <a href="/2015/05/09/gnu_m4_introduction_preliminaries/" target="_self">阅读全文</a>
         </span>
     </div>
     <!-- Post_entry Info-->
@@ -827,18 +818,18 @@ linux的文件或目录时，有时会遇到“t”为。“t”代表粘着位�
         <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
             <!-- Author Avatar -->
             <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Nmred's avatar">
+                <img src="/img/avatar.jpg" width="44px" height="44px" alt="Nmred's avatar">
             </div>
             <div>
                 <strong>Nmred</strong>
-                <span>2月 12, 2013</span>
+                <span>5月 09, 2015</span>
             </div>
         </div>
         <div id="post_entry-right-info">
           
               <!-- Category -->
               <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/linux/">linux</a>
+                  <a class="post_category-link" href="/categories/GNU-M4-技术文档/">GNU M4 技术文档</a>
               </span>
             
 
@@ -870,20 +861,18 @@ linux的文件或目录时，有时会遇到“t”为。“t”代表粘着位�
     
 
         <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2013/02/12/linux_quota/">Linux 系统磁盘配额</a></p>
+        <p class="article-headline-p"><a href="/2015/05/04/cplus_primer_03/">《C++ Primer Plus(第6版)》第四章 复合类型</a></p>
     </div>
 
     <!-- Post Excerpt -->
     <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
-            应用案例：
-
-设置用户zhangsan和lisi在/quota分区中，只有使用50MB的磁盘空间
+            \1. 编写一个C++程序，如下述输出示例所示的那样请求并显示信息：
 
         
         &nbsp;&nbsp;&nbsp;
         <span>
-            <a href="/2013/02/12/linux_quota/" target="_self">阅读全文</a>
+            <a href="/2015/05/04/cplus_primer_03/" target="_self">阅读全文</a>
         </span>
     </div>
     <!-- Post_entry Info-->
@@ -891,18 +880,18 @@ linux的文件或目录时，有时会遇到“t”为。“t”代表粘着位�
         <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
             <!-- Author Avatar -->
             <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Nmred's avatar">
+                <img src="/img/avatar.jpg" width="44px" height="44px" alt="Nmred's avatar">
             </div>
             <div>
                 <strong>Nmred</strong>
-                <span>2月 12, 2013</span>
+                <span>5月 04, 2015</span>
             </div>
         </div>
         <div id="post_entry-right-info">
           
               <!-- Category -->
               <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/linux/">linux</a>
+                  <a class="post_category-link" href="/categories/《C-Primer-Plus-第6版-》练习/">《C++ Primer Plus(第6版)》练习</a>
               </span>
             
 
@@ -925,7 +914,7 @@ linux的文件或目录时，有时会遇到“t”为。“t”代表粘着位�
     
     <!-- Index nav -->
         <nav class="material-nav mdl-cell mdl-cell--12-col">
-            <a class="extend prev" rel="prev" href="/page/3/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_back</i></button></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_forward</i></button></a>
+            <a class="extend prev" rel="prev" href="/page/3/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_back</i></button></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/5/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_forward</i></button></a>
         </nav>
     
 
@@ -972,7 +961,7 @@ linux的文件或目录时，有时会遇到“t”为。“t”代表粘着位�
 
     <!-- Sidebar Avatar -->
     <div class="sidebar-image">
-        <img src="/img/avatar.png" alt="Nmred's avatar">
+        <img src="/img/avatar.jpg" alt="Nmred's avatar">
     </div>
 
     <!-- Sidebar Email -->
@@ -1026,7 +1015,7 @@ linux的文件或目录时，有时会遇到“t”为。“t”代表粘着位�
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2015/05/">五月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/10/">十月 2014<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/09/">九月 2014<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/04/">四月 2014<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/03/">三月 2014<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/02/">二月 2014<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/09/">九月 2013<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/05/">五月 2013<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/02/">二月 2013<span class="sidebar_archives-count">20</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">19</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/06/">六月 2015<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/05/">五月 2015<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/10/">十月 2014<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/09/">九月 2014<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/04/">四月 2014<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/03/">三月 2014<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/02/">二月 2014<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/09/">九月 2013<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/05/">五月 2013<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/02/">二月 2013<span class="sidebar_archives-count">20</span></a>
             </ul>
         </li>
         
@@ -1044,7 +1033,7 @@ linux的文件或目录时，有时会遇到“t”为。“t”代表粘着位�
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/C-语言/">C 语言<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Hadoop/">Hadoop<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/linux/">linux<span class="sidebar_archives-count">21</span></a></li><li><a class="sidebar_archives-link" href="/categories/php/">php<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/《C-Primer-Plus-第6版-》练习/">《C++ Primer Plus(第6版)》练习<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/《unix-高级编程》-Note/">《unix 高级编程》-Note<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/《快学scala》练习/">《快学scala》练习<span class="sidebar_archives-count">16</span></a></li><li><a class="sidebar_archives-link" href="/categories/虚拟技术/">虚拟技术<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/categories/Adbase-文档/">Adbase 文档<span class="sidebar_archives-count">21</span></a></li><li><a class="sidebar_archives-link" href="/categories/C-语言/">C 语言<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/GNU-M4-技术文档/">GNU M4 技术文档<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Hadoop/">Hadoop<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/SBT-快速入门/">SBT 快速入门<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/categories/linux/">linux<span class="sidebar_archives-count">21</span></a></li><li><a class="sidebar_archives-link" href="/categories/php/">php<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/《C-Primer-Plus-第6版-》练习/">《C++ Primer Plus(第6版)》练习<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/《unix-高级编程》-Note/">《unix 高级编程》-Note<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/《快学scala》练习/">《快学scala》练习<span class="sidebar_archives-count">16</span></a></li><li><a class="sidebar_archives-link" href="/categories/虚拟技术/">虚拟技术<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -1053,18 +1042,6 @@ linux的文件或目录时，有时会遇到“t”为。“t”代表粘着位�
     
 
     <!-- Pages  -->
-    
-        <li>
-            <a href="/about" title="关于我">
-                
-                    <i class="material-icons sidebar-material-icons">person</i>
-                
-                关于我
-            </a>
-        </li>
-        
-            <li class="divider"></li>
-        
     
         <li>
             <a href="/timeline" title="时间轴">
@@ -1080,6 +1057,16 @@ linux的文件或目录时，有时会遇到“t”为。“t”代表粘着位�
     
 
     <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">96</span>
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
     
 </ul>
 

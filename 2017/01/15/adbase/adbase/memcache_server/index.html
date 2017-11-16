@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.0 -->
+    <script>
+        window.materialVersion = "1.5.0"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Title -->
+    
+    <title>
+        
+            ADBASE ------ Memcache Server | 
+        
+        Iodsp
+    </title>
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Nmred">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",C++,ADBASE">
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/iodsp.png">
+    <link rel="icon" sizes="192x192" href="/img/iodsp.png">
+    <link rel="apple-touch-icon" href="/img/iodsp.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Iodsp">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icon -->
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://www.swanlinux.net">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="ADBASE ------ Memcache Server | Iodsp">
+    <meta property="og:image" content="http://www.swanlinux.net/img/iodsp.png" />
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="C++"> <meta property="og:article:tag" content="ADBASE"> 
+
+    
+        <meta property="article:published_time" content="Sun Jan 15 2017 09:13:16 GMT+0800" />
+        <meta property="article:modified_time" content="Thu Nov 16 2017 11:14:37 GMT+0800" />
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="ADBASE ------ Memcache Server | Iodsp">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="http://www.swanlinux.net/img/iodsp.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://www.swanlinux.net" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://www.swanlinux.net/2017/01/15/adbase/adbase/memcache_server/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://www.swanlinux.net/2017/01/15/adbase/adbase/memcache_server/index.html",
+    "headline": "ADBASE ------ Memcache Server",
+    "datePublished": "Sun Jan 15 2017 09:13:16 GMT+0800",
+    "dateModified": "Thu Nov 16 2017 11:14:37 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Nmred",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.jpg"
+        },
+        "description": "Everything in order to facilitate"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Iodsp",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/iodsp.png"
+        }
+    },
+    "keywords": ",C++,ADBASE",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建-TCP-Server"><span class="post-toc-number">1.</span> <span class="post-toc-text">创建 TCP Server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现协议接口"><span class="post-toc-number">2.</span> <span class="post-toc-text">实现协议接口</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Add-命令"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">Add 命令</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Append-命令"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">Append 命令</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Decrement-命令"><span class="post-toc-number">2.0.3.</span> <span class="post-toc-text">Decrement 命令</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Delete-命令"><span class="post-toc-number">2.0.4.</span> <span class="post-toc-text">Delete 命令</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Flush-命令"><span class="post-toc-number">2.0.5.</span> <span class="post-toc-text">Flush 命令</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Get-命令"><span class="post-toc-number">2.0.6.</span> <span class="post-toc-text">Get 命令</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Increment-命令"><span class="post-toc-number">2.0.7.</span> <span class="post-toc-text">Increment 命令</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Prepend-命令"><span class="post-toc-number">2.0.8.</span> <span class="post-toc-text">Prepend 命令</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Quit-命令"><span class="post-toc-number">2.0.9.</span> <span class="post-toc-text">Quit 命令</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#replace-命令"><span class="post-toc-number">2.0.10.</span> <span class="post-toc-text">replace 命令</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Set-命令"><span class="post-toc-number">2.0.11.</span> <span class="post-toc-text">Set 命令</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Stat-命令"><span class="post-toc-number">2.0.12.</span> <span class="post-toc-text">Stat 命令</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Version-命令"><span class="post-toc-number">2.0.13.</span> <span class="post-toc-text">Version 命令</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Verbosity-命令"><span class="post-toc-number">2.0.14.</span> <span class="post-toc-text">Verbosity 命令</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#命令执行前调用回调"><span class="post-toc-number">2.0.15.</span> <span class="post-toc-text">命令执行前调用回调</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#命令执行后调用回调"><span class="post-toc-number">2.0.16.</span> <span class="post-toc-text">命令执行后调用回调</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#命令解析错误"><span class="post-toc-number">2.0.17.</span> <span class="post-toc-text">命令解析错误</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注册-TCP-Server-回调"><span class="post-toc-number">3.</span> <span class="post-toc-text">注册 TCP Server 回调</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动"><span class="post-toc-number">4.</span> <span class="post-toc-text">启动</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                ADBASE ------ Memcache Server
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Nmred</strong>
+        <span>1月 15, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC2klEQVR42u3awY7bMAwE0Pz/T7fXAkWSGTJbpNLzaeF1LD1fCA35+HXl9cDGxsbGxsbGxsb+SvYjvoaL/fHb1+/5+8lne5jtGRsbG/tsdr711cJP1np9/xm73jM2Njb2BexkmWT5/JmElOwneg82NjY29sttJX8n5a0thNjY2NjYnypgSaFqDzb5x8XGxsbGbiP+/MCwZ+Th1A9madjY2Nhfz86D/u/5+5/2t7GxsbG/mL0ZwclL12wYqG3uvtk5NjY29qHsfLubqCj5cMkBpt0nNjY29g3sZCt5SLR55nV0lUdLT+9jY2NjX8DOm6Z5oWo3lzcn8k+GjY2NfSe7DXraduzsMJPwokYvNjY29gXs/RjNLCrKi+IHGr3Y2NjYR7A3jFmRaz9HXvDqRi82Njb2Qey26duOSLYlbTNqWRQwbGxs7CPYbRnb/2ofPOUDPdjY2Ni3sdv45lMNgzzAWq2OjY2NfSh786L2MDO734Zc0fAlNjY29jXsWatgVrpmrdyPNXqxsbGxD2LvDw/5G5JYvx3rGR5FsLGxsf9zdh735+3bWQshKkVx0cLGxsa+gb1ZrC0zmyCp/S82NjY29qZ9m5eWdkCzbTNgY2Nj38DebLFtIbRFMfkESXsDGxsb+2z2rBmwiZPa324iLWxsbOwb2EUBWD9TD9nEsVEdKmFjY2Mfx54FOu0QT97une2hDpWwsbGxj2MnV3JsSJrB+XElj7HehFzY2NjY17DbIL5tD+fU/BqGStjY2NhHsNvrsy2E5H5+8HhT0rCxsbEPZbdFIo+f9kM8s/CrOIpgY2NjH8TOi1Y7RpOXnFkrNz+QYGNjY9/AbuOh/BDyc3FSUT6xsbGxscujQnLYyFdpWwLY2NjY2HncvxkA2hTItlWAjY2NfQN7H+i0UX7Sps2L2bCAYWNjYx/Bng04zsL9vAjljYphqISNjY19BPueCxsbGxsbGxsbG/trrt9DKVz/ygFJiwAAAABJRU5ErkJggg==">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/ADBASE/">ADBASE</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/C/">C++</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=ADBASE ------ Memcache Server&url=http://www.swanlinux.net/2017/01/15/adbase/adbase/memcache_server/index.html&pic=http://www.swanlinux.net/img/iodsp.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=ADBASE ------ Memcache Server&url=http://www.swanlinux.net/2017/01/15/adbase/adbase/memcache_server/index.html&via=Nmred" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://www.swanlinux.net/2017/01/15/adbase/adbase/memcache_server/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://www.swanlinux.net/2017/01/15/adbase/adbase/memcache_server/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>Adbase 实现了 Memcache 协议，可以使用 Adabse Memcache 模块编写Memcache协议的 Server, 对于 Memcache 协议可以满足的服务可以使用该模块开发，这样对于其他语言可以便捷的使用 Memcache client 交互，免去其他语言实现对应 RPC 客户端的必要，提升开发效率。较 Http 协议 Memcache 支持长连接，对于要求长连接的应用该 RPC 是自定义协议与 Http 协议一种折中选择，如果 Memcache 协议满足不了需求可以使用 Adhead 协议来完成, Adhead 定制化更强</p>
+<p>Adbase Memcache 模块基于网络模块实现 TCP 层交互，网络IO模型使用 <code>adbase::net::TcpServer</code> 实现，该模块主要是实现交互协议，所以创建一个 Memcache Server 需要分为以下几步：</p>
+<h3 id="创建-TCP-Server"><a href="#创建-TCP-Server" class="headerlink" title="创建 TCP Server"></a>创建 TCP Server</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gEventLoop = <span class="keyword">new</span> adbase::EventLoop();</span><br><span class="line">adbase::<span class="function">InetAddress <span class="title">mcAddr</span><span class="params">(<span class="string">"0.0.0.0"</span>, <span class="number">10012</span>)</span></span>;</span><br><span class="line">adbase::TcpServer mcServer(gEventLoop-&gt;getBase(), mcAddr, "test");</span><br></pre></td></tr></table></figure>
+<p>创建 Server 首先要创建 EventLoop 管理对象，其次通过 <code>adbase::InetAddress</code> 创建地址对象，<code>adbase::TcpServer</code> 对象第一个参数是 <code>EventLoop</code> base 指针，第二个就是创建该 Server 的地址对象，第三个是 server name, 用来日志中调试使用。</p>
+<h3 id="实现协议接口"><a href="#实现协议接口" class="headerlink" title="实现协议接口"></a>实现协议接口</h3><p>对于实现 Memcache 协议的 RPC server 实现协议接口时核心部分，实现部分仅仅需要可选的实现需要交互的命令回调函数即可，没有比较将每个一个回调函数都实现, 最终将实现对应的回调函数注册到 <code>adbase::mc::Interface</code> 中, 最终通过<code>adbase::mc::Handler</code> 实现对应 <code>TcpServer</code> 的 <code>ConnectionCallback</code> 、<code>CloseCallback</code>、<code>MessageCallback</code> 回调, 下面介绍具体的每个命令实现回调函数定义</p>
+<h5 id="Add-命令"><a href="#Add-命令" class="headerlink" title="Add 命令"></a>Add 命令</h5><p>回调函数定义格式如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// AddHandler</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::function&lt;ProtocolBinaryResponseStatus (<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">                                                    <span class="keyword">uint16_t</span> keylen,</span><br><span class="line">                                                    <span class="keyword">const</span> <span class="keyword">void</span> *data,</span><br><span class="line">                                                    <span class="keyword">uint32_t</span> datalen,</span><br><span class="line">                                                    <span class="keyword">uint32_t</span> flags,</span><br><span class="line">                                                    <span class="keyword">uint32_t</span> exptime,</span><br><span class="line">                                                    <span class="keyword">uint64_t</span>* cas)&gt; AddHandler;</span><br></pre></td></tr></table></figure>
+<p>参数说明:</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>key 的指针 </td>
+</tr>
+<tr>
+<td>keylen</td>
+<td>key 的长度 </td>
+</tr>
+<tr>
+<td>data</td>
+<td>添加数据的指针 </td>
+</tr>
+<tr>
+<td>datalen</td>
+<td>添加数据的长度</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>添加数据的参数选项</td>
+</tr>
+<tr>
+<td>exptime</td>
+<td>添加数据过期时间</td>
+</tr>
+<tr>
+<td>cas</td>
+<td>添加数据版本号，有 server 会返回，默认0</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">adbase::mc::ProtocolBinaryResponseStatus McProcessor::add(<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">            <span class="keyword">uint16_t</span> keylen,</span><br><span class="line">            <span class="keyword">const</span> <span class="keyword">void</span> *data,</span><br><span class="line">            <span class="keyword">uint32_t</span> datalen,</span><br><span class="line">            <span class="keyword">uint32_t</span> flags,</span><br><span class="line">            <span class="keyword">uint32_t</span> exptime,</span><br><span class="line">            <span class="keyword">uint64_t</span>* cas) &#123;</span><br><span class="line">    (<span class="keyword">void</span>)flags;</span><br><span class="line">    (<span class="keyword">void</span>)exptime;</span><br><span class="line">    (<span class="keyword">void</span>)cas;</span><br><span class="line">    std::string keyData(static_cast&lt;const char*&gt;(key), static_cast&lt;size_t&gt;(keylen));</span><br><span class="line">    adbase::Buffer bufferBody;</span><br><span class="line">    bufferBody.append(<span class="keyword">static_cast</span>&lt;<span class="keyword">const</span> <span class="keyword">char</span>*&gt;(data), <span class="keyword">static_cast</span>&lt;<span class="keyword">size_t</span>&gt;(datalen));</span><br><span class="line">    LOG_INFO &lt;&lt; <span class="string">"Mc ADD key:"</span> &lt;&lt; keyData;</span><br><span class="line">    LOG_INFO &lt;&lt; <span class="string">"Mc ADD data size:"</span> &lt;&lt; bufferBody.readableBytes();</span><br><span class="line">    <span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于自定义的 Memcache 实现来说，仅仅使用 Memcache 作为数据传输交互，所以 <code>flags</code> 、<code>exptime</code> 、<code>cas</code> 参数基本不会用到可以忽略。该示例就是将客户端 add命令传输的数据通过日志打印出来</p>
+<h5 id="Append-命令"><a href="#Append-命令" class="headerlink" title="Append 命令"></a>Append 命令</h5><p>回调函数定义格式如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// AppendHandler</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::function&lt;ProtocolBinaryResponseStatus (<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">                                                    <span class="keyword">uint16_t</span> keylen,</span><br><span class="line">                                                    <span class="keyword">const</span> <span class="keyword">void</span> *data,</span><br><span class="line">                                                    <span class="keyword">uint32_t</span> datalen,</span><br><span class="line">                                                    <span class="keyword">uint64_t</span> cas,</span><br><span class="line">                                                    <span class="keyword">uint64_t</span>* resultCas)&gt; AppendHandler;</span><br></pre></td></tr></table></figure>
+<p>参数说明:</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>key 的指针 </td>
+</tr>
+<tr>
+<td>keylen</td>
+<td>key 的长度 </td>
+</tr>
+<tr>
+<td>data</td>
+<td>添加数据的指针 </td>
+</tr>
+<tr>
+<td>datalen</td>
+<td>添加数据的长度</td>
+</tr>
+<tr>
+<td>cas</td>
+<td>上次修改数据版本号</td>
+</tr>
+<tr>
+<td>resultCas</td>
+<td>本次修改数据版本号</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">adbase::mc::ProtocolBinaryResponseStatus McProcessor::append(<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">            <span class="keyword">uint16_t</span> keylen,</span><br><span class="line">            <span class="keyword">const</span> <span class="keyword">void</span> *data,</span><br><span class="line">            <span class="keyword">uint32_t</span> datalen,</span><br><span class="line">            <span class="keyword">uint64_t</span> cas,</span><br><span class="line">            <span class="keyword">uint64_t</span>* resultCas) &#123;</span><br><span class="line">    (<span class="keyword">void</span>)cas;</span><br><span class="line">    (<span class="keyword">void</span>)resultCas;</span><br><span class="line">    std::string keyData(static_cast&lt;const char*&gt;(key), static_cast&lt;size_t&gt;(keylen));</span><br><span class="line">    adbase::Buffer bufferBody;</span><br><span class="line">    bufferBody.append(<span class="keyword">static_cast</span>&lt;<span class="keyword">const</span> <span class="keyword">char</span>*&gt;(data), <span class="keyword">static_cast</span>&lt;<span class="keyword">size_t</span>&gt;(datalen));</span><br><span class="line">    LOG_INFO &lt;&lt; <span class="string">"Mc APPEND key:"</span> &lt;&lt; keyData;</span><br><span class="line">    LOG_INFO &lt;&lt; <span class="string">"Mc APPEND data size:"</span> &lt;&lt; bufferBody.readableBytes();</span><br><span class="line">    <span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于自定义的 Memcache 实现来说，仅仅使用 Memcache 作为数据传输交互，所以 <code>cas</code> 、<code>resultCas</code> 参数基本不会用到可以忽略。该示例就是将客户端 <code>append</code> 命令传输的数据通过日志打印出来</p>
+<h5 id="Decrement-命令"><a href="#Decrement-命令" class="headerlink" title="Decrement 命令"></a>Decrement 命令</h5><p>回调函数定义格式如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// DecrementHandler</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::function&lt;ProtocolBinaryResponseStatus (<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">                                                    <span class="keyword">uint16_t</span> keylen,</span><br><span class="line">                                                    <span class="keyword">uint64_t</span> delta,</span><br><span class="line">                                                    <span class="keyword">uint64_t</span> initial,</span><br><span class="line">                                                    <span class="keyword">uint32_t</span> expiration,</span><br><span class="line">                                                    <span class="keyword">uint64_t</span>* result,</span><br><span class="line">                                                    <span class="keyword">uint64_t</span>* resultCas)&gt; DecrementHandler;</span><br></pre></td></tr></table></figure>
+<p>参数说明:</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>key 的指针 </td>
+</tr>
+<tr>
+<td>keylen</td>
+<td>key 的长度 </td>
+</tr>
+<tr>
+<td>delta</td>
+<td>修改数据的 offset </td>
+</tr>
+<tr>
+<td>initial</td>
+<td>如果不存在默认值</td>
+</tr>
+<tr>
+<td>expiration</td>
+<td>有效期</td>
+</tr>
+<tr>
+<td>result</td>
+<td>变更后的结果数据</td>
+</tr>
+<tr>
+<td>resultCas</td>
+<td>本次修改数据版本号</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">adbase::mc::ProtocolBinaryResponseStatus McProcessor::decrement(<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">            <span class="keyword">uint16_t</span> keylen,</span><br><span class="line">            <span class="keyword">uint64_t</span> delta,</span><br><span class="line">            <span class="keyword">uint64_t</span> initial,</span><br><span class="line">            <span class="keyword">uint32_t</span> expiration,</span><br><span class="line">            <span class="keyword">uint64_t</span>* result,</span><br><span class="line">            <span class="keyword">uint64_t</span>* resultCas) &#123;</span><br><span class="line">    (<span class="keyword">void</span>)delta;</span><br><span class="line">    (<span class="keyword">void</span>)initial;</span><br><span class="line">    (<span class="keyword">void</span>)expiration;</span><br><span class="line">    (<span class="keyword">void</span>)result;</span><br><span class="line">    (<span class="keyword">void</span>)resultCas;</span><br><span class="line">    std::string keyData(static_cast&lt;const char*&gt;(key), static_cast&lt;size_t&gt;(keylen));</span><br><span class="line">    LOG_INFO &lt;&lt; <span class="string">"Mc DECREMENT key:"</span> &lt;&lt; keyData;</span><br><span class="line">    <span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于自定义的 Memcache 实现来说，仅仅使用 Memcache 作为数据传输交互，所以 <code>cas</code> 、<code>resultCas</code> 参数基本不会用到可以忽略。该示例就是将客户端 <code>decrement</code> 命令传输的数据key通过日志打印出来</p>
+<h5 id="Delete-命令"><a href="#Delete-命令" class="headerlink" title="Delete 命令"></a>Delete 命令</h5><p>回调函数定义格式如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// DeleteHandler</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::function&lt;ProtocolBinaryResponseStatus (<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">                                                    <span class="keyword">uint16_t</span> keylen,</span><br><span class="line">                                                    <span class="keyword">uint64_t</span> cas)&gt; DeleteHandler;</span><br></pre></td></tr></table></figure>
+<p>参数说明:</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>key 的指针 </td>
+</tr>
+<tr>
+<td>keylen</td>
+<td>key 的长度 </td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">adbase::mc::ProtocolBinaryResponseStatus McProcessor::deleteOp(<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">            <span class="keyword">uint16_t</span> keylen,</span><br><span class="line">            <span class="keyword">uint64_t</span> cas) &#123;</span><br><span class="line">    (<span class="keyword">void</span>)cas;</span><br><span class="line">    std::string keyData(static_cast&lt;const char*&gt;(key), static_cast&lt;size_t&gt;(keylen));</span><br><span class="line">    LOG_INFO &lt;&lt; <span class="string">"Mc DELETE key:"</span> &lt;&lt; keyData;</span><br><span class="line">    <span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该示例就是将客户端 <code>delete</code> 命令传输的数据 <code>key</code> 通过日志打印出来</p>
+<h5 id="Flush-命令"><a href="#Flush-命令" class="headerlink" title="Flush 命令"></a>Flush 命令</h5><p>回调函数定义格式如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// FlushHandler</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::function&lt;ProtocolBinaryResponseStatus (<span class="keyword">uint32_t</span> when)&gt; FlushHandler;</span><br></pre></td></tr></table></figure>
+<p>参数说明:</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>when</td>
+<td>将前几秒的数据 flush进去</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">adbase::mc::ProtocolBinaryResponseStatus McProcessor::flush(<span class="keyword">uint32_t</span> when) &#123;</span><br><span class="line">    LOG_INFO &lt;&lt; <span class="string">"Mc FLUSH when:"</span> &lt;&lt; when;</span><br><span class="line">    <span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="Get-命令"><a href="#Get-命令" class="headerlink" title="Get 命令"></a>Get 命令</h5><p>回调函数定义格式如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// GetHandler</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::function&lt;ProtocolBinaryResponseStatus (<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">                                                    <span class="keyword">uint16_t</span> keylen,</span><br><span class="line">                                                    Buffer *data)&gt; GetHandler;</span><br></pre></td></tr></table></figure>
+<p>参数说明:</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>key 的指针 </td>
+</tr>
+<tr>
+<td>keylen</td>
+<td>key 的长度 </td>
+</tr>
+<tr>
+<td>data</td>
+<td>get 操作将要返回的数据 </td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">adbase::mc::ProtocolBinaryResponseStatus McProcessor::get(<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">            <span class="keyword">uint16_t</span> keylen,</span><br><span class="line">            adbase::Buffer *data) &#123;</span><br><span class="line">    std::string keyData(static_cast&lt;const char*&gt;(key), static_cast&lt;size_t&gt;(keylen));</span><br><span class="line">    data-&gt;append(<span class="keyword">static_cast</span>&lt;<span class="keyword">const</span> <span class="keyword">char</span>*&gt;(key), <span class="keyword">static_cast</span>&lt;<span class="keyword">size_t</span>&gt;(keylen));</span><br><span class="line">    LOG_INFO &lt;&lt; <span class="string">"Mc GET key:"</span> &lt;&lt; keyData;</span><br><span class="line">    <span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该示例就是将客户端 <code>get</code> 命令传输的数据 <code>key</code> 通过日志打印出来, 并且将 <code>key</code> 返回给客户端</p>
+<h5 id="Increment-命令"><a href="#Increment-命令" class="headerlink" title="Increment 命令"></a>Increment 命令</h5><p>回调函数定义格式如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// IncrementHandler</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::function&lt;ProtocolBinaryResponseStatus (<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">                                                    <span class="keyword">uint16_t</span> keylen,</span><br><span class="line">                                                    <span class="keyword">uint64_t</span> delta,</span><br><span class="line">                                                    <span class="keyword">uint64_t</span> initial,</span><br><span class="line">                                                    <span class="keyword">uint32_t</span> expiration,</span><br><span class="line">                                                    <span class="keyword">uint64_t</span>* result,</span><br><span class="line">                                                    <span class="keyword">uint64_t</span>* resultCas)&gt; IncrementHandler;</span><br></pre></td></tr></table></figure>
+<p>参数说明:</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>key 的指针 </td>
+</tr>
+<tr>
+<td>keylen</td>
+<td>key 的长度 </td>
+</tr>
+<tr>
+<td>delta</td>
+<td>修改数据的 offset </td>
+</tr>
+<tr>
+<td>initial</td>
+<td>如果不存在默认值</td>
+</tr>
+<tr>
+<td>expiration</td>
+<td>有效期</td>
+</tr>
+<tr>
+<td>result</td>
+<td>变更后的结果数据</td>
+</tr>
+<tr>
+<td>resultCas</td>
+<td>本次修改数据版本号</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">adbase::mc::ProtocolBinaryResponseStatus McProcessor::increment(<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">            <span class="keyword">uint16_t</span> keylen,</span><br><span class="line">            <span class="keyword">uint64_t</span> delta,</span><br><span class="line">            <span class="keyword">uint64_t</span> initial,</span><br><span class="line">            <span class="keyword">uint32_t</span> expiration,</span><br><span class="line">            <span class="keyword">uint64_t</span>* result,</span><br><span class="line">            <span class="keyword">uint64_t</span>* resultCas) &#123;</span><br><span class="line">    (<span class="keyword">void</span>)delta;</span><br><span class="line">    (<span class="keyword">void</span>)initial;</span><br><span class="line">    (<span class="keyword">void</span>)expiration;</span><br><span class="line">    (<span class="keyword">void</span>)result;</span><br><span class="line">    (<span class="keyword">void</span>)resultCas;</span><br><span class="line">    std::string keyData(static_cast&lt;const char*&gt;(key), static_cast&lt;size_t&gt;(keylen));</span><br><span class="line">    LOG_INFO &lt;&lt; <span class="string">"Mc INCREMENT key:"</span> &lt;&lt; keyData;</span><br><span class="line">    <span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于自定义的 Memcache 实现来说，仅仅使用 Memcache 作为数据传输交互，所以 <code>cas</code> 、<code>resultCas</code> 参数基本不会用到可以忽略。该示例就是将客户端 <code>increment</code> 命令传输的数据key通过日志打印出来</p>
+<h5 id="Prepend-命令"><a href="#Prepend-命令" class="headerlink" title="Prepend 命令"></a>Prepend 命令</h5><p>回调函数定义格式如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PrependHandler</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::function&lt;ProtocolBinaryResponseStatus (<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">                                                    <span class="keyword">uint16_t</span> keylen,</span><br><span class="line">                                                    <span class="keyword">const</span> <span class="keyword">void</span> *data,</span><br><span class="line">                                                    <span class="keyword">uint32_t</span> datalen,</span><br><span class="line">                                                    <span class="keyword">uint64_t</span> cas,</span><br><span class="line">                                                    <span class="keyword">uint64_t</span>* resultCas)&gt; PrependHandler;</span><br></pre></td></tr></table></figure>
+<p>参数说明:</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>key 的指针 </td>
+</tr>
+<tr>
+<td>keylen</td>
+<td>key 的长度 </td>
+</tr>
+<tr>
+<td>data</td>
+<td>添加数据的指针 </td>
+</tr>
+<tr>
+<td>datalen</td>
+<td>添加数据的长度</td>
+</tr>
+<tr>
+<td>cas</td>
+<td>上次修改数据版本号</td>
+</tr>
+<tr>
+<td>resultCas</td>
+<td>本次修改数据版本号</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">adbase::mc::ProtocolBinaryResponseStatus McProcessor::prepend(<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">            <span class="keyword">uint16_t</span> keylen,</span><br><span class="line">            <span class="keyword">const</span> <span class="keyword">void</span> *data,</span><br><span class="line">            <span class="keyword">uint32_t</span> datalen,</span><br><span class="line">            <span class="keyword">uint64_t</span> cas,</span><br><span class="line">            <span class="keyword">uint64_t</span>* resultCas) &#123;</span><br><span class="line">    (<span class="keyword">void</span>)cas;</span><br><span class="line">    (<span class="keyword">void</span>)resultCas;</span><br><span class="line">    std::string keyData(static_cast&lt;const char*&gt;(key), static_cast&lt;size_t&gt;(keylen));</span><br><span class="line">    adbase::Buffer bufferBody;</span><br><span class="line">    bufferBody.append(<span class="keyword">static_cast</span>&lt;<span class="keyword">const</span> <span class="keyword">char</span>*&gt;(data), <span class="keyword">static_cast</span>&lt;<span class="keyword">size_t</span>&gt;(datalen));</span><br><span class="line">    LOG_INFO &lt;&lt; <span class="string">"Mc PREPEND key:"</span> &lt;&lt; keyData;</span><br><span class="line">    LOG_INFO &lt;&lt; <span class="string">"Mc PREPEND data size:"</span> &lt;&lt; bufferBody.readableBytes();</span><br><span class="line">    <span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于自定义的 Memcache 实现来说，仅仅使用 Memcache 作为数据传输交互，所以 <code>cas</code> 、<code>resultCas</code> 参数基本不会用到可以忽略。该示例就是将客户端 <code>prepend</code> 命令传输的数据通过日志打印出来</p>
+<h5 id="Quit-命令"><a href="#Quit-命令" class="headerlink" title="Quit 命令"></a>Quit 命令</h5><p>回调函数定义格式如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// QuitHandler</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::function&lt;ProtocolBinaryResponseStatus ()&gt; QuitHandler;</span><br></pre></td></tr></table></figure>
+<p>Example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adbase::mc::ProtocolBinaryResponseStatus McProcessor::quit() &#123;</span><br><span class="line">    <span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该示例是在客户端执行 <code>quit</code> 命令时记录日志</p>
+<h5 id="replace-命令"><a href="#replace-命令" class="headerlink" title="replace 命令"></a>replace 命令</h5><p>回调函数定义格式如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ReplaceHander</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::function&lt;ProtocolBinaryResponseStatus (<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">                                                    <span class="keyword">uint16_t</span> keylen,</span><br><span class="line">                                                    <span class="keyword">const</span> <span class="keyword">void</span> *data,</span><br><span class="line">                                                    <span class="keyword">uint32_t</span> datalen,</span><br><span class="line">                                                    <span class="keyword">uint32_t</span> flags,</span><br><span class="line">                                                    <span class="keyword">uint32_t</span> exptime,</span><br><span class="line">                                                    <span class="keyword">uint64_t</span> cas,</span><br><span class="line">                                                    <span class="keyword">uint64_t</span>* resultCas)&gt; ReplaceHander;</span><br></pre></td></tr></table></figure>
+<p>参数说明:</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>key 的指针 </td>
+</tr>
+<tr>
+<td>keylen</td>
+<td>key 的长度 </td>
+</tr>
+<tr>
+<td>data</td>
+<td>添加数据的指针 </td>
+</tr>
+<tr>
+<td>datalen</td>
+<td>添加数据的长度</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>添加数据的参数选项</td>
+</tr>
+<tr>
+<td>exptime</td>
+<td>添加数据过期时间</td>
+</tr>
+<tr>
+<td>cas</td>
+<td>上次修改数据版本号</td>
+</tr>
+<tr>
+<td>resultCas</td>
+<td>本次修改数据版本号</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">adbase::mc::ProtocolBinaryResponseStatus McProcessor::replace(<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">            <span class="keyword">uint16_t</span> keylen,</span><br><span class="line">            <span class="keyword">const</span> <span class="keyword">void</span> *data,</span><br><span class="line">            <span class="keyword">uint32_t</span> datalen,</span><br><span class="line">            <span class="keyword">uint32_t</span> flags,</span><br><span class="line">            <span class="keyword">uint32_t</span> exptime,</span><br><span class="line">            <span class="keyword">uint64_t</span> cas,</span><br><span class="line">            <span class="keyword">uint64_t</span>* resultCas) &#123;</span><br><span class="line">    (<span class="keyword">void</span>)flags;</span><br><span class="line">    (<span class="keyword">void</span>)exptime;</span><br><span class="line">    (<span class="keyword">void</span>)cas;</span><br><span class="line">    (<span class="keyword">void</span>)resultCas;</span><br><span class="line">    std::string keyData(static_cast&lt;const char*&gt;(key), static_cast&lt;size_t&gt;(keylen));</span><br><span class="line">    adbase::Buffer bufferBody;</span><br><span class="line">    bufferBody.append(<span class="keyword">static_cast</span>&lt;<span class="keyword">const</span> <span class="keyword">char</span>*&gt;(data), <span class="keyword">static_cast</span>&lt;<span class="keyword">size_t</span>&gt;(datalen));</span><br><span class="line">    LOG_INFO &lt;&lt; <span class="string">"Mc REPLACE key:"</span> &lt;&lt; keyData;</span><br><span class="line">    LOG_INFO &lt;&lt; <span class="string">"Mc REPLACE data size:"</span> &lt;&lt; bufferBody.readableBytes();</span><br><span class="line">    <span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于自定义的 Memcache 实现来说，仅仅使用 Memcache 作为数据传输交互，所以 <code>flags</code>、<code>exptime</code>、<code>cas</code> 、<code>resultCas</code> 参数基本不会用到可以忽略。该示例就是将客户端 <code>replace</code> 命令传输的数据通过日志打印出来</p>
+<h5 id="Set-命令"><a href="#Set-命令" class="headerlink" title="Set 命令"></a>Set 命令</h5><p>回调函数定义格式如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SetHandler</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::function&lt;ProtocolBinaryResponseStatus (<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">                                                    <span class="keyword">uint16_t</span> keylen,</span><br><span class="line">                                                    <span class="keyword">const</span> <span class="keyword">void</span> *data,</span><br><span class="line">                                                    <span class="keyword">uint32_t</span> datalen,</span><br><span class="line">                                                    <span class="keyword">uint32_t</span> flags,</span><br><span class="line">                                                    <span class="keyword">uint32_t</span> exptime,</span><br><span class="line">                                                    <span class="keyword">uint64_t</span> cas,</span><br><span class="line">                                                    <span class="keyword">uint64_t</span>* resultCas)&gt; SetHandler;</span><br></pre></td></tr></table></figure>
+<p>参数说明:</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>key 的指针 </td>
+</tr>
+<tr>
+<td>keylen</td>
+<td>key 的长度 </td>
+</tr>
+<tr>
+<td>data</td>
+<td>添加数据的指针 </td>
+</tr>
+<tr>
+<td>datalen</td>
+<td>添加数据的长度</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>添加数据的参数选项</td>
+</tr>
+<tr>
+<td>exptime</td>
+<td>添加数据过期时间</td>
+</tr>
+<tr>
+<td>cas</td>
+<td>上次修改数据版本号</td>
+</tr>
+<tr>
+<td>resultCas</td>
+<td>本次修改数据版本号</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">adbase::mc::ProtocolBinaryResponseStatus McProcessor::<span class="built_in">set</span>(<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">            <span class="keyword">uint16_t</span> keylen,</span><br><span class="line">            <span class="keyword">const</span> <span class="keyword">void</span> *data,</span><br><span class="line">            <span class="keyword">uint32_t</span> datalen,</span><br><span class="line">            <span class="keyword">uint32_t</span> flags,</span><br><span class="line">            <span class="keyword">uint32_t</span> exptime,</span><br><span class="line">            <span class="keyword">uint64_t</span> cas,</span><br><span class="line">            <span class="keyword">uint64_t</span>* resultCas) &#123;</span><br><span class="line">    (<span class="keyword">void</span>)flags;</span><br><span class="line">    (<span class="keyword">void</span>)exptime;</span><br><span class="line">    (<span class="keyword">void</span>)cas;</span><br><span class="line">    (<span class="keyword">void</span>)resultCas;</span><br><span class="line">    std::string keyData(static_cast&lt;const char*&gt;(key), static_cast&lt;size_t&gt;(keylen));</span><br><span class="line">    adbase::Buffer bufferBody;</span><br><span class="line">    bufferBody.append(<span class="keyword">static_cast</span>&lt;<span class="keyword">const</span> <span class="keyword">char</span>*&gt;(data), <span class="keyword">static_cast</span>&lt;<span class="keyword">size_t</span>&gt;(datalen));</span><br><span class="line">    LOG_INFO &lt;&lt; <span class="string">"Mc SET key:"</span> &lt;&lt; keyData;</span><br><span class="line">    LOG_INFO &lt;&lt; <span class="string">"Mc SET data size:"</span> &lt;&lt; bufferBody.readableBytes();</span><br><span class="line">    <span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于自定义的 Memcache 实现来说，仅仅使用 Memcache 作为数据传输交互，所以 <code>flags</code>、<code>exptime</code>、<code>cas</code> 、<code>resultCas</code> 参数基本不会用到可以忽略。该示例就是将客户端 <code>set</code> 命令传输的数据通过日志打印出来</p>
+<h5 id="Stat-命令"><a href="#Stat-命令" class="headerlink" title="Stat 命令"></a>Stat 命令</h5><p>回调函数定义格式如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// StatHandler</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::function&lt;ProtocolBinaryResponseStatus (<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">                                                    <span class="keyword">uint16_t</span> keylen,</span><br><span class="line">                                                    Buffer *data)&gt; StatHandler;</span><br></pre></td></tr></table></figure>
+<p>参数说明:</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>key 的指针 </td>
+</tr>
+<tr>
+<td>keylen</td>
+<td>key 的长度 </td>
+</tr>
+<tr>
+<td>data</td>
+<td>stat 操作将要返回的数据 </td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">adbase::mc::ProtocolBinaryResponseStatus McProcessor::stat(<span class="keyword">const</span> <span class="keyword">void</span>* key,</span><br><span class="line">            <span class="keyword">uint16_t</span> keylen,</span><br><span class="line">            adbase::Buffer *data) &#123;</span><br><span class="line">    std::string keyData(static_cast&lt;const char*&gt;(key), static_cast&lt;size_t&gt;(keylen));</span><br><span class="line">    data-&gt;append(<span class="keyword">static_cast</span>&lt;<span class="keyword">const</span> <span class="keyword">char</span>*&gt;(key), <span class="keyword">static_cast</span>&lt;<span class="keyword">size_t</span>&gt;(keylen));</span><br><span class="line">    LOG_INFO &lt;&lt; <span class="string">"Mc STAT key:"</span> &lt;&lt; keyData;</span><br><span class="line">    <span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该示例就是将客户端 <code>stat</code> 命令传输的数据 <code>key</code> 通过日志打印出来, 并且将 <code>key</code> 返回给客户端</p>
+<h5 id="Version-命令"><a href="#Version-命令" class="headerlink" title="Version 命令"></a>Version 命令</h5><p>回调函数定义格式如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// VersionHandler</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::function&lt;ProtocolBinaryResponseStatus (Buffer *data)&gt; VersionHandler;</span><br></pre></td></tr></table></figure>
+<p>参数说明:</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>version 操作将要返回的数据 </td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">adbase::mc::ProtocolBinaryResponseStatus McProcessor::version(adbase::Buffer *data) &#123;</span><br><span class="line">    data-&gt;append(<span class="string">"0.1.0"</span>);</span><br><span class="line">    <span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该示例就是返回 server 版本 <code>0.1.0</code></p>
+<h5 id="Verbosity-命令"><a href="#Verbosity-命令" class="headerlink" title="Verbosity 命令"></a>Verbosity 命令</h5><p>回调函数定义格式如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// VerbosityHandler</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::function&lt;ProtocolBinaryResponseStatus (<span class="keyword">uint32_t</span> verbosity)&gt; VerbosityHandler;</span><br></pre></td></tr></table></figure>
+<p>参数说明:</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>verbosity</td>
+<td>uint32_t</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">adbase::mc::ProtocolBinaryResponseStatus McProcessor::verbosity(<span class="keyword">uint32_t</span> verbose) &#123;</span><br><span class="line">    LOG_INFO &lt;&lt; <span class="string">"Mc FLUSH verbose:"</span> &lt;&lt; verbose;</span><br><span class="line">    <span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="命令执行前调用回调"><a href="#命令执行前调用回调" class="headerlink" title="命令执行前调用回调"></a>命令执行前调用回调</h5><p>回调函数定义格式如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PreExecute</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::function&lt;<span class="keyword">void</span> ()&gt; PreExecute;</span><br></pre></td></tr></table></figure>
+<p>当 server 接收到命令时将先执行 <code>PreExecute</code> 回调，再执行对应的命令回调</p>
+<h5 id="命令执行后调用回调"><a href="#命令执行后调用回调" class="headerlink" title="命令执行后调用回调"></a>命令执行后调用回调</h5><p>回调函数定义格式如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PostExecute</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::function&lt;<span class="keyword">void</span> ()&gt; PostExecute;</span><br></pre></td></tr></table></figure>
+<p>当 server 处理完对应的命令时将执行 <code>PostExecute</code> 回调, 再返回</p>
+<h5 id="命令解析错误"><a href="#命令解析错误" class="headerlink" title="命令解析错误"></a>命令解析错误</h5><p>回调函数定义格式如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// UnknownExecute</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::function&lt;<span class="keyword">void</span> ()&gt; UnknownExecute;</span><br></pre></td></tr></table></figure>
+<p>当命令解析错误的时候会执行该回调函数</p>
+<h3 id="注册-TCP-Server-回调"><a href="#注册-TCP-Server-回调" class="headerlink" title="注册 TCP Server 回调"></a>注册 TCP Server 回调</h3><p>当定义实现了 Memcache 接口回调后需要创建 <code>adbase::mc::Interface</code> 接口容器对象，并且将要实现的命令回调函数设置进去，通过 <code>adbase::mc::Interface</code> 指针构建 <code>adbase::mc::Handler</code>, <code>adbase::mc::Handler</code> 的作用就是该对象自动实现了 TcpServer 需要的三个回调函数实现，创建出来该对象就可以直接绑定，如下是从创建 TcpServer 到注册回调完成的完整代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// McProcessor</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">McProcessor</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	McProcessor() &#123;&#125;</span><br><span class="line">	~McProcessor() &#123;&#125;</span><br><span class="line"></span><br><span class="line">	adbase::mc::<span class="function">ProtocolBinaryResponseStatus <span class="title">set</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span>* key,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">uint16_t</span> keylen,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">const</span> <span class="keyword">void</span> *data,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">uint32_t</span> datalen,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">uint32_t</span> flags,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">uint32_t</span> exptime,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">uint64_t</span> cas,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">uint64_t</span>* resultCas)</span> </span>&#123;</span><br><span class="line">		(<span class="keyword">void</span>)flags;</span><br><span class="line">		(<span class="keyword">void</span>)exptime;</span><br><span class="line">		(<span class="keyword">void</span>)cas;</span><br><span class="line">		(<span class="keyword">void</span>)resultCas;</span><br><span class="line">		<span class="comment">//std::string keyData(static_cast&lt;const char*&gt;(key), static_cast&lt;size_t&gt;(keylen));</span></span><br><span class="line">		<span class="comment">//adbase::Buffer bufferBody;</span></span><br><span class="line">		<span class="comment">//bufferBody.append(static_cast&lt;const char*&gt;(data), static_cast&lt;size_t&gt;(datalen));</span></span><br><span class="line">		<span class="comment">//LOG_INFO &lt;&lt; "Mc SET key:" &lt;&lt; keyData;</span></span><br><span class="line">		<span class="comment">//LOG_INFO &lt;&lt; "Mc SET data size:" &lt;&lt; bufferBody.readableBytes();</span></span><br><span class="line">		<span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_SUCCESS;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	adbase::mc::<span class="function">ProtocolBinaryResponseStatus <span class="title">get</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span>* key,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">uint16_t</span> keylen,</span></span></span><br><span class="line"><span class="function"><span class="params">			adbase::Buffer *data)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//std::string keyData(static_cast&lt;const char*&gt;(key), static_cast&lt;size_t&gt;(keylen));</span></span><br><span class="line">		data-&gt;append(<span class="keyword">static_cast</span>&lt;<span class="keyword">const</span> <span class="keyword">char</span>*&gt;(key), <span class="keyword">static_cast</span>&lt;<span class="keyword">size_t</span>&gt;(keylen));</span><br><span class="line">		<span class="comment">//LOG_INFO &lt;&lt; "Mc GET key:" &lt;&lt; keyData;</span></span><br><span class="line">		<span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_SUCCESS;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">gEventLoop = <span class="keyword">new</span> adbase::EventLoop();</span><br><span class="line"></span><br><span class="line">McProcessor mcProcessor;</span><br><span class="line">adbase::<span class="function">InetAddress <span class="title">mcAddr</span><span class="params">(<span class="string">"0.0.0.0"</span>, <span class="number">10012</span>)</span></span>;</span><br><span class="line">adbase::TcpServer mcServer(gEventLoop-&gt;getBase(), mcAddr, "test");</span><br><span class="line">adbase::mc::Interface mcInterface;</span><br><span class="line"></span><br><span class="line">mcInterface.setSetHandler(<span class="built_in">std</span>::bind(&amp;McProcessor::<span class="built_in">set</span>, &amp;mcProcessor, <span class="built_in">std</span>::placeholders::_1,</span><br><span class="line">			<span class="built_in">std</span>::placeholders::_2, <span class="built_in">std</span>::placeholders::_3,</span><br><span class="line">			<span class="built_in">std</span>::placeholders::_4, <span class="built_in">std</span>::placeholders::_5,</span><br><span class="line">			<span class="built_in">std</span>::placeholders::_6, <span class="built_in">std</span>::placeholders::_7,</span><br><span class="line">			<span class="built_in">std</span>::placeholders::_8));</span><br><span class="line">mcInterface.setGetHandler(<span class="built_in">std</span>::bind(&amp;McProcessor::get, &amp;mcProcessor, <span class="built_in">std</span>::placeholders::_1,</span><br><span class="line">			<span class="built_in">std</span>::placeholders::_2, <span class="built_in">std</span>::placeholders::_3));</span><br><span class="line">adbase::mc::<span class="function">Handler <span class="title">mcHandler</span><span class="params">(&amp;mcInterface)</span></span>;</span><br><span class="line">mcServer.setConnectionCallback(<span class="built_in">std</span>::bind(&amp;adbase::mc::Handler::onConnection, &amp;mcHandler,</span><br><span class="line">			<span class="built_in">std</span>::placeholders::_1));</span><br><span class="line">mcServer.setCloseCallback(<span class="built_in">std</span>::bind(&amp;adbase::mc::Handler::onClose, &amp;mcHandler, <span class="built_in">std</span>::placeholders::_1));</span><br><span class="line">mcServer.setMessageCallback(<span class="built_in">std</span>::bind(&amp;adbase::mc::Handler::onMessage, &amp;mcHandler, <span class="built_in">std</span>::placeholders::_1,</span><br><span class="line">			<span class="built_in">std</span>::placeholders::_2, <span class="built_in">std</span>::placeholders::_3));</span><br><span class="line">mcServer.start(<span class="number">24</span>);</span><br><span class="line"></span><br><span class="line">gEventLoop-&gt;start();</span><br></pre></td></tr></table></figure>
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>启动 server 直接执行 <code>TcpServer-&gt;start</code> 方法即可，start 参数是该 server 的 worker 线程数, 如下是完成的代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;adbase/Logging.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;adbase/Net.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;adbase/Mc.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;signal.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">adbase::EventLoop* gEventLoop = <span class="literal">nullptr</span>;</span><br><span class="line">adbase::AsyncLogging* _asnclog = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; class McProcessor</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">McProcessor</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	McProcessor() &#123;&#125;</span><br><span class="line">	~McProcessor() &#123;&#125;</span><br><span class="line"></span><br><span class="line">	adbase::mc::<span class="function">ProtocolBinaryResponseStatus <span class="title">set</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span>* key,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">uint16_t</span> keylen,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">const</span> <span class="keyword">void</span> *data,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">uint32_t</span> datalen,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">uint32_t</span> flags,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">uint32_t</span> exptime,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">uint64_t</span> cas,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">uint64_t</span>* resultCas)</span> </span>&#123;</span><br><span class="line">		(<span class="keyword">void</span>)flags;</span><br><span class="line">		(<span class="keyword">void</span>)exptime;</span><br><span class="line">		(<span class="keyword">void</span>)cas;</span><br><span class="line">		(<span class="keyword">void</span>)resultCas;</span><br><span class="line">		<span class="comment">//std::string keyData(static_cast&lt;const char*&gt;(key), static_cast&lt;size_t&gt;(keylen));</span></span><br><span class="line">		<span class="comment">//adbase::Buffer bufferBody;</span></span><br><span class="line">		<span class="comment">//bufferBody.append(static_cast&lt;const char*&gt;(data), static_cast&lt;size_t&gt;(datalen));</span></span><br><span class="line">		<span class="comment">//LOG_INFO &lt;&lt; "Mc SET key:" &lt;&lt; keyData;</span></span><br><span class="line">		<span class="comment">//LOG_INFO &lt;&lt; "Mc SET data size:" &lt;&lt; bufferBody.readableBytes();</span></span><br><span class="line">		<span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_SUCCESS;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	adbase::mc::<span class="function">ProtocolBinaryResponseStatus <span class="title">get</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span>* key,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">uint16_t</span> keylen,</span></span></span><br><span class="line"><span class="function"><span class="params">			adbase::Buffer *data)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//std::string keyData(static_cast&lt;const char*&gt;(key), static_cast&lt;size_t&gt;(keylen));</span></span><br><span class="line">		data-&gt;append(<span class="keyword">static_cast</span>&lt;<span class="keyword">const</span> <span class="keyword">char</span>*&gt;(key), <span class="keyword">static_cast</span>&lt;<span class="keyword">size_t</span>&gt;(keylen));</span><br><span class="line">		<span class="comment">//LOG_INFO &lt;&lt; "Mc GET key:" &lt;&lt; keyData;</span></span><br><span class="line">		<span class="keyword">return</span> adbase::mc::PROTOCOL_BINARY_RESPONSE_SUCCESS;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; void asyncLogger()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">asyncLogger</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* msg, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (_asnclog != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">		_asnclog-&gt;append(msg, <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(len));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; static void killSignal()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">killSignal</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> sig)</span> </span>&#123;</span><br><span class="line">	(<span class="keyword">void</span>)sig;</span><br><span class="line">	<span class="keyword">if</span> (gEventLoop != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">		gEventLoop-&gt;stop();</span><br><span class="line">		<span class="keyword">delete</span> gEventLoop;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; static void reloadConf()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">reloadConf</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> sig)</span> </span>&#123;</span><br><span class="line">	(<span class="keyword">void</span>)sig;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; static void registerSignal()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">registerSignal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">/// 忽略Broken Pipe信号</span></span><br><span class="line">	signal(SIGPIPE, SIG_IGN);</span><br><span class="line">	<span class="comment">/// 处理kill信号</span></span><br><span class="line">	signal(SIGINT,  killSignal);</span><br><span class="line">	signal(SIGKILL, killSignal);</span><br><span class="line">	signal(SIGQUIT, killSignal);</span><br><span class="line">	signal(SIGTERM, killSignal);</span><br><span class="line">	signal(SIGHUP,  killSignal);</span><br><span class="line">	signal(SIGSEGV, killSignal);</span><br><span class="line">	signal(SIGUSR1, reloadConf);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	registerSignal();</span><br><span class="line">	adbase::<span class="function">TimeZone <span class="title">tz</span><span class="params">(<span class="number">8</span>*<span class="number">3600</span>, <span class="string">"CST"</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">	adbase::Logger::setOutput(<span class="built_in">std</span>::bind(asyncLogger,</span><br><span class="line">				<span class="built_in">std</span>::placeholders::_1, <span class="built_in">std</span>::placeholders::_2));</span><br><span class="line">	<span class="comment">// 启动异步日志落地</span></span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">string</span> basename = <span class="string">"./logs/mc"</span>;</span><br><span class="line">	_asnclog = <span class="keyword">new</span> adbase::AsyncLogging(basename, <span class="number">52428800</span>);</span><br><span class="line">	_asnclog-&gt;start();</span><br><span class="line"></span><br><span class="line">	adbase::Logger::setTimeZone(tz);</span><br><span class="line">	gEventLoop = <span class="keyword">new</span> adbase::EventLoop();</span><br><span class="line"></span><br><span class="line">	McProcessor mcProcessor;</span><br><span class="line">	adbase::<span class="function">InetAddress <span class="title">mcAddr</span><span class="params">(<span class="string">"0.0.0.0"</span>, <span class="number">10012</span>)</span></span>;</span><br><span class="line">	adbase::TcpServer mcServer(gEventLoop-&gt;getBase(), mcAddr, "test");</span><br><span class="line">	adbase::mc::Interface mcInterface;</span><br><span class="line"></span><br><span class="line">	mcInterface.setSetHandler(<span class="built_in">std</span>::bind(&amp;McProcessor::<span class="built_in">set</span>, &amp;mcProcessor, <span class="built_in">std</span>::placeholders::_1,</span><br><span class="line">				<span class="built_in">std</span>::placeholders::_2, <span class="built_in">std</span>::placeholders::_3,</span><br><span class="line">				<span class="built_in">std</span>::placeholders::_4, <span class="built_in">std</span>::placeholders::_5,</span><br><span class="line">				<span class="built_in">std</span>::placeholders::_6, <span class="built_in">std</span>::placeholders::_7,</span><br><span class="line">				<span class="built_in">std</span>::placeholders::_8));</span><br><span class="line">	mcInterface.setGetHandler(<span class="built_in">std</span>::bind(&amp;McProcessor::get, &amp;mcProcessor, <span class="built_in">std</span>::placeholders::_1,</span><br><span class="line">				<span class="built_in">std</span>::placeholders::_2, <span class="built_in">std</span>::placeholders::_3));</span><br><span class="line">	adbase::mc::<span class="function">Handler <span class="title">mcHandler</span><span class="params">(&amp;mcInterface)</span></span>;</span><br><span class="line">	mcServer.setConnectionCallback(<span class="built_in">std</span>::bind(&amp;adbase::mc::Handler::onConnection, &amp;mcHandler,</span><br><span class="line">				<span class="built_in">std</span>::placeholders::_1));</span><br><span class="line">	mcServer.setCloseCallback(<span class="built_in">std</span>::bind(&amp;adbase::mc::Handler::onClose, &amp;mcHandler, <span class="built_in">std</span>::placeholders::_1));</span><br><span class="line">	mcServer.setMessageCallback(<span class="built_in">std</span>::bind(&amp;adbase::mc::Handler::onMessage, &amp;mcHandler, <span class="built_in">std</span>::placeholders::_1,</span><br><span class="line">				<span class="built_in">std</span>::placeholders::_2, <span class="built_in">std</span>::placeholders::_3));</span><br><span class="line">	mcServer.start(<span class="number">24</span>);</span><br><span class="line"></span><br><span class="line">	gEventLoop-&gt;start();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/01/16/adbase/adbase/metrics/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/01/14/adbase/adbase/logging/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.jpg" alt="Nmred's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        nmred_2008@126.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">19</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/06/">六月 2015<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/05/">五月 2015<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/10/">十月 2014<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/09/">九月 2014<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/04/">四月 2014<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/03/">三月 2014<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/02/">二月 2014<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/09/">九月 2013<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/05/">五月 2013<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/02/">二月 2013<span class="sidebar_archives-count">20</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Adbase-文档/">Adbase 文档<span class="sidebar_archives-count">21</span></a></li><li><a class="sidebar_archives-link" href="/categories/C-语言/">C 语言<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/GNU-M4-技术文档/">GNU M4 技术文档<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Hadoop/">Hadoop<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/SBT-快速入门/">SBT 快速入门<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/categories/linux/">linux<span class="sidebar_archives-count">21</span></a></li><li><a class="sidebar_archives-link" href="/categories/php/">php<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/《C-Primer-Plus-第6版-》练习/">《C++ Primer Plus(第6版)》练习<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/《unix-高级编程》-Note/">《unix 高级编程》-Note<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/《快学scala》练习/">《快学scala》练习<span class="sidebar_archives-count">16</span></a></li><li><a class="sidebar_archives-link" href="/categories/虚拟技术/">虚拟技术<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">96</span>
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://weibo.com/nmred" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/nmred" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;2013&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Iodsp
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

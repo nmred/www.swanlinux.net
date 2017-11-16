@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.0 -->
+    <script>
+        window.materialVersion = "1.5.0"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Title -->
+    
+    <title>
+        
+            ADBASE ------ 度量工具库 | 
+        
+        Iodsp
+    </title>
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Nmred">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",C++,ADBASE">
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/iodsp.png">
+    <link rel="icon" sizes="192x192" href="/img/iodsp.png">
+    <link rel="apple-touch-icon" href="/img/iodsp.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Iodsp">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icon -->
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://www.swanlinux.net">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="ADBASE ------ 度量工具库 | Iodsp">
+    <meta property="og:image" content="http://www.swanlinux.net/img/iodsp.png" />
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="C++"> <meta property="og:article:tag" content="ADBASE"> 
+
+    
+        <meta property="article:published_time" content="Mon Jan 16 2017 09:13:16 GMT+0800" />
+        <meta property="article:modified_time" content="Thu Nov 16 2017 11:15:05 GMT+0800" />
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="ADBASE ------ 度量工具库 | Iodsp">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="http://www.swanlinux.net/img/iodsp.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://www.swanlinux.net" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://www.swanlinux.net/2017/01/16/adbase/adbase/metrics/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://www.swanlinux.net/2017/01/16/adbase/adbase/metrics/index.html",
+    "headline": "ADBASE ------ 度量工具库",
+    "datePublished": "Mon Jan 16 2017 09:13:16 GMT+0800",
+    "dateModified": "Thu Nov 16 2017 11:15:05 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Nmred",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.jpg"
+        },
+        "description": "Everything in order to facilitate"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Iodsp",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/iodsp.png"
+        }
+    },
+    "keywords": ",C++,ADBASE",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Gauges"><span class="post-toc-number">1.</span> <span class="post-toc-text">Gauges</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Counter"><span class="post-toc-number">2.</span> <span class="post-toc-text">Counter</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Meters"><span class="post-toc-number">3.</span> <span class="post-toc-text">Meters</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Histograms"><span class="post-toc-number">4.</span> <span class="post-toc-text">Histograms</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Timers"><span class="post-toc-number">5.</span> <span class="post-toc-text">Timers</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                ADBASE ------ 度量工具库
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Nmred</strong>
+        <span>1月 16, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC00lEQVR42u3aQXbbMAwEUN//0u0B0sgzoJwq5OfKL5YtfnmBAMPXnyPXCxsbGxsbGxsbG/uR7Fe8vn7q6zf842bf/P36yvyOxZ6xsbGxt2bnG/qOetfr659kac/Y2NjYB7CT21zfMi9XSfFLylv+aLCxsbGxc/ZwW0E7gY2NjY39CfZsCHXXN2BjY2Njr7QBeWCQUJNg4L/N0rCxsbEfz85D0+e8/tF8GxsbG/vB7HattyjJ2KgdZkU7x8bGxt6UnReGlQh2ZcB0HUIU+8TGxsbemr0S8V6Hu7PB02xs9Obv2NjY2Aewr2/QHpTMA4AkDGh/nmKWho2Njf3L2XVcmo/jF45XJhFvfkATGxsbe2/29eby7SZtxkoJbCMHbGxs7HPY7eC+Hevnw6b8+2fRLzY2Nvau7FkLMSt1nzjuU4QT2NjY2JuyV8rMrM1oV9vSYGNjY2PnA6a8CWkBbbmKiiI2Njb2puxZWHtXoDtrTtrPYmNjY5/AbodHLXKlsVlZ2NjY2CewZ21Je/gmfze/Pi+N2NjY2Nj5g2jDhrx0za7ExsbGPoG9Egzk456kyUnihPxdbGxs7HPY12WsPXbZHuVpw+CbD19iY2Njb8FeGdO0zcns0cyK4jDoxcbGxv6F7LaA5be8C5MXzjc/GzY2Nvam7PaAThsMz4pQMuSqiys2Njb21uyVRuKu8nNby/HpM6fY2NjYj2evj/vba/IIOS9a2NjY2GeyE3DecrSjn/ZwT30ACBsbG3tTdrvytmQGTr5zGBVjY2Njb8puo9xZ0WofzexRvrk7NjY29tbsPMpdiWPzcjUrYMN4ABsbG3sj9uxI5WzY9DMLGxsbG7tlJ4Vk5YDO7DgRNjY2NvbK7dv2ZtaQLOXb2NjY2Buxky3ORkjroUJ+NOcj8QA2Njb249n5gCb/13/2cPNCeMNQCRsbG3sL9jkLGxsbGxsbGxsb+zHrL/ag4pXzc72pAAAAAElFTkSuQmCC">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/ADBASE/">ADBASE</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/C/">C++</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=ADBASE ------ 度量工具库&url=http://www.swanlinux.net/2017/01/16/adbase/adbase/metrics/index.html&pic=http://www.swanlinux.net/img/iodsp.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=ADBASE ------ 度量工具库&url=http://www.swanlinux.net/2017/01/16/adbase/adbase/metrics/index.html&via=Nmred" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://www.swanlinux.net/2017/01/16/adbase/adbase/metrics/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://www.swanlinux.net/2017/01/16/adbase/adbase/metrics/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>度量工具库通过在C++代码中嵌入进行度量运行时的各项指标，该工具库提供 Gauges、Meters、Counter、Histograms、Timers 五类常用的通用统计指标方式, 使用的方式是在程序入口开启指标统计，在程序中嵌入度量代码，通过 <code>adbase::metrics::Metrics-&gt;getXxx</code> 方法获取最终的统计结果, 如下是介绍每个类型的度量工具使用方法</p>
+<h3 id="Gauges"><a href="#Gauges" class="headerlink" title="Gauges"></a>Gauges</h3><p>Gauges 度量方式是度量间隔时间的某个指标的瞬时值，比如要度量当前程序中某个 HashMap 的大小就可以用该度量工具统计，使用方法是获取 Gauges 实例，通过注册统计时间间隔和统计回调函数的方式度量指标</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// init metrics</span></span><br><span class="line">adbase::metrics::Metrics::init(&amp;timer);</span><br><span class="line"></span><br><span class="line"><span class="comment">// register gauges</span></span><br><span class="line">adbase::metrics::Metrics::buildGauges(<span class="string">"test"</span>, <span class="string">"rss"</span>, interval, []()&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">100</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>如上代码中所示要使用 gauges 类型的度量，首选要初始化整个度量工具库，其中参数是一个定时器。下一步是注册gauges 回调函数及其指标的模块名和指标名称</p>
+<p>如下是一个完整的示例，统计 <code>test</code> 模块下的 <code>rss</code> 指标每隔 1s</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;adbase/Net.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;adbase/Logging.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;adbase/Metrics.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line">adbase::metrics::Metrics* metrics = <span class="literal">nullptr</span>;</span><br><span class="line">adbase::EventLoop* gloop = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">void</span>*)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (metrics != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, <span class="keyword">int64_t</span>&gt; values = metrics-&gt;getGauges();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;t : values) &#123;</span><br><span class="line">            LOG_INFO &lt;&lt; t.first &lt;&lt; <span class="string">" -&gt; "</span> &lt;&lt; t.second;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; static void killSignal()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">killSignal</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> sig)</span> </span>&#123;</span><br><span class="line">    (<span class="keyword">void</span>)sig;</span><br><span class="line">    <span class="keyword">if</span> (gloop != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        gloop-&gt;stop();</span><br><span class="line">        <span class="keyword">delete</span> gloop;</span><br><span class="line">        gloop = <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    adbase::metrics::Metrics::stop();</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; static void reloadConf()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">reloadConf</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> sig)</span> </span>&#123;</span><br><span class="line">    (<span class="keyword">void</span>)sig;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; static void registerSignal()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">registerSignal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">/* 忽略Broken Pipe信号 */</span></span><br><span class="line">    signal(SIGPIPE, SIG_IGN);</span><br><span class="line">    <span class="comment">/* 处理kill信号 */</span></span><br><span class="line">    signal(SIGINT,  killSignal);</span><br><span class="line">    signal(SIGKILL, killSignal);</span><br><span class="line">    signal(SIGQUIT, killSignal);</span><br><span class="line">    signal(SIGTERM, killSignal);</span><br><span class="line">    signal(SIGHUP,  killSignal);</span><br><span class="line">    signal(SIGSEGV, killSignal);</span><br><span class="line">    signal(SIGUSR1, reloadConf);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    registerSignal();</span><br><span class="line">    adbase::EventLoop* eventloop = <span class="keyword">new</span> adbase::EventLoop();</span><br><span class="line">    gloop = eventloop;</span><br><span class="line">    adbase::Timer timer(eventloop-&gt;getBase());</span><br><span class="line">    metrics = adbase::metrics::Metrics::init(&amp;timer);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">uint32_t</span> interval = <span class="number">1000</span>;</span><br><span class="line">    timer.runEvery(interval, <span class="built_in">std</span>::bind(test, <span class="built_in">std</span>::placeholders::_1), <span class="literal">nullptr</span>);</span><br><span class="line">    adbase::metrics::Metrics::buildGauges(<span class="string">"test"</span>, <span class="string">"rss"</span>, interval, []()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">100</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">    eventloop-&gt;start();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">20170302 02:44:58.554947Z 140376105634144 INFO  testrss -&gt; 100 - gauges.cpp:13</span><br><span class="line">20170302 02:44:59.555897Z 140376105634144 INFO  testrss -&gt; 100 - gauges.cpp:13</span><br><span class="line">20170302 02:45:00.556301Z 140376105634144 INFO  testrss -&gt; 100 - gauges.cpp:13</span><br><span class="line">20170302 02:45:01.556691Z 140376105634144 INFO  testrss -&gt; 100 - gauges.cpp:13</span><br><span class="line">20170302 02:45:02.556808Z 140376105634144 INFO  testrss -&gt; 100 - gauges.cpp:13</span><br><span class="line">20170302 02:45:03.557219Z 140376105634144 INFO  testrss -&gt; 100 - gauges.cpp:13</span><br></pre></td></tr></table></figure>
+<h3 id="Counter"><a href="#Counter" class="headerlink" title="Counter"></a>Counter</h3><p>Counter 是用来计数累加值得度量类型，提供了 <code>add</code> 、<code>dec</code> 方法进行对指标进行累加计算, 比如统计当前请求总量可以用该类型度量工具</p>
+<p>使用方法和 Gauges 类似，也是首先要初始化，然后创建 Counter 对象，使用 Counter 对象对指标进行计算累加，例如要统计请求量如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;adbase/Net.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;adbase/Logging.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;adbase/Metrics.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line">adbase::metrics::Metrics* metrics = <span class="literal">nullptr</span>;</span><br><span class="line">adbase::EventLoop* gloop = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">void</span>*)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (metrics != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, <span class="keyword">int64_t</span>&gt; values = metrics-&gt;getCounter();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;t : values) &#123;</span><br><span class="line">            LOG_INFO &lt;&lt; t.first &lt;&lt; <span class="string">" -&gt; "</span> &lt;&lt; t.second;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; static void killSignal()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">killSignal</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> sig)</span> </span>&#123;</span><br><span class="line">    (<span class="keyword">void</span>)sig;</span><br><span class="line">    <span class="keyword">if</span> (gloop != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        gloop-&gt;stop();</span><br><span class="line">        <span class="keyword">delete</span> gloop;</span><br><span class="line">        gloop = <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    adbase::metrics::Metrics::stop();</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; static void reloadConf()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">reloadConf</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> sig)</span> </span>&#123;</span><br><span class="line">    (<span class="keyword">void</span>)sig;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; static void registerSignal()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">registerSignal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">/* 忽略Broken Pipe信号 */</span></span><br><span class="line">    signal(SIGPIPE, SIG_IGN);</span><br><span class="line">    <span class="comment">/* 处理kill信号 */</span></span><br><span class="line">    signal(SIGINT,  killSignal);</span><br><span class="line">    signal(SIGKILL, killSignal);</span><br><span class="line">    signal(SIGQUIT, killSignal);</span><br><span class="line">    signal(SIGTERM, killSignal);</span><br><span class="line">    signal(SIGHUP,  killSignal);</span><br><span class="line">    signal(SIGSEGV, killSignal);</span><br><span class="line">    signal(SIGUSR1, reloadConf);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    registerSignal();</span><br><span class="line">    adbase::EventLoop* eventloop = <span class="keyword">new</span> adbase::EventLoop();</span><br><span class="line">    gloop = eventloop;</span><br><span class="line">    adbase::Timer timer(eventloop-&gt;getBase());</span><br><span class="line">    <span class="comment">//metrics = adbase::metrics::Metrics::init(&amp;timer);</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">uint32_t</span> interval = <span class="number">1000</span>;</span><br><span class="line">    timer.runEvery(interval, <span class="built_in">std</span>::bind(test, <span class="built_in">std</span>::placeholders::_1), <span class="literal">nullptr</span>);</span><br><span class="line">    adbase::metrics::Counter* counter = adbase::metrics::Metrics::buildCounter(<span class="string">"test"</span>, <span class="string">"request"</span>);</span><br><span class="line">    <span class="keyword">if</span> (counter != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        counter-&gt;add(<span class="number">9</span>);</span><br><span class="line">        counter-&gt;dec(<span class="number">3</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    eventloop-&gt;start();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">20170302 02:46:11.321117Z 140036159633760 INFO  testrequest -&gt; 6 - counter.cpp:13</span><br><span class="line">20170302 02:46:12.321437Z 140036159633760 INFO  testrequest -&gt; 6 - counter.cpp:13</span><br><span class="line">20170302 02:46:13.322288Z 140036159633760 INFO  testrequest -&gt; 6 - counter.cpp:13</span><br><span class="line">20170302 02:46:14.322580Z 140036159633760 INFO  testrequest -&gt; 6 - counter.cpp:13</span><br><span class="line">20170302 02:46:15.322904Z 140036159633760 INFO  testrequest -&gt; 6 - counter.cpp:13</span><br><span class="line">20170302 02:46:16.323421Z 140036159633760 INFO  testrequest -&gt; 6 - counter.cpp:13</span><br><span class="line">20170302 02:46:17.323820Z 140036159633760 INFO  testrequest -&gt; 6 - counter.cpp:13</span><br></pre></td></tr></table></figure>
+<h3 id="Meters"><a href="#Meters" class="headerlink" title="Meters"></a>Meters</h3><p>Meters 一般是用来度量某个指标的速率的，例如统计当前系统的load 或者当前应用程序的请求 QPS, 该度量工具会自动计算出 1min、5min、15min 的平均速度,例如</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;adbase/Net.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;adbase/Logging.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;adbase/Metrics.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line">adbase::metrics::Metrics* metrics = <span class="literal">nullptr</span>;</span><br><span class="line">adbase::metrics::Meters* meters = <span class="literal">nullptr</span>;</span><br><span class="line">adbase::EventLoop* gloop = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">void</span>*)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (metrics != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, adbase::metrics::MeterItem&gt; values = metrics-&gt;getMeters();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;t : values) &#123;</span><br><span class="line">            LOG_INFO &lt;&lt; t.first &lt;&lt; <span class="string">" : "</span>;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\tcount     = "</span> &lt;&lt; t.second.count;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\tmean rate = "</span> &lt;&lt; t.second.meanRate;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\t1-minute rate = "</span> &lt;&lt; t.second.min1Rate;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\t5-minute rate = "</span> &lt;&lt; t.second.min5Rate;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\t15-minute rate = "</span> &lt;&lt; t.second.min15Rate;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> num = rand() % <span class="number">1000</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (meters != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            meters-&gt;mark();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; static void killSignal()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">killSignal</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> sig)</span> </span>&#123;</span><br><span class="line">    (<span class="keyword">void</span>)sig;</span><br><span class="line">    <span class="keyword">if</span> (gloop != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        gloop-&gt;stop();</span><br><span class="line">        <span class="keyword">delete</span> gloop;</span><br><span class="line">        gloop = <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    adbase::metrics::Metrics::stop();</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; static void reloadConf()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">reloadConf</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> sig)</span> </span>&#123;</span><br><span class="line">    (<span class="keyword">void</span>)sig;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; static void registerSignal()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">registerSignal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">/// 忽略Broken Pipe信号</span></span><br><span class="line">    signal(SIGPIPE, SIG_IGN);</span><br><span class="line">    <span class="comment">/// 处理kill信号</span></span><br><span class="line">    signal(SIGINT,  killSignal);</span><br><span class="line">    signal(SIGKILL, killSignal);</span><br><span class="line">    signal(SIGQUIT, killSignal);</span><br><span class="line">    signal(SIGTERM, killSignal);</span><br><span class="line">    signal(SIGHUP,  killSignal);</span><br><span class="line">    signal(SIGSEGV, killSignal);</span><br><span class="line">    signal(SIGUSR1, reloadConf);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    registerSignal();</span><br><span class="line">    adbase::EventLoop* eventloop = <span class="keyword">new</span> adbase::EventLoop();</span><br><span class="line">    gloop = eventloop;</span><br><span class="line">    adbase::Timer timer(eventloop-&gt;getBase());</span><br><span class="line">    metrics = adbase::metrics::Metrics::init(&amp;timer);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">uint32_t</span> interval = <span class="number">1000</span>;</span><br><span class="line">    timer.runEvery(interval, <span class="built_in">std</span>::bind(test, <span class="built_in">std</span>::placeholders::_1), <span class="literal">nullptr</span>);</span><br><span class="line">    meters = adbase::metrics::Metrics::buildMeters(<span class="string">"test"</span>, <span class="string">"request"</span>);</span><br><span class="line"></span><br><span class="line">    eventloop-&gt;start();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">20170302 02:53:51.492440Z 140362442348896 INFO  testrequest :  - meters.cpp:14</span><br><span class="line">20170302 02:53:51.492472Z 140362442348896 INFO  	count     = 96405 - meters.cpp:15</span><br><span class="line">20170302 02:53:51.492482Z 140362442348896 INFO  	mean rate = 494.384 - meters.cpp:16</span><br><span class="line">20170302 02:53:51.492495Z 140362442348896 INFO  	1-minute rate = 542.433 - meters.cpp:17</span><br><span class="line">20170302 02:53:51.492506Z 140362442348896 INFO  	5-minute rate = 0 - meters.cpp:18</span><br><span class="line">20170302 02:53:51.492516Z 140362442348896 INFO  	15-minute rate = 0 - meters.cpp:19</span><br></pre></td></tr></table></figure>
+<h3 id="Histograms"><a href="#Histograms" class="headerlink" title="Histograms"></a>Histograms</h3><p>直方图度量工具用来统计某个指标分布情况，例如要统计某个接口的请求的响应时间的分布状况，使用该工具可以计算分布百分比对应的值, 使用 Histograms 需要获取 Histograms 实例对象，获取方法如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">histograms = adbase::metrics::Metrics::buildHistograms(<span class="string">"test"</span>, <span class="string">"request"</span>, interval);</span><br></pre></td></tr></table></figure>
+<p>示例代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;adbase/Net.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;adbase/Logging.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;adbase/Metrics.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line">adbase::metrics::Metrics* metrics = <span class="literal">nullptr</span>;</span><br><span class="line">adbase::metrics::Histograms* histograms = <span class="literal">nullptr</span>;</span><br><span class="line">adbase::EventLoop* gloop = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">void</span>*)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (metrics != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, adbase::metrics::HistogramsItem&gt; values = metrics-&gt;getHistograms();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;t : values) &#123;</span><br><span class="line">            LOG_INFO &lt;&lt; t.first &lt;&lt; <span class="string">" : "</span>;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\tmin    = "</span> &lt;&lt; t.second.min;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\tmax    = "</span> &lt;&lt; t.second.max;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\tmean   = "</span> &lt;&lt; t.second.mean;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\tstddev = "</span> &lt;&lt; t.second.stddev;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\tmedian = "</span> &lt;&lt; t.second.median;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\t75%   &lt;= "</span> &lt;&lt; t.second.percent75;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\t95%   &lt;= "</span> &lt;&lt; t.second.percent95;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\t98%   &lt;= "</span> &lt;&lt; t.second.percent98;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\t99%   &lt;= "</span> &lt;&lt; t.second.percent99;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\t99.9%   &lt;= "</span> &lt;&lt; t.second.percent999;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (histograms != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            histograms-&gt;update(rand() % <span class="number">1000</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; static void killSignal()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">killSignal</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> sig)</span> </span>&#123;</span><br><span class="line">    (<span class="keyword">void</span>)sig;</span><br><span class="line">    <span class="keyword">if</span> (gloop != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        gloop-&gt;stop();</span><br><span class="line">        <span class="keyword">delete</span> gloop;</span><br><span class="line">        gloop = <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    adbase::metrics::Metrics::stop();</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; static void reloadConf()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">reloadConf</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> sig)</span> </span>&#123;</span><br><span class="line">    (<span class="keyword">void</span>)sig;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; static void registerSignal()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">registerSignal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">/* 忽略Broken Pipe信号 */</span></span><br><span class="line">    signal(SIGPIPE, SIG_IGN);</span><br><span class="line">    <span class="comment">/* 处理kill信号 */</span></span><br><span class="line">    signal(SIGINT,  killSignal);</span><br><span class="line">    signal(SIGKILL, killSignal);</span><br><span class="line">    signal(SIGQUIT, killSignal);</span><br><span class="line">    signal(SIGTERM, killSignal);</span><br><span class="line">    signal(SIGHUP,  killSignal);</span><br><span class="line">    signal(SIGSEGV, killSignal);</span><br><span class="line">    signal(SIGUSR1, reloadConf);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    registerSignal();</span><br><span class="line">    adbase::EventLoop* eventloop = <span class="keyword">new</span> adbase::EventLoop();</span><br><span class="line">    gloop = eventloop;</span><br><span class="line">    adbase::Timer timer(eventloop-&gt;getBase());</span><br><span class="line">    metrics = adbase::metrics::Metrics::init(&amp;timer);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">uint32_t</span> interval = <span class="number">1000</span>;</span><br><span class="line">    timer.runEvery(interval, <span class="built_in">std</span>::bind(test, <span class="built_in">std</span>::placeholders::_1), <span class="literal">nullptr</span>);</span><br><span class="line">    histograms = adbase::metrics::Metrics::buildHistograms(<span class="string">"test"</span>, <span class="string">"request"</span>, interval);</span><br><span class="line"></span><br><span class="line">    eventloop-&gt;start();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">20170302</span> <span class="number">02</span>:<span class="number">59</span>:<span class="number">33.267863</span>Z <span class="number">139981904234848</span> INFO  testrequest :  - histograms.cpp:<span class="number">14</span></span><br><span class="line"><span class="number">20170302</span> <span class="number">02</span>:<span class="number">59</span>:<span class="number">33.267901</span>Z <span class="number">139981904234848</span> INFO  	min    = <span class="number">0</span> - histograms.cpp:<span class="number">15</span></span><br><span class="line"><span class="number">20170302</span> <span class="number">02</span>:<span class="number">59</span>:<span class="number">33.267915</span>Z <span class="number">139981904234848</span> INFO  	max    = <span class="number">999</span> - histograms.cpp:<span class="number">16</span></span><br><span class="line"><span class="number">20170302</span> <span class="number">02</span>:<span class="number">59</span>:<span class="number">33.267935</span>Z <span class="number">139981904234848</span> INFO  	mean   = <span class="number">74.147</span> - histograms.cpp:<span class="number">17</span></span><br><span class="line"><span class="number">20170302</span> <span class="number">02</span>:<span class="number">59</span>:<span class="number">33.267947</span>Z <span class="number">139981904234848</span> INFO  	stddev = <span class="number">580.814</span> - histograms.cpp:<span class="number">18</span></span><br><span class="line"><span class="number">20170302</span> <span class="number">02</span>:<span class="number">59</span>:<span class="number">33.267958</span>Z <span class="number">139981904234848</span> INFO  	median = <span class="number">506</span> - histograms.cpp:<span class="number">19</span></span><br><span class="line"><span class="number">20170302</span> <span class="number">02</span>:<span class="number">59</span>:<span class="number">33.267968</span>Z <span class="number">139981904234848</span> INFO  	<span class="number">75</span>%   &lt;= <span class="number">755</span> - histograms.cpp:<span class="number">20</span></span><br><span class="line"><span class="number">20170302</span> <span class="number">02</span>:<span class="number">59</span>:<span class="number">33.267978</span>Z <span class="number">139981904234848</span> INFO  	<span class="number">95</span>%   &lt;= <span class="number">952</span> - histograms.cpp:<span class="number">21</span></span><br><span class="line"><span class="number">20170302</span> <span class="number">02</span>:<span class="number">59</span>:<span class="number">33.267995</span>Z <span class="number">139981904234848</span> INFO  	<span class="number">98</span>%   &lt;= <span class="number">980</span> - histograms.cpp:<span class="number">22</span></span><br><span class="line"><span class="number">20170302</span> <span class="number">02</span>:<span class="number">59</span>:<span class="number">33.268005</span>Z <span class="number">139981904234848</span> INFO  	<span class="number">99</span>%   &lt;= <span class="number">990</span> - histograms.cpp:<span class="number">23</span></span><br><span class="line"><span class="number">20170302</span> <span class="number">02</span>:<span class="number">59</span>:<span class="number">33.268016</span>Z <span class="number">139981904234848</span> INFO  	<span class="number">99.9</span>%   &lt;= <span class="number">999</span> - histograms.cpp:<span class="number">24</span></span><br></pre></td></tr></table></figure>
+<h3 id="Timers"><a href="#Timers" class="headerlink" title="Timers"></a>Timers</h3><p>此处的 Timers 不是网络模块中定时器，而是一种度量方式，可以理解为是 Histograms 和 Meters 的结合体, 统计计算的数据同时具有 Histograms 和 Meters 的参数指标, 使用方法如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// get timers object</span></span><br><span class="line">timers = adbase::metrics::Metrics::buildTimers(<span class="string">"test"</span>, <span class="string">"request"</span>, interval);</span><br><span class="line"></span><br><span class="line">adbase::metrics::Timer timer;</span><br><span class="line">timer.start();</span><br><span class="line"><span class="comment">// do something</span></span><br><span class="line"><span class="built_in">std</span>::this_thread::sleep_for(<span class="built_in">std</span>::chrono::milliseconds(rand() % <span class="number">2</span>));</span><br><span class="line">timers-&gt;setTimer(timer.stop());</span><br></pre></td></tr></table></figure>
+<p>实例代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;adbase/Net.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;adbase/Logging.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;adbase/Metrics.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line">adbase::metrics::Metrics* metrics = <span class="literal">nullptr</span>;</span><br><span class="line">adbase::metrics::Timers* timers = <span class="literal">nullptr</span>;</span><br><span class="line">adbase::EventLoop* gloop = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test1</span><span class="params">(<span class="keyword">void</span>*)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> num = rand() % <span class="number">10000</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (timers != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">                adbase::metrics::Timer timer;</span><br><span class="line">                timer.start();</span><br><span class="line">                <span class="built_in">std</span>::this_thread::sleep_for(<span class="built_in">std</span>::chrono::milliseconds(rand() % <span class="number">2</span>));</span><br><span class="line">                timers-&gt;setTimer(timer.stop());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">void</span>*)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (metrics != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, adbase::metrics::TimersItem&gt; values = metrics-&gt;getTimers();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;t : values) &#123;</span><br><span class="line">            adbase::metrics::MetricName name;</span><br><span class="line">            name = adbase::metrics::Metrics::getMetricName(t.first);</span><br><span class="line">            LOG_INFO &lt;&lt; name.moduleName &lt;&lt; <span class="string">"."</span> &lt;&lt; name.metricName &lt;&lt; <span class="string">" : "</span>;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\tcount     = "</span> &lt;&lt; t.second.meter.count;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\tmean rate = "</span> &lt;&lt; t.second.meter.meanRate;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\t1-minute rate = "</span> &lt;&lt; t.second.meter.min1Rate;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\t5-minute rate = "</span> &lt;&lt; t.second.meter.min5Rate;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\t15-minute rate = "</span> &lt;&lt; t.second.meter.min15Rate;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\tmin    = "</span> &lt;&lt; t.second.histogram.min;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\tmax    = "</span> &lt;&lt; t.second.histogram.max;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\tmean   = "</span> &lt;&lt; t.second.histogram.mean;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\tstddev = "</span> &lt;&lt; t.second.histogram.stddev;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\tmedian = "</span> &lt;&lt; t.second.histogram.median;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\t75%   &lt;= "</span> &lt;&lt; t.second.histogram.percent75;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\t95%   &lt;= "</span> &lt;&lt; t.second.histogram.percent95;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\t98%   &lt;= "</span> &lt;&lt; t.second.histogram.percent98;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\t99%   &lt;= "</span> &lt;&lt; t.second.histogram.percent99;</span><br><span class="line">            LOG_INFO &lt;&lt; <span class="string">"\t99.9%   &lt;= "</span> &lt;&lt; t.second.histogram.percent999;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; static void killSignal()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">killSignal</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> sig)</span> </span>&#123;</span><br><span class="line">    (<span class="keyword">void</span>)sig;</span><br><span class="line">    <span class="keyword">if</span> (gloop != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        gloop-&gt;stop();</span><br><span class="line">        <span class="keyword">delete</span> gloop;</span><br><span class="line">        gloop = <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    adbase::metrics::Metrics::stop();</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; static void reloadConf()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">reloadConf</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> sig)</span> </span>&#123;</span><br><span class="line">    (<span class="keyword">void</span>)sig;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;&#123;&#123; static void registerSignal()</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">registerSignal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">/* 忽略Broken Pipe信号 */</span></span><br><span class="line">    signal(SIGPIPE, SIG_IGN);</span><br><span class="line">    <span class="comment">/* 处理kill信号 */</span></span><br><span class="line">    signal(SIGINT,  killSignal);</span><br><span class="line">    signal(SIGKILL, killSignal);</span><br><span class="line">    signal(SIGQUIT, killSignal);</span><br><span class="line">    signal(SIGTERM, killSignal);</span><br><span class="line">    signal(SIGHUP,  killSignal);</span><br><span class="line">    signal(SIGSEGV, killSignal);</span><br><span class="line">    signal(SIGUSR1, reloadConf);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;&#125;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    registerSignal();</span><br><span class="line">    adbase::EventLoop* eventloop = <span class="keyword">new</span> adbase::EventLoop();</span><br><span class="line">    gloop = eventloop;</span><br><span class="line">    adbase::Timer timer(eventloop-&gt;getBase());</span><br><span class="line">    metrics = adbase::metrics::Metrics::init(&amp;timer);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">uint32_t</span> interval = <span class="number">1000</span>;</span><br><span class="line">    timer.runEvery(interval, <span class="built_in">std</span>::bind(test, <span class="built_in">std</span>::placeholders::_1), <span class="literal">nullptr</span>);</span><br><span class="line">    timers = adbase::metrics::Metrics::buildTimers(<span class="string">"test"</span>, <span class="string">"request"</span>, interval);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::thread* t = <span class="keyword">new</span> <span class="built_in">std</span>::thread(<span class="built_in">std</span>::bind(test1, <span class="built_in">std</span>::placeholders::_1), <span class="literal">nullptr</span>);</span><br><span class="line"></span><br><span class="line">    eventloop-&gt;start();</span><br><span class="line">    t-&gt;join();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">20170302 03:03:24.776028Z 139685675747680 INFO  test.request :  - timers.cpp:29</span><br><span class="line">20170302 03:03:24.776065Z 139685675747680 INFO  	count     = 7569 - timers.cpp:30</span><br><span class="line">20170302 03:03:24.776076Z 139685675747680 INFO  	mean rate = 1513.8 - timers.cpp:31</span><br><span class="line">20170302 03:03:24.776090Z 139685675747680 INFO  	1-minute rate = 0 - timers.cpp:32</span><br><span class="line">20170302 03:03:24.776100Z 139685675747680 INFO  	5-minute rate = 0 - timers.cpp:33</span><br><span class="line">20170302 03:03:24.776110Z 139685675747680 INFO  	15-minute rate = 0 - timers.cpp:34</span><br><span class="line">20170302 03:03:24.776120Z 139685675747680 INFO  	min    = 0 - timers.cpp:35</span><br><span class="line">20170302 03:03:24.776130Z 139685675747680 INFO  	max    = 1.176 - timers.cpp:36</span><br><span class="line">20170302 03:03:24.776140Z 139685675747680 INFO  	mean   = 0.506 - timers.cpp:37</span><br><span class="line">20170302 03:03:24.776150Z 139685675747680 INFO  	stddev = 0.733 - timers.cpp:38</span><br><span class="line">20170302 03:03:24.776160Z 139685675747680 INFO  	median = 0.001 - timers.cpp:39</span><br><span class="line">20170302 03:03:24.776170Z 139685675747680 INFO  	75%   &lt;= 1.06 - timers.cpp:40</span><br><span class="line">20170302 03:03:24.776180Z 139685675747680 INFO  	95%   &lt;= 1.083 - timers.cpp:41</span><br><span class="line">20170302 03:03:24.776190Z 139685675747680 INFO  	98%   &lt;= 1.094 - timers.cpp:42</span><br><span class="line">20170302 03:03:24.776200Z 139685675747680 INFO  	99%   &lt;= 1.099 - timers.cpp:43</span><br><span class="line">20170302 03:03:24.776209Z 139685675747680 INFO  	99.9%   &lt;= 1.138 - timers.cpp:44</span><br></pre></td></tr></table></figure>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/01/17/adbase/adbase/net/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/01/15/adbase/adbase/memcache_server/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.jpg" alt="Nmred's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        nmred_2008@126.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">19</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/06/">六月 2015<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/05/">五月 2015<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/10/">十月 2014<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/09/">九月 2014<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/04/">四月 2014<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/03/">三月 2014<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/02/">二月 2014<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/09/">九月 2013<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/05/">五月 2013<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/02/">二月 2013<span class="sidebar_archives-count">20</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Adbase-文档/">Adbase 文档<span class="sidebar_archives-count">21</span></a></li><li><a class="sidebar_archives-link" href="/categories/C-语言/">C 语言<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/GNU-M4-技术文档/">GNU M4 技术文档<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Hadoop/">Hadoop<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/SBT-快速入门/">SBT 快速入门<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/categories/linux/">linux<span class="sidebar_archives-count">21</span></a></li><li><a class="sidebar_archives-link" href="/categories/php/">php<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/《C-Primer-Plus-第6版-》练习/">《C++ Primer Plus(第6版)》练习<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/《unix-高级编程》-Note/">《unix 高级编程》-Note<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/《快学scala》练习/">《快学scala》练习<span class="sidebar_archives-count">16</span></a></li><li><a class="sidebar_archives-link" href="/categories/虚拟技术/">虚拟技术<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">96</span>
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://weibo.com/nmred" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/nmred" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;2013&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Iodsp
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
