@@ -42,18 +42,18 @@ categories: 论文阅读
 
 - 过早的消费完预算
 
-![](/image/papers/real_time_bid_optimization/figure_1_a.png)
+![](./img/figure_1_a.png)
 
 - 预算消费波动太大
 
-![](/image/papers/real_time_bid_optimization/figure_1_b.png)
+![](./img/figure_1_b.png)
 
 
 ### 解决
 
 通常解决办法是采用平均预算的方式如图所示：
 
-![](/image/papers/real_time_bid_optimization/figure_1_c.png)
+![](./img/figure_1_c.png)
 
 但是这个有两个问题：
 
@@ -63,19 +63,19 @@ categories: 论文阅读
  
  通过和流量关联来解决这个问题，如图：
  
- ![](/image/papers/real_time_bid_optimization/figure_1_d.png)
+ ![](./img/figure_1_d.png)
  
  
  - 效果问题
  
  和流量问题类似，如果平均预算策略可能会导致优质流量时段没有预算大量投放，所以通过和效果来关联解决这个问题，如图：
  
- ![](/image/papers/real_time_bid_optimization/figure_1_e.png)
+ ![](./img/figure_1_e.png)
  
- 不过这种方式有一个潜在的问题就是当一个小的区间质量特别高会出现预算波动的问题，违背了平滑投放的限制,平衡流量和效果两个指标有一定的挑战，这个论文就是解决这两个指标的同步问题
+ 平滑策略应该根据效果来做预算，给效果好的更高的预算，不过这种方式有一个潜在的问题就是当一个小的区间质量特别高会出现预算波动的问题，违背了平滑投放的限制,平衡流量和效果两个指标有一定的挑战，这个论文就是解决这两个指标的同步问题
  
  
-为了实现平滑投放，我们将总体的日常预算 `B` 按时间空档序列分配为 `{b1,....,bt}` 其中 `bt` 就是时间空档 `t` 的预算,接下来就是我们通过不同的分配 `bt` 策略来选择出高质量的展示流量, 综上所述可以总结为如下数学问题：
+为了实现平滑投放，我们将总体的日常预算 `B` 按时间空档序列分配为 `{b1,....,bt}` 其中 ![](http://latex.codecogs.com/gif.latex?b_t) 就是时间空档 `t` 的预算,接下来就是我们通过不同的分配 ![](http://latex.codecogs.com/gif.latex?b_t) 策略来选择出高质量的展示流量, 综上所述可以总结为如下数学问题：
 
 
  ![](http://latex.codecogs.com/gif.latex?maximize%20%5C%20%5C%20%5C%20%5C%20%5C%20%5Csum_%7Bn%7D%5E%7Bi%3D1%7Dv_%7Bi%7Dx_%7Bi%7D)
@@ -86,11 +86,11 @@ categories: 论文阅读
 
 [](subject \  \  to \ \ \ \ \sum_{j\in \mathbb{I}_t}c_{j}x_{j} \leq b_{t} \ \ \ \ \ \ \forall _{t} \in \left \{ 1,....,T \right \})
 
-这块的 ![](http://latex.codecogs.com/gif.latex?%5Cmathbb%7BI%7D_t) 代表在时间空档 `t` 中的所有广告请求集合。当广告请求 `i` 请求时，算法必须要给出 ![](http://latex.codecogs.com/gif.latex?x_i) , 在优化过程中也需要给出一个投放价格 ![](http://latex.codecogs.com/gif.latex?%5Cwidehat%7Bc_i%7D) 预估值，这个并不是真正的消费预算，因为一般的 ADX 都是第二定价，所以 ![](http://latex.codecogs.com/gif.latex?%5Cwidehat%7Bc_i%7D%3Dc_i%20&plus;%20%5Cepsilon%20_i) , 其中 ![](http://latex.codecogs.com/gif.latex?c_i) 才是真正的消费价格。
+这块的 ![](http://latex.codecogs.com/gif.latex?%5Cmathbb%7BI%7D_t) 代表在时间空档 `t` 中的所有广告请求集合。![](http://latex.codecogs.com/gif.latex?v_i) 代表一个广告的真是价值。当广告请求 `i` 请求时，算法必须要给出 ![](http://latex.codecogs.com/gif.latex?x_i) , 在优化过程中也需要给出一个投放价格 ![](http://latex.codecogs.com/gif.latex?%5Cwidehat%7Bc_i%7D) 预估值，这个并不是真正的消费预算，因为一般的 ADX 都是第二定价，所以 ![](http://latex.codecogs.com/gif.latex?%5Cwidehat%7Bc_i%7D%3Dc_i%20&plus;%20%5Cepsilon%20_i) , 其中 ![](http://latex.codecogs.com/gif.latex?c_i) 才是真正的消费价格。
 
 ### 相关解决办法
 
-对于表达式一是典型的线性回归问题，对于 `Zhou et al. [21] modeled the budget constrained bidding optimization problem as an online knapsack problem` 中采用了一个简单的策略，基于一个指数函数和以前的预算相关联来完成广告高质量的筛选， 随着迭代，这个方法选择的质量越来越高，但是这个算法的前提是有无限的广告供应，这个对于 RTB 竞价广告定向后的广告量来说是不可能实现的。
+对于 `Zhou et al. [21] modeled the budget constrained bidding optimization problem as an online knapsack problem` 中采用了一个简单的策略，基于一个指数函数和以前的预算相关联来完成广告高质量的筛选， 随着迭代，这个方法选择的质量越来越高，但是这个算法的前提是有无限的广告供应，这个对于 RTB 竞价广告定向后的广告量来说是不可能实现的。
 
 对于 `Babaio↵ et al. [5] formulated the problem of dynamic bidding price` 中提到的使用 多臂老虎机， 采用这个策略的置信区间的上间来优化价格。这个方法不需要任何历史分布，但是多臂老虎机需要快速的反馈数据, 而对于 RTB 交易的展示广告这些指标有很大的延迟
 
@@ -187,7 +187,7 @@ categories: 论文阅读
 
 通过每个广告系列的历史数据构建一个指数直方图，如图：
 
-![](/image/papers/real_time_bid_optimization/figure_2.png)
+![](./img/figure_2.png)
 
 其中分布函数 ![](http://latex.codecogs.com/gif.latex?q_t(x)) 代表在 时间空档 t 中 CTR 或者 AR 是 x 的请求个数， 我们的在线算法其实就是要在时间空档 t 中找一个阀值 ![](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B150%7D%20%5Ctau%28t%29) 来过滤满足平滑策略但 CTR 或者 AR 低于该阀值的请求，所以该阀值可以表示为：
 
@@ -245,8 +245,66 @@ categories: 论文阅读
 
 ## CTR 和 AR 预估
 
+## 工程化
+
+### 冷启动
+
+根据用户、媒体的属性来推荐高质量媒体，并且通过类似的广告系列来做受众定向，另外还会通过上下文贪婪算法做线上优化
+
+当一个广告命中上述高质量的媒体或者受众按照一个高质量的价格参与竞价，如果没有命中则采用随机选择的方式并且采用默认的价格出价
+
+### 分布式架构
+![](./img/figure_3.png)
+
+## 实验效果
+
+### 平滑策略对比
+
+采用平均平滑策略
+![](http://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20b_%7Bt&plus;1%7D%5Eu%20%3D%20%5Cleft%20%28%20B%20-%20%5Csum_%7Bm%3D1%7D%5E%7Bt%7D%20s%28m%29%5Cright%20%29%5Cfrac%7B1%7D%7BT-t%7D)
+
+和实际和理论对比如下：
+
+![](./img/figure_4.png)
+
+基本上误差小于 1%
+
+采用和效果概率密度结合的策略：
+
+![](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B150%7D%20b_%7Bt&plus;1%7D%5Ep%20%3D%20%5Cleft%20%28%20B-%5Csum_%7Bm%3D1%7D%5E%7Bt%7D%20s%28m%29%5Cright%20%29%5Cfrac%7Bp_%7Bt&plus;1%7D%7D%7B%5Csum_%7Bm%3Dt&plus;1%7D%5E%7BT%7Dp_m%7D)
+
+并且假设当前效果分布如图：
+
+![](./img/figure_5.png)
+
+实际和理论对比如下
+
+
+![](./img/figure_6.png)
+
+误差大概在 2.3%
+
+### 真实的广告效果
+
+#### 固定 CPM 效果
+
+同时对比7个广告系列，分别对比优化前和优化后的结果，运行一周，优化后的数据平均提升效果 123%
+
+![](./img/table_1.png)
+
+其中 `Baseline` 计算 ![](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B150%7D%20%5Ctau%28t%29) 的方法是采用反馈控制的方式
+
+#### dCPM 效果
+
+CPC 和 CPA 效果对比如下：
+
+![](./img/table_2_3.png)
+
+CPC 表格数据显示有误
+
+
+
 ## 参考资料
 
 - [置信区间](https://www.zhihu.com/question/26419030)
 - [中心极限定理](https://www.zhihu.com/question/22913867)
-- [Real Time Bid Optimization with Smooth Budget Delivery in Online Advertising](https://dl.acm.org/citation.cfm?id=2501979)
