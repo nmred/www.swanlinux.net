@@ -238,7 +238,7 @@
 
     
         <meta property="article:published_time" content="Fri Feb 10 2017 09:13:16 GMT+0800" />
-        <meta property="article:modified_time" content="Wed Feb 07 2018 15:37:13 GMT+0800" />
+        <meta property="article:modified_time" content="Wed Feb 07 2018 15:44:30 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "http://www.swanlinux.net/2017/02/10/papers/real_time_bid_optimization/index.html",
     "headline": "RTB 广告优化 ---- 在线平滑投放实现",
     "datePublished": "Fri Feb 10 2017 09:13:16 GMT+0800",
-    "dateModified": "Wed Feb 07 2018 15:37:13 GMT+0800",
+    "dateModified": "Wed Feb 07 2018 15:44:30 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Nmred",
@@ -528,25 +528,25 @@
 <h2 id="背景与相关工作"><a href="#背景与相关工作" class="headerlink" title="背景与相关工作"></a>背景与相关工作</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ul>
 <li>过早的消费完预算</li>
 </ul>
-<p><img src="./img/figure_1_a.png" alt=""></p>
+<p><img src="/image/papers/real_time_bid_optimization//figure_1_a.png" alt=""></p>
 <ul>
 <li>预算消费波动太大</li>
 </ul>
-<p><img src="./img/figure_1_b.png" alt=""></p>
+<p><img src="/image/papers/real_time_bid_optimization//figure_1_b.png" alt=""></p>
 <h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>通常解决办法是采用平均预算的方式如图所示：</p>
-<p><img src="./img/figure_1_c.png" alt=""></p>
+<p><img src="/image/papers/real_time_bid_optimization//figure_1_c.png" alt=""></p>
 <p>但是这个有两个问题：</p>
 <ul>
 <li><p>流量问题</p>
 <p>比如通过定向条件过滤后的流量上午多余下午，按照平均预算的策略可能上午还有一定的流量空余，而下午由于流量小可能要强制投放一些效果差的广告</p>
 <p>通过和流量关联来解决这个问题，如图：</p>
-<p><img src="./img/figure_1_d.png" alt=""></p>
+<p><img src="/image/papers/real_time_bid_optimization//figure_1_d.png" alt=""></p>
 </li>
 </ul>
 <ul>
 <li><p>效果问题</p>
 <p>和流量问题类似，如果平均预算策略可能会导致优质流量时段没有预算大量投放，所以通过和效果来关联解决这个问题，如图：</p>
-<p><img src="./img/figure_1_e.png" alt=""></p>
+<p><img src="/image/papers/real_time_bid_optimization//figure_1_e.png" alt=""></p>
 <p>平滑策略应该根据效果来做预算，给效果好的更高的预算，不过这种方式有一个潜在的问题就是当一个小的区间质量特别高会出现预算波动的问题，违背了平滑投放的限制,平衡流量和效果两个指标有一定的挑战，这个论文就是解决这两个指标的同步问题</p>
 </li>
 </ul>
@@ -601,7 +601,7 @@
 <p>同上，采用竞价率可以预估出来本时间区间需要接受的请求数 :</p>
 <p><img src="http://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20reqs%5E*%28t%29%20%3D%20%5Cfrac%7Bbids%5E*%28t%29%7D%7Bpacing%5C_rate%28t%29%29%7D" alt=""></p>
 <p>通过每个广告系列的历史数据构建一个指数直方图，如图：</p>
-<p><img src="./img/figure_2.png" alt=""></p>
+<p><img src="/image/papers/real_time_bid_optimization//figure_2.png" alt=""></p>
 <p>其中分布函数 <img src="http://latex.codecogs.com/gif.latex?q_t(x" alt="">) 代表在 时间空档 t 中 CTR 或者 AR 是 x 的请求个数， 我们的在线算法其实就是要在时间空档 t 中找一个阀值 <img src="http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B150%7D%20%5Ctau%28t%29" alt=""> 来过滤满足平滑策略但 CTR 或者 AR 低于该阀值的请求，所以该阀值可以表示为：</p>
 <p><img src="http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B150%7D%20%5Ctau%28t%29%20%3D%20arg%20%5C%20min_x%20%7C%20%5Cint_%7Bx%7D%5E%7B1%7Dq_t%28x%29dx%20-%20reqs%5E*%28t%29%7C" alt=""></p>
 <p>在实践中由于 CTR 或者 AR 分布不需要经常计算，如果 <img src="http://latex.codecogs.com/gif.latex?q_t(x" alt="">)  不是很接近当前请求分布时，会导致当前时间空档的阈值震荡。由于 <img src="http://latex.codecogs.com/gif.latex?q_t(x" alt="">) 分布时通过历史数据生成，所以产生这种情况很正常，为了避免这种情况，我们将阈值改为一个可信区间。首先我们通过计算这个阈值的平均值和方差，并且通过中心极限定理推断  <img src="http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B150%7D%20%5Ctau%28t%29" alt=""> 是满足高斯分布的，所以可信区间通过如下公式计算：</p>
@@ -638,23 +638,23 @@
 <p>最终通过 <img src="http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B150%7D%20%5Cwidehat%7Bc_i%7D%20%3D%20%5Crho%5E*%5Cmu_i" alt=""> 来出价</p>
 <h2 id="CTR-和-AR-预估"><a href="#CTR-和-AR-预估" class="headerlink" title="CTR 和 AR 预估"></a>CTR 和 AR 预估</h2><h2 id="工程化"><a href="#工程化" class="headerlink" title="工程化"></a>工程化</h2><h3 id="冷启动"><a href="#冷启动" class="headerlink" title="冷启动"></a>冷启动</h3><p>根据用户、媒体的属性来推荐高质量媒体，并且通过类似的广告系列来做受众定向，另外还会通过上下文贪婪算法做线上优化</p>
 <p>当一个广告命中上述高质量的媒体或者受众按照一个高质量的价格参与竞价，如果没有命中则采用随机选择的方式并且采用默认的价格出价</p>
-<h3 id="分布式架构"><a href="#分布式架构" class="headerlink" title="分布式架构"></a>分布式架构</h3><p><img src="./img/figure_3.png" alt=""></p>
+<h3 id="分布式架构"><a href="#分布式架构" class="headerlink" title="分布式架构"></a>分布式架构</h3><p><img src="/image/papers/real_time_bid_optimization//figure_3.png" alt=""></p>
 <h2 id="实验效果"><a href="#实验效果" class="headerlink" title="实验效果"></a>实验效果</h2><h3 id="平滑策略对比"><a href="#平滑策略对比" class="headerlink" title="平滑策略对比"></a>平滑策略对比</h3><p>采用平均平滑策略<br><img src="http://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20b_%7Bt&plus;1%7D%5Eu%20%3D%20%5Cleft%20%28%20B%20-%20%5Csum_%7Bm%3D1%7D%5E%7Bt%7D%20s%28m%29%5Cright%20%29%5Cfrac%7B1%7D%7BT-t%7D" alt=""></p>
 <p>和实际和理论对比如下：</p>
-<p><img src="./img/figure_4.png" alt=""></p>
+<p><img src="/image/papers/real_time_bid_optimization//figure_4.png" alt=""></p>
 <p>基本上误差小于 1%</p>
 <p>采用和效果概率密度结合的策略：</p>
 <p><img src="http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B150%7D%20b_%7Bt&plus;1%7D%5Ep%20%3D%20%5Cleft%20%28%20B-%5Csum_%7Bm%3D1%7D%5E%7Bt%7D%20s%28m%29%5Cright%20%29%5Cfrac%7Bp_%7Bt&plus;1%7D%7D%7B%5Csum_%7Bm%3Dt&plus;1%7D%5E%7BT%7Dp_m%7D" alt=""></p>
 <p>并且假设当前效果分布如图：</p>
-<p><img src="./img/figure_5.png" alt=""></p>
+<p><img src="/image/papers/real_time_bid_optimization//figure_5.png" alt=""></p>
 <p>实际和理论对比如下</p>
-<p><img src="./img/figure_6.png" alt=""></p>
+<p><img src="/image/papers/real_time_bid_optimization//figure_6.png" alt=""></p>
 <p>误差大概在 2.3%</p>
 <h3 id="真实的广告效果"><a href="#真实的广告效果" class="headerlink" title="真实的广告效果"></a>真实的广告效果</h3><h4 id="固定-CPM-效果"><a href="#固定-CPM-效果" class="headerlink" title="固定 CPM 效果"></a>固定 CPM 效果</h4><p>同时对比7个广告系列，分别对比优化前和优化后的结果，运行一周，优化后的数据平均提升效果 123%</p>
-<p><img src="./img/table_1.png" alt=""></p>
+<p><img src="/image/papers/real_time_bid_optimization//table_1.png" alt=""></p>
 <p>其中 <code>Baseline</code> 计算 <img src="http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B150%7D%20%5Ctau%28t%29" alt=""> 的方法是采用反馈控制的方式</p>
 <h4 id="dCPM-效果"><a href="#dCPM-效果" class="headerlink" title="dCPM 效果"></a>dCPM 效果</h4><p>CPC 和 CPA 效果对比如下：</p>
-<p><img src="./img/table_2_3.png" alt=""></p>
+<p><img src="/image/papers/real_time_bid_optimization//table_2_3.png" alt=""></p>
 <p>CPC 表格数据显示有误</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://www.zhihu.com/question/26419030" target="_blank" rel="external">置信区间</a></li>

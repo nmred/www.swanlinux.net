@@ -433,18 +433,18 @@ POSIX.1 只定义了两个获取口令文件项的函数，在给出用户登录
     
 
         <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2013/05/14/unix_note_public.c/">UNIX 环境编程测试公共函数</a></p>
+        <p class="article-headline-p"><a href="/2013/05/14/unix_note_file_io/">文件IO</a></p>
     </div>
 
     <!-- Post Excerpt -->
     <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
-            ###apue.c 头文件
-
+            ###文件描述符
+对于内核而言，所有打开的文件都通过文件描述符引用。文件描述符是一个非负整数。当打开一个现有文件或创建一个新文件时，内...
         
         &nbsp;&nbsp;&nbsp;
         <span>
-            <a href="/2013/05/14/unix_note_public.c/" target="_self">阅读全文</a>
+            <a href="/2013/05/14/unix_note_file_io/" target="_self">阅读全文</a>
         </span>
     </div>
     <!-- Post_entry Info-->
@@ -619,6 +619,68 @@ POSIX.1 只定义了两个获取口令文件项的函数，在给出用户登录
     
 
         <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2013/05/14/unix_note_public.c/">UNIX 环境编程测试公共函数</a></p>
+    </div>
+
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            ###apue.c 头文件
+
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2013/05/14/unix_note_public.c/" target="_self">阅读全文</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/avatar.jpg" width="44px" height="44px" alt="Nmred's avatar">
+            </div>
+            <div>
+                <strong>Nmred</strong>
+                <span>5月 14, 2013</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+          
+              <!-- Category -->
+              <span class="post_entry-category">
+                  <a class="post_category-link" href="/categories/《unix-高级编程》-Note/">《unix 高级编程》-Note</a>
+              </span>
+            
+
+            
+
+            
+
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
+
+            
+            
+        
+    
+        
+            
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
+    
+
+        <!-- Post Title -->
         <p class="article-headline-p"><a href="/2013/05/14/c_extern/">C 语言中 extern 关键字详解</a></p>
     </div>
 
@@ -681,80 +743,20 @@ POSIX.1 只定义了两个获取口令文件项的函数，在给出用户登录
     
 
         <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2013/05/14/unix_note_file_io/">文件IO</a></p>
+        <p class="article-headline-p"><a href="/2013/02/12/linux_quota/">Linux 系统磁盘配额</a></p>
     </div>
 
     <!-- Post Excerpt -->
     <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
-            ###文件描述符
-对于内核而言，所有打开的文件都通过文件描述符引用。文件描述符是一个非负整数。当打开一个现有文件或创建一个新文件时，内...
+            应用案例：
+
+设置用户zhangsan和lisi在/quota分区中，只有使用50MB的磁盘空间
+
         
         &nbsp;&nbsp;&nbsp;
         <span>
-            <a href="/2013/05/14/unix_note_file_io/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.jpg" width="44px" height="44px" alt="Nmred's avatar">
-            </div>
-            <div>
-                <strong>Nmred</strong>
-                <span>5月 14, 2013</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/《unix-高级编程》-Note/">《unix 高级编程》-Note</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2013/02/12/linux_cd_recover/">Linux 系统光盘修复</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            ###光盘修复备份过的文件
-案例背景：系统中/etc原来已经备份到/backup一份，但是在操作中误删除了/etc/inittab或把...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2013/02/12/linux_cd_recover/" target="_self">阅读全文</a>
+            <a href="/2013/02/12/linux_quota/" target="_self">阅读全文</a>
         </span>
     </div>
     <!-- Post_entry Info-->
@@ -805,19 +807,20 @@ POSIX.1 只定义了两个获取口令文件项的函数，在给出用户登录
     
 
         <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2013/02/12/linux_raid_lvm/">Linux系统中的RAID和LVM</a></p>
+        <p class="article-headline-p"><a href="/2013/02/12/linux_nfs/">Linux 系统中文件共享之 NFS</a></p>
     </div>
 
     <!-- Post Excerpt -->
     <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
-            ###软raid的使用
-1.RAID定义
-RAID是英文Redundant Array of Independent D...
+            ###NFS 网络共享的一般用法
+在NFS服务器主机中进行设置
+
+1）安装NFS服务器软件包
         
         &nbsp;&nbsp;&nbsp;
         <span>
-            <a href="/2013/02/12/linux_raid_lvm/" target="_self">阅读全文</a>
+            <a href="/2013/02/12/linux_nfs/" target="_self">阅读全文</a>
         </span>
     </div>
     <!-- Post_entry Info-->
